@@ -1129,8 +1129,8 @@ a {
   }
 }
 .cid-v5u5AwApEe {
-  padding-top: 9rem;
-  padding-bottom: 8rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
   background-color: #ffffff;
 }
 .cid-v5u5AwApEe .mbr-fallback-image.disabled {
@@ -1151,67 +1151,134 @@ a {
 .cid-v5u5AwApEe .mbr-section-subtitle {
   text-align: left;
 }
-.cid-v5u5ZjLoc6 {
-  padding-top: 3rem;
+.cid-v7SDERRGIa {
+  padding-top: 0rem;
   padding-bottom: 3rem;
   background-color: #ffffff;
 }
-.cid-v5u5ZjLoc6 h6 {
-  line-height: 1.2;
-}
-.cid-v5u5ZjLoc6 img,
-.cid-v5u5ZjLoc6 .item-img {
+.cid-v7SDERRGIa img,
+.cid-v7SDERRGIa .item-img {
   width: 100%;
-  height: 100%;
 }
-.cid-v5u5ZjLoc6 .item:focus,
-.cid-v5u5ZjLoc6 span:focus {
+.cid-v7SDERRGIa .item:focus,
+.cid-v7SDERRGIa span:focus {
   outline: none;
 }
-.cid-v5u5ZjLoc6 .item-wrapper {
+.cid-v7SDERRGIa .item-wrapper {
   position: relative;
+}
+.cid-v7SDERRGIa .slide-content {
+  position: relative;
+  border-radius: 4px;
+  background: #edefeb;
+  height: 100%;
   display: flex;
+  overflow: hidden;
   flex-flow: column nowrap;
-  margin-bottom: 2rem;
 }
-.cid-v5u5ZjLoc6 .mbr-section-btn {
-  margin-top: auto !important;
-  text-align: center;
-}
-.cid-v5u5ZjLoc6 .mbr-section-title {
-  color: #000000;
-}
-.cid-v5u5ZjLoc6 .mbr-text,
-.cid-v5u5ZjLoc6 .mbr-section-btn {
-  color: #000000;
-}
-.cid-v5u5ZjLoc6 .item-title {
-  color: #000000;
-  text-align: center;
-}
-.cid-v5u5ZjLoc6 .item-subtitle {
-  color: #000000;
-  text-align: center;
-}
-.cid-v5u5ZjLoc6 .item-text {
-  color: #000000;
-  text-align: center;
-}
-.cid-v5u5ZjLoc6 .content-head {
-  max-width: 800px;
-}
-@media (max-width: 767px) {
-  .cid-v5u5ZjLoc6 .item-wrapper {
-    margin-bottom: 1rem;
+@media (min-width: 992px) {
+  .cid-v7SDERRGIa .slide-content .item-content {
+    padding: 2rem;
   }
 }
-.cid-v5u5ZjLoc6 .item-subtitle,
-.cid-v5u5ZjLoc6 .mbr-section-btn {
+@media (max-width: 991px) {
+  .cid-v7SDERRGIa .slide-content .item-content {
+    padding: 1rem;
+  }
+}
+.cid-v7SDERRGIa .mbr-section-btn {
+  margin-top: auto !important;
+}
+.cid-v7SDERRGIa .mbr-section-title {
+  color: #232323;
+}
+.cid-v7SDERRGIa .mbr-text,
+.cid-v7SDERRGIa .mbr-section-btn {
   text-align: left;
 }
-.cid-v5u5ZjLoc6 .item-title,
-.cid-v5u5ZjLoc6 .mbr-section-btn {
+.cid-v7SDERRGIa .item-title {
   text-align: left;
+  color: #d50000;
+}
+.cid-v7SDERRGIa .item-subtitle {
+  text-align: left;
+}
+.cid-v7SDERRGIa .embla__slide {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  min-width: 410px;
+  max-width: 410px;
+}
+@media (max-width: 768px) {
+  .cid-v7SDERRGIa .embla__slide {
+    min-width: 70%;
+    max-width: initial;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+  }
+}
+.cid-v7SDERRGIa .embla__button--next,
+.cid-v7SDERRGIa .embla__button--prev {
+  display: flex;
+}
+.cid-v7SDERRGIa .embla__button {
+  top: 50%;
+  width: 60px;
+  height: 60px;
+  margin-top: -1.5rem;
+  font-size: 22px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  transition: all 0.3s;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cid-v7SDERRGIa .embla__button:disabled {
+  cursor: default;
+  display: none;
+}
+.cid-v7SDERRGIa .embla__button:hover {
+  background: #000;
+  color: rgba(255, 255, 255, 0.5);
+}
+.cid-v7SDERRGIa .embla__button.embla__button--prev {
+  left: 0;
+  margin-left: 2.5rem;
+}
+.cid-v7SDERRGIa .embla__button.embla__button--next {
+  right: 0;
+  margin-right: 2.5rem;
+}
+@media (max-width: 767px) {
+  .cid-v7SDERRGIa .embla__button {
+    top: auto;
+  }
+}
+.cid-v7SDERRGIa .embla {
+  position: relative;
+  width: 100%;
+}
+.cid-v7SDERRGIa .embla__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+.cid-v7SDERRGIa .embla__viewport.is-draggable {
+  cursor: grab;
+}
+.cid-v7SDERRGIa .embla__viewport.is-dragging {
+  cursor: grabbing;
+}
+.cid-v7SDERRGIa .embla__container {
+  display: flex;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .cid-v5zOFNceQf {
   z-index: 1000;

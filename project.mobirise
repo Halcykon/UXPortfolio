@@ -68,7 +68,7 @@
         "url": "https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
       }
     ],
-    "uniqCompNum": 734,
+    "uniqCompNum": 735,
     "versionPublish": "6.1.12",
     "screenshot": "screenshot.png",
     "modified": "2025-12-15T20:43:47.021Z",
@@ -562,7 +562,7 @@
           },
           "_name": "article11",
           "_sourceTheme": "startm5",
-          "_customHTML": "<section data-bs-version=\"5.1\" class=\"article11\" group=\"Article\" data-bg-video=\"{{bg.type == 'video' && bg.value.url}}\" mbr-class=\"{\n    'mbr-fullscreen': fullScreen,\n    'mbr-parallax-background': bg.parallax}\">\n    <mbr-parameters>\n        <header>Size</header>\n       <input type=\"checkbox\" title=\"Full Screen\" name=\"fullScreen\">\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"9\" condition=\"fullScreen == false\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"8\" condition=\"fullScreen == false\">\n        <input type=\"range\" name=\"textWidth\" title=\"Width\" min=\"4\" max=\"12\" step=\"1\" value=\"5\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\" checked>\n        <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubtitle\" checked>\n        <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons\">\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Image\" value=\"../_images/background1.jpg\">\n            <input type=\"color\" title=\"Color\" value=\"#ffffff\" selected>\n            <input type=\"video\" title=\"Video\" value=\"https://vimeo.com/428046504\">        \n        </fieldset>\n        <header condition=\"bg.type === 'video'\">Fallback Image</header>\n        <input type=\"image\" title=\"Fallback Image\" value=\"../_images/background1.jpg\" name=\"fallBackImage\" condition=\"bg.type === 'video'\">\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#ffffff\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.7\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n\n    <div class=\"mbr-fallback-image disabled\" mbr-if=\"bg.type == 'video'\">\n    </div>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row justify-content-center\">\n            <div class=\"title col-md-12 col-lg-{{textWidth}}\">\n                <h2 class=\"mbr-section-title mbr-fonts-style align-center mt-0 mb-0\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-2\"><b>Hi there, I'm Frank.</b></h2>\n                <h4 class=\"mbr-section-subtitle align-center mbr-fonts-style mt-4\" mbr-if=\"showSubtitle\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-7\">I help organizations tackle hairy complex data problems (without breaking anything).<div><br></div><div>I specialize in translating technical architecture into product experiences that balance business impact with user needs.</div></h4>\n                <div class=\"mbr-section-btn align-center mt-4\" mbr-if=\"showButtons\" mbr-buttons mbr-theme-style=\"display-4\">\n                    <a class=\"btn btn-secondary\" href=\"https://mobiri.se\" data-app-placeholder=\"Type Text\">\n                        Learn more\n                    </a>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"article11\" group=\"Article\" data-bg-video=\"{{bg.type == 'video' && bg.value.url}}\" mbr-class=\"{\n    'mbr-fullscreen': fullScreen,\n    'mbr-parallax-background': bg.parallax}\">\n    <mbr-parameters>\n        <header>Size</header>\n       <input type=\"checkbox\" title=\"Full Screen\" name=\"fullScreen\">\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"5\" condition=\"fullScreen == false\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"5\" condition=\"fullScreen == false\">\n        <input type=\"range\" name=\"textWidth\" title=\"Width\" min=\"4\" max=\"12\" step=\"1\" value=\"5\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\" checked>\n        <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubtitle\" checked>\n        <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons\">\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Image\" value=\"../_images/background1.jpg\">\n            <input type=\"color\" title=\"Color\" value=\"#ffffff\" selected>\n            <input type=\"video\" title=\"Video\" value=\"https://vimeo.com/428046504\">        \n        </fieldset>\n        <header condition=\"bg.type === 'video'\">Fallback Image</header>\n        <input type=\"image\" title=\"Fallback Image\" value=\"../_images/background1.jpg\" name=\"fallBackImage\" condition=\"bg.type === 'video'\">\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#ffffff\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.7\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n\n    <div class=\"mbr-fallback-image disabled\" mbr-if=\"bg.type == 'video'\">\n    </div>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row justify-content-center\">\n            <div class=\"title col-md-12 col-lg-{{textWidth}}\">\n                <h2 class=\"mbr-section-title mbr-fonts-style align-center mt-0 mb-0\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-2\"><b>Hi there, I'm Frank.</b></h2>\n                <h4 class=\"mbr-section-subtitle align-center mbr-fonts-style mt-4\" mbr-if=\"showSubtitle\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-7\">I help organizations tackle hairy complex data problems (without breaking anything).<div><br></div><div>I specialize in translating technical architecture into product experiences that balance business impact with user needs.</div></h4>\n                <div class=\"mbr-section-btn align-center mt-4\" mbr-if=\"showButtons\" mbr-buttons mbr-theme-style=\"display-4\">\n                    <a class=\"btn btn-secondary\" href=\"https://mobiri.se\" data-app-placeholder=\"Type Text\">\n                        Learn more\n                    </a>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>",
           "_cid": "v5u5AwApEe",
           "_anchor": "article11-8",
           "_protectedParams": [],
@@ -587,21 +587,25 @@
                 }
               }
             },
-            "h6": {
-              "line-height": "1.2"
-            },
             "img, .item-img": {
               "width": "100%",
-              "height": "100%",
               "& when (@autoSize)": {
-                "height": "(@imageHeight * 100px)",
-                "object-fit": "cover"
-              }
-            },
-            "@media (max-width: 1200px)": {
-              "img, .item-img": {
-                "& when (@autoSize)": {
-                  "height": "(@imageHeight * 75px)",
+                "height": "100%",
+                "object-fit": "cover",
+                "& when (@showCardTitle)": {
+                  "height": "(@imageHeight * 100px)",
+                  "object-fit": "cover"
+                },
+                "& when (@showCardSubtitle)": {
+                  "height": "(@imageHeight * 100px)",
+                  "object-fit": "cover"
+                },
+                "& when (@showText)": {
+                  "height": "(@imageHeight * 100px)",
+                  "object-fit": "cover"
+                },
+                "& when (@showButtons)": {
+                  "height": "(@imageHeight * 100px)",
                   "object-fit": "cover"
                 }
               }
@@ -609,70 +613,150 @@
             ".item:focus, span:focus": {
               "outline": "none"
             },
-            "& when not (@spacing)": {
-              ".row": {
-                "margin-left": "0",
-                "margin-right": "0"
-              },
-              ".item": {
-                "padding": "0",
-                "margin": "0"
-              }
-            },
             ".item-wrapper": {
+              "position": "relative"
+            },
+            ".slide-content": {
               "position": "relative",
+              "border-radius": "4px",
+              "background": "@cardsBg",
+              "height": "100%",
               "display": "flex",
+              "overflow": "hidden",
               "flex-flow": "column nowrap",
-              "margin-bottom": "2rem"
-            },
-            ".mbr-section-btn": {
-              "margin-top": "auto !important",
-              "text-align": "center"
-            },
-            ".mbr-section-title": {
-              "color": "#000000"
-            },
-            ".mbr-text, .mbr-section-btn": {
-              "color": "#000000"
-            },
-            ".item-title": {
-              "color": "#000000",
-              "text-align": "center"
-            },
-            ".item-subtitle": {
-              "color": "#000000",
-              "text-align": "center"
-            },
-            ".item-text": {
-              "color": "#000000",
-              "text-align": "center"
-            },
-            ".content-head": {
-              "max-width": "800px"
-            },
-            "@media (max-width: 767px)": {
-              "img, .item-img": {
-                "& when (@autoSize)": {
-                  "height": "(@imageHeight * 75px)",
-                  "object-fit": "cover"
+              "@media (min-width: 992px)": {
+                "& when (@showButtons)": {
+                  ".item-content": {
+                    "padding": "2rem 2rem 0"
+                  },
+                  ".item-footer": {
+                    "padding": "0 2rem 2rem"
+                  }
+                },
+                "& when not (@showButtons)": {
+                  ".item-content": {
+                    "padding": "2rem"
+                  }
                 }
               },
-              ".item-wrapper": {
-                "margin-bottom": "1rem"
+              "@media (max-width: 991px)": {
+                "& when (@showButtons)": {
+                  ".item-content": {
+                    "padding": "1rem 1rem 0"
+                  },
+                  ".item-footer": {
+                    "padding": "0 1rem 1rem"
+                  }
+                },
+                "& when not (@showButtons)": {
+                  ".item-content": {
+                    "padding": "1rem"
+                  }
+                }
               }
             },
-            ".item-subtitle, .mbr-section-btn": {
+            ".mbr-section-btn": {
+              "margin-top": "auto !important"
+            },
+            ".mbr-section-title": {
+              "color": "#232323"
+            },
+            ".mbr-text, .mbr-section-btn": {
               "text-align": "left"
             },
-            ".item-title, .mbr-section-btn": {
+            ".item-title": {
+              "text-align": "left",
+              "color": "#d50000"
+            },
+            ".item-subtitle": {
               "text-align": "left"
+            },
+            ".embla__slide": {
+              "display": "flex",
+              "justify-content": "center",
+              "position": "relative",
+              "min-width": "410px",
+              "max-width": "410px",
+              "@media (max-width: 768px)": {
+                "min-width": "70%",
+                "max-width": "initial",
+                "margin-left": "1rem !important",
+                "margin-right": "1rem !important"
+              }
+            },
+            ".embla__button--next, .embla__button--prev": {
+              "display": "flex"
+            },
+            ".embla__button": {
+              "top": "50%",
+              "width": "60px",
+              "height": "60px",
+              "margin-top": "-1.5rem",
+              "font-size": "22px",
+              "background-color": "rgba(0, 0, 0, 0.5)",
+              "color": "#fff",
+              "border": "2px solid #fff",
+              "border-radius": "50%",
+              "transition": "all 0.3s",
+              "position": "absolute",
+              "display": "flex",
+              "justify-content": "center",
+              "align-items": "center",
+              "& when not (@arrows)": {
+                "display": "none"
+              },
+              "& when not (@arrowsMobile)": {
+                "@media (max-width: 768px)": {
+                  "display": "none"
+                }
+              },
+              "&:disabled": {
+                "cursor": "default",
+                "display": "none"
+              },
+              "&:hover": {
+                "background": "#000",
+                "color": "rgba(255, 255, 255, 0.5)"
+              },
+              "&.embla__button--prev": {
+                "left": "0",
+                "margin-left": "2.5rem"
+              },
+              "&.embla__button--next": {
+                "right": "0",
+                "margin-right": "2.5rem"
+              },
+              "@media (max-width: 767px)": {
+                "top": "auto"
+              }
+            },
+            ".embla": {
+              "position": "relative",
+              "width": "100%"
+            },
+            ".embla__viewport": {
+              "overflow": "hidden",
+              "width": "100%"
+            },
+            ".embla__viewport.is-draggable": {
+              "cursor": "grab"
+            },
+            ".embla__viewport.is-dragging": {
+              "cursor": "grabbing"
+            },
+            ".embla__container": {
+              "display": "flex",
+              "user-select": "none",
+              "-webkit-touch-callout": "none",
+              "-khtml-user-select": "none",
+              "-webkit-tap-highlight-color": "transparent"
             }
           },
-          "_name": "gallery03",
-          "_sourceTheme": "startm5",
-          "_customHTML": "<section data-bs-version=\"5.1\" class=\"gallery3\" group=\"Gallery\" mbr-class=\"{'mbr-parallax-background': bg.parallax}\">\n    <mbr-parameters>\n      <header>Size</header>\n      <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n      <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"3\">\n      <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"3\">\n      <select title=\"Columns\" name=\"cardsWidth\">\n        <option value=\"12\">1</option>\n        <option value=\"6\" selected>2</option>\n        <option value=\"4\">3</option>\n        <option value=\"3\">4</option>\n        <option value=\"2\">6</option>\n      </select>\n      <header>Show/Hide</header>\n      <input type=\"checkbox\" name=\"showTitle\" title=\"Title\">\n      <input type=\"checkbox\" name=\"showSubtitle\" title=\"Subtitle\">\n      <header>Cards</header>\n      <input type=\"checkbox\" name=\"autoSize\" title=\"Auto Size\">\n      <input type=\"range\" name=\"imageHeight\" title=\"Height\" min=\"1\" max=\"5\" step=\"1\" value=\"2\" condition=\"autoSize\">\n      <input type=\"checkbox\" title=\"Spacing\" name=\"spacing\" checked>\n      <input type=\"checkbox\" name=\"showCardTitle\" title=\"Title\" checked>\n      <input type=\"checkbox\" name=\"showCardSubtitle\" title=\"Subtitle\" checked>\n      <header>Background</header>\n      <fieldset type=\"background\" parallax name=\"bg\" required>\n        <input type=\"image\" title=\"Image\" value=\"../_images/background1.jpg\">\n        <input type=\"color\" title=\"Color\" value=\"#ffffff\" selected>\n      </fieldset>\n      <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\">\n      <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#edefeb\" condition=\"overlay && bg.type == 'image'\">\n      <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.6\" condition=\"overlay && bg.type == 'image'\">\n    </mbr-parameters>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type !== 'color'\"></div>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 content-head\">\n          <div class=\"mbr-section-head mb-5\" mbr-if=\"showTitle || showSubtitle\">\n            <h4 class=\"mbr-section-title mbr-fonts-style align-center mb-0\" mbr-theme-style=\"display-2\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\"><br></h4>\n            <h5 class=\"mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4\" mbr-theme-style=\"display-7\" mbr-if=\"showSubtitle\" data-app-selector=\".mbr-section-subtitle\"></h5>\n          </div>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"item features-image col-12 col-md-6 col-lg-{{cardsWidth}} active\">\n          <div class=\"item-wrapper\">\n            <div class=\"item-img\">\n              <a href=\"mayo-telehealth.html\"><img src=\"@PROJECT_PATH@/assets/images/pexels-tima-miroshnichenko-8376233.jpeg\" alt=\"Mayo Clinic Video Visits\" title data-slide-to=\"0\" data-bs-slide-to=\"0\"></a>\n            </div>\n            <div class=\"item-content align-left\" mbr-if=\"showCardTitle || showCardSubtitle || showText || showButtons\">\n              <h5 class=\"item-title mbr-fonts-style mt-3 mb-3\" mbr-theme-style=\"display-7\" data-app-selector=\".item-title, .mbr-section-btn\" mbr-if=\"showCardTitle\"><b>Mayo Clinic: Transforming a Pandemic response into Scalable Care</b></h5>\n              <h6 class=\"item-subtitle mbr-fonts-style mb-3\" mbr-theme-style=\"display-7\" data-app-selector=\".item-subtitle, .mbr-section-btn\" mbr-if=\"showCardSubtitle\">How might we redesign systems to make post-COVID telehealth operationally robust?</h6>\n              \n            </div>\n          </div>\n        </div><div class=\"item features-image col-12 col-md-6 col-lg-{{cardsWidth}}\">\n          <div class=\"item-wrapper\">\n            <div class=\"item-img\">\n              <a href=\"exxonmobil-upstream.html\"><img src=\"@PROJECT_PATH@/assets/images/upstream-it-1.jpeg\" alt=\"Improving Upstream Data Analysis\" title data-slide-to=\"1\" data-bs-slide-to=\"1\"></a>\n            </div>\n            <div class=\"item-content align-left\" mbr-if=\"showCardTitle || showCardSubtitle || showText || showButtons\">\n              <h5 class=\"item-title mbr-fonts-style mt-3 mb-3\" mbr-theme-style=\"display-7\" data-app-selector=\".item-title, .mbr-section-btn\" mbr-if=\"showCardTitle\"><a href=\"exxonmobil-upstream.html\" class=\"text-primary\"><b>ExxonMobil: Streamlining Data Analysis</b></a></h5>\n              <h6 class=\"item-subtitle mbr-fonts-style mb-3\" mbr-theme-style=\"display-7\" data-app-selector=\".item-subtitle, .mbr-section-btn\" mbr-if=\"showCardSubtitle\">How might we automate data preparation without removing the human-in-the-loop?</h6>\n            </div>\n          </div>\n        </div>\n        \n        <div class=\"item features-image col-12 col-md-6 col-lg-{{cardsWidth}}\">\n          <div class=\"item-wrapper\">\n            <div class=\"item-img\">\n              <a href=\"nasa-WADs.html\"><img src=\"@PROJECT_PATH@/assets/images/vab-and-sls.jpeg\" alt=\"NASA\" title data-slide-to=\"2\" data-bs-slide-to=\"2\"></a>\n            </div>\n            <div class=\"item-content align-left\" mbr-if=\"showCardTitle || showCardSubtitle || showText || showButtons\">\n              <h5 class=\"item-title mbr-fonts-style mt-3 mb-3\" mbr-theme-style=\"display-7\" data-app-selector=\".item-title, .mbr-section-btn\" mbr-if=\"showCardTitle\"><a href=\"nasa-WADs.html\" class=\"text-primary\"><b>NASA: Modernizing Work Authorization</b></a></h5>\n              <h6 class=\"item-subtitle mbr-fonts-style mb-3\" mbr-theme-style=\"display-7\" data-app-selector=\".item-subtitle, .mbr-section-btn\" mbr-if=\"showCardSubtitle\">How might we digitize paper-based procedures while maintaining safety standards?</h6>\n            </div>\n          </div>\n        </div><div class=\"item features-image col-12 col-md-6 col-lg-{{cardsWidth}}\">\n          <div class=\"item-wrapper\">\n            <div class=\"item-img\">\n              <a href=\"socialAR.html\"><img src=\"@PROJECT_PATH@/assets/images/11.-screenshot2018-02-20at9.29.13pm-1.jpeg\" alt=\"How might AR enhance in-person networking?\" title data-slide-to=\"3\" data-bs-slide-to=\"3\"></a>\n            </div>\n            <div class=\"item-content align-left\" mbr-if=\"showCardTitle || showCardSubtitle || showText || showButtons\">\n              <h5 class=\"item-title mbr-fonts-style mt-3 mb-3\" mbr-theme-style=\"display-7\" data-app-selector=\".item-title, .mbr-section-btn\" mbr-if=\"showCardTitle\"><a href=\"socialAR.html\" class=\"text-primary\"><b>CMU: Augmented Reality&nbsp;for Conferences</b></a></h5>\n              <h6 class=\"item-subtitle mbr-fonts-style mb-3\" mbr-theme-style=\"display-7\" data-app-selector=\".item-subtitle, .mbr-section-btn\" mbr-if=\"showCardSubtitle\">How might augmented reality enhance in-person networking experiences?</h6>\n            </div>\n          </div>\n        </div>\n        \n      </div>\n    </div>\n  </section>",
-          "_cid": "v5u5ZjLoc6",
-          "_anchor": "gallery03-c",
+          "_name": "slider4",
+          "_sourceTheme": "mobirise5",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"slider4 mbr-embla\" group=\"Sliders & Galleries\" plugins=\"embla\" mbr-class=\"{\n    'mbr-fullscreen': fullScreen,\n    'mbr-parallax-background': bg.parallax}\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\" checked>\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"3\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" name=\"showTitle\" title=\"Title\">\n        <input type=\"checkbox\" name=\"showSubtitle\" title=\"Subtitle\">\n        <header>Carousel</header>\n        <input type=\"checkbox\" title=\"Autoplay\" name=\"autoplay\">\n        <input type=\"range\" title=\"Interval\" name=\"interval\" min=\"1\" max=\"10\" value=\"5\" step=\"1\" condition=\"autoplay\">\n        <input type=\"checkbox\" title=\"Loop\" name=\"loop\">\n        <input type=\"checkbox\" title=\"Draggable\" name=\"draggable\" checked>\n        <input type=\"checkbox\" name=\"arrows\" title=\"Arrows\" checked>\n        <input type=\"checkbox\" name=\"arrowsMobile\" title=\"Mobile Arrows\" condition=\"arrows\" checked>\n        <header>Cards</header>\n        <input type=\"checkbox\" name=\"autoSize\" title=\"Auto Size\">\n        <input type=\"range\" name=\"imageHeight\" title=\"Height\" min=\"1\" max=\"5\" step=\"1\" value=\"3\" condition=\"autoSize && !(showButtons==false && showCardSubtitle==false && showCardTitle==false && showText==false)\">\n        <input type=\"range\" name=\"gap\" title=\"Gap\" min=\"0\" max=\"10\" step=\"1\" value=\"1\">\n        <input type=\"checkbox\" name=\"showCardTitle\" title=\"Title\" checked>\n        <input type=\"checkbox\" name=\"showCardSubtitle\" title=\"Subtitle\" checked>\n        <input type=\"checkbox\" name=\"showText\" title=\"Text\" checked>\n        <input type=\"checkbox\" name=\"showButtons\" title=\"Buttons\">\n        <input type=\"color\" name=\"cardsBg\" title=\"BG\" value=\"#edefeb\">\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax required>\n            <input type=\"image\" title=\"Image\" value=\"../_images/background3.jpg\">\n            <input type=\"color\" title=\"Color\" value=\"#ffffff\" selected>\n        </fieldset>\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\" checked>\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#fafafa\" condition=\"overlay && bg.type == 'image'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.1\" condition=\"overlay && bg.type == 'image'\">\n    </mbr-parameters>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type !== 'color'\"></div>\n    <div class=\"position-relative text-center\">\n        <div class=\"mbr-section-head\" mbr-if=\"showTitle || showSubtitle\">\n            <h4 class=\"mbr-section-title mbr-fonts-style align-center mb-0\" mbr-theme-style=\"display-2\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\">\n                <b>Selected Portfolio Pieces</b></h4>\n            <h5 class=\"mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-2\" mbr-theme-style=\"display-5\" mbr-if=\"showSubtitle\" data-app-selector=\".mbr-section-subtitle\"></h5>\n        </div>\n        <div class=\"embla mt-4\" data-loop=\"{{loop}}\" data-auto-play=\"{{autoplay}}\" data-auto-play-interval=\"{{interval}}\" data-draggable=\"{{draggable}}\" data-skip-snaps=\"true\" data-align=\"center\" data-contain-scroll=\"trimSnaps\">\n            <div class=\"embla__viewport\" mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n                <div class=\"embla__container\">\n                    <div class=\"embla__slide slider-image item\" mbr-style=\"{'margin-left': gap + 'rem', 'margin-right': gap + 'rem'}\">\n                        <div class=\"slide-content\">\n                            <div class=\"item-wrapper\">\n                                <div class=\"item-img\">\n                                    \n                                <a href=\"mayo-telehealth.html\" target=\"false\"><img src=\"@PROJECT_PATH@/assets/images/pexels-tima-miroshnichenko-8376233.jpeg\" alt=\"Mayo\"></a></div>\n                            </div>\n                            <div class=\"item-content\" mbr-if=\"showCardTitle || showCardSubtitle || showText || showButtons\">\n                                <h5 class=\"item-title mbr-fonts-style\" mbr-theme-style=\"display-4\" data-app-selector=\".item-title\" mbr-if=\"showCardTitle\"><b>MAYO CLINIC</b></h5>\n                                <h6 class=\"item-subtitle mbr-fonts-style mt-1\" mbr-theme-style=\"display-7\" data-app-selector=\".item-subtitle\" mbr-if=\"showCardSubtitle\"><b>Transforming a Pandemic response into Scalable Care</b></h6>\n                                <p class=\"mbr-text mbr-fonts-style mt-3\" mbr-if=\"showText\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-text, .mbr-section-btn\">How might we redesign systems to make post-COVID telehealth operationally robust?</p>\n                            </div>\n                            <div class=\"mbr-section-btn item-footer mt-2\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove,-mbrBtnAdd\" mbr-buttons mbr-theme-style=\"display-7\"><a href class=\"btn btn-primary item-btn\" target=\"_blank\" data-app-placeholder=\"Type Text\">Learn More\n                                    &gt;</a></div>\n                        </div>\n                    </div>\n                    <div class=\"embla__slide slider-image item\" mbr-style=\"{'margin-left': gap + 'rem', 'margin-right': gap + 'rem'}\">\n                        <div class=\"slide-content\">\n                            <div class=\"item-wrapper\">\n                                <div class=\"item-img\">\n                                    \n                                <a href=\"exxonmobil-upstream.html\" target=\"false\"><img src=\"@PROJECT_PATH@/assets/images/upstream-it-1.jpeg\" alt=\"Exxon\"></a></div>\n                            </div>\n                            <div class=\"item-content\" mbr-if=\"showCardTitle || showCardSubtitle || showText || showButtons\">\n                                <h5 class=\"item-title mbr-fonts-style\" mbr-theme-style=\"display-4\" data-app-selector=\".item-title\" mbr-if=\"showCardTitle\"><b>EXXONMOBIL</b></h5>\n                                <h6 class=\"item-subtitle mbr-fonts-style mt-1\" mbr-theme-style=\"display-7\" data-app-selector=\".item-subtitle\" mbr-if=\"showCardSubtitle\"><b>Streamlining Data Analysis</b></h6>\n                                <p class=\"mbr-text mbr-fonts-style mt-3\" mbr-if=\"showText\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-text, .mbr-section-btn\">How might we automate data preparation without removing the human-in-the-loop?</p>\n                            </div>\n                            <div class=\"mbr-section-btn item-footer mt-2\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove,-mbrBtnAdd\" mbr-buttons mbr-theme-style=\"display-7\"><a href class=\"btn btn-primary item-btn\" target=\"_blank\" data-app-placeholder=\"Type Text\">Learn More\n                                    &gt;</a></div>\n                        </div>\n                    </div>\n                    <div class=\"embla__slide slider-image item\" mbr-style=\"{'margin-left': gap + 'rem', 'margin-right': gap + 'rem'}\">\n                        <div class=\"slide-content\">\n                            <div class=\"item-wrapper\">\n                                <div class=\"item-img\">\n                                    \n                                <a href=\"nasa-WADs.html\" target=\"false\"><img src=\"@PROJECT_PATH@/assets/images/vab-and-sls.jpeg\" alt=\"NASA\"></a></div>\n                            </div>\n                            <div class=\"item-content\" mbr-if=\"showCardTitle || showCardSubtitle || showText || showButtons\">\n                                <h5 class=\"item-title mbr-fonts-style\" mbr-theme-style=\"display-4\" data-app-selector=\".item-title\" mbr-if=\"showCardTitle\"><b>NASA AMES RESEARCH CENTER</b></h5>\n                                <h6 class=\"item-subtitle mbr-fonts-style mt-1\" mbr-theme-style=\"display-7\" data-app-selector=\".item-subtitle\" mbr-if=\"showCardSubtitle\"><b>Modernizing Work Authorization</b></h6>\n                                <p class=\"mbr-text mbr-fonts-style mt-3\" mbr-if=\"showText\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-text, .mbr-section-btn\">How might we digitize paper-based procedures while maintaining safety standards?<br></p>\n                            </div>\n                            <div class=\"mbr-section-btn item-footer mt-2\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove,-mbrBtnAdd\" mbr-buttons mbr-theme-style=\"display-7\"><a href class=\"btn btn-primary item-btn\" data-app-placeholder=\"Type Text\" target=\"_blank\">Learn More\n                                    &gt;</a></div>\n                        </div>\n                    </div>\n                    <div class=\"embla__slide slider-image item\" mbr-style=\"{'margin-left': gap + 'rem', 'margin-right': gap + 'rem'}\">\n                        <div class=\"slide-content\">\n                            <div class=\"item-wrapper\">\n                                <div class=\"item-img\">\n                                    \n                                <a href=\"socialAR.html\" target=\"false\"><img src=\"@PROJECT_PATH@/assets/images/11.-screenshot2018-02-20at9.29.13pm-1.jpeg\" alt=\"CMU AR\"></a></div>\n                            </div>\n                            <div class=\"item-content\" mbr-if=\"showCardTitle || showCardSubtitle || showText || showButtons\">\n                                <h5 class=\"item-title mbr-fonts-style\" mbr-theme-style=\"display-4\" data-app-selector=\".item-title\" mbr-if=\"showCardTitle\"><b>CARNEGIE MELLON RESEARCH PROJECT</b></h5>\n                                <h6 class=\"item-subtitle mbr-fonts-style mt-1\" mbr-theme-style=\"display-7\" data-app-selector=\".item-subtitle\" mbr-if=\"showCardSubtitle\"><b>Augmented Reality for Conferences</b></h6>\n                                <p class=\"mbr-text mbr-fonts-style mt-3\" mbr-if=\"showText\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-text, .mbr-section-btn\">How might augmented reality enhance in-person networking experiences?<br></p>\n                            </div>\n                            <div class=\"mbr-section-btn item-footer mt-2\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove,-mbrBtnAdd\" mbr-buttons mbr-theme-style=\"display-7\"><a href class=\"btn btn-primary item-btn\" data-app-placeholder=\"Type Text\" target=\"_blank\">Learn More\n                                    &gt;</a></div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <button class=\"embla__button embla__button--prev\">\n                <span class=\"mobi-mbri mobi-mbri-arrow-prev mbr-iconfont\" aria-hidden=\"true\"></span>\n                <span class=\"sr-only visually-hidden visually-hidden\">Previous</span>\n            </button>\n            <button class=\"embla__button embla__button--next\">\n                <span class=\"mobi-mbri mobi-mbri-arrow-next mbr-iconfont\" aria-hidden=\"true\"></span>\n                <span class=\"sr-only visually-hidden visually-hidden\">Next</span>\n            </button>\n        </div>\n    </div>\n</section>",
+          "_cid": "v7SDERRGIa",
+          "_anchor": "slider4-ke",
           "_protectedParams": [],
           "_global": false,
           "_once": false,
