@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Junie Verify · Expert-in-the-loop close review — a design exploration</title>
+<meta name="description" content="A design exploration: the review console where a fund controller verifies an AI agent's draft quarter-end close before it reaches LPs.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d5c45'/%3E%3Cpath d='M9 16.5l5 5 9-11' stroke='%23fff' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#f5f7f6; --surface:#ffffff; --ink:#17211d; --muted:#5f6d66; --faint:#8a968f;
+  --line:#e3e8e5; --line-soft:#edf1ef;
+  --spruce:#1d5c45; --spruce-hover:#174d39; --spruce-deep:#0f2a20; --spruce-tint:#e9f2ee;
+  --verified:#17805c; --verified-bg:#e7f5ef; --verified-line:#bfe4d4;
+  --review:#9a6a00; --review-bg:#fdf3dd; --review-line:#f0dfae;
+  --flag:#b3372c; --flag-bg:#fbeae7; --flag-line:#f2c9c2;
+  --agent:#6d5bd0; --agent-bg:#efedfb; --agent-line:#d8d2f2;
+  --validator:#2563a8; --validator-bg:#e8f0fa;
+  --radius:10px; --radius-lg:14px;
+  --shadow-1:0 1px 2px rgba(23,33,29,.05),0 1px 3px rgba(23,33,29,.06);
+  --shadow-2:0 4px 16px rgba(23,33,29,.10),0 2px 4px rgba(23,33,29,.06);
+  --shadow-3:0 24px 64px rgba(15,42,32,.22),0 6px 16px rgba(15,42,32,.10);
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{font-family:inherit;font-size:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,textarea{font-family:inherit;font-size:inherit;color:inherit}
+.num{font-variant-numeric:tabular-nums lining-nums;letter-spacing:-.01em}
+a{color:var(--spruce)}
+:focus-visible{outline:2px solid var(--spruce);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ============ TOPBAR ============ */
+.topbar{position:sticky;top:0;z-index:60;background:var(--spruce-deep);color:#e8efeb;display:flex;align-items:center;gap:14px;padding:0 20px;height:52px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;letter-spacing:-.01em}
+.brand .mark{width:24px;height:24px;border-radius:6px;background:var(--spruce);display:grid;place-items:center;flex:none}
+.brand .mark svg{width:14px;height:14px}
+.brand .divider{width:1px;height:18px;background:rgba(255,255,255,.18)}
+.brand .app{font-weight:500;color:#cfe0d8}
+.chip-beta{font-size:10px;font-weight:700;letter-spacing:.08em;padding:2px 6px;border-radius:5px;background:rgba(255,255,255,.12);color:#bcd6ca}
+.fundpill{margin-left:6px;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:5px 12px;border-radius:8px;font-size:12.5px;color:#dce8e2}
+.fundpill b{font-weight:600;color:#fff}
+.fundpill .caret{opacity:.5;font-size:10px}
+.topbar .grow{flex:1}
+.tb-btn{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:#cfe0d8;padding:6px 10px;border-radius:7px;transition:background .15s}
+.tb-btn:hover{background:rgba(255,255,255,.08);color:#fff}
+.avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#3a7d63,#1d5c45);display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff;border:1.5px solid rgba(255,255,255,.25)}
+.statuschip-top{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:20px;background:rgba(240,180,41,.15);color:#f5cd6b;border:1px solid rgba(240,180,41,.25)}
+.statuschip-top .dot{width:6px;height:6px;border-radius:50%;background:#f0b429}
+.statuschip-top.published{background:rgba(46,160,113,.18);color:#7fd4ac;border-color:rgba(46,160,113,.3)}
+.statuschip-top.published .dot{background:#2ea071}
+
+/* ============ LAYOUT ============ */
+main{max-width:1380px;margin:0 auto;padding:22px 24px 40px}
+.pagehead{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:18px;flex-wrap:wrap}
+.pagehead h1{font-size:21px;font-weight:650;letter-spacing:-.02em}
+.pagehead .meta{display:flex;gap:14px;margin-top:6px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
+.pagehead .meta span b{color:var(--ink);font-weight:600}
+.headactions{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:13px;padding:9px 16px;border-radius:9px;transition:all .15s;border:1px solid transparent}
+.btn-primary{background:var(--spruce);color:#fff;box-shadow:var(--shadow-1)}
+.btn-primary:hover{background:var(--spruce-hover)}
+.btn-primary:disabled{background:#c6d2cc;cursor:not-allowed;box-shadow:none}
+.btn-secondary{background:var(--surface);border-color:var(--line);color:var(--ink);box-shadow:var(--shadow-1)}
+.btn-secondary:hover{border-color:#c9d3ce;background:#fbfcfc}
+.btn-ghost{color:var(--muted);font-weight:500}
+.btn-ghost:hover{color:var(--ink)}
+.btn-danger-ghost{color:var(--flag);font-weight:600}
+.publish-hint{font-size:11.5px;color:var(--faint);text-align:right;margin-top:5px}
+
+/* ============ PROGRESS STEPS ============ */
+.steps{display:flex;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:14px 18px;margin-bottom:16px;box-shadow:var(--shadow-1);overflow-x:auto}
+.step{flex:1;display:flex;align-items:center;gap:9px;min-width:130px;position:relative;padding-right:18px}
+.step:not(:last-child)::after{content:"";position:absolute;right:6px;top:50%;width:8px;height:8px;border-top:1.5px solid #c9d3ce;border-right:1.5px solid #c9d3ce;transform:translateY(-50%) rotate(45deg)}
+.step .ic{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;flex:none;font-size:12px;font-weight:700}
+.step.done .ic{background:var(--verified-bg);color:var(--verified)}
+.step.active .ic{background:var(--spruce);color:#fff;box-shadow:0 0 0 4px var(--spruce-tint)}
+.step.todo .ic{background:var(--line-soft);color:var(--faint)}
+.step .lbl{font-size:12px;font-weight:600;line-height:1.25}
+.step .sub{font-size:10.5px;color:var(--faint);font-weight:500}
+.step.active .sub{color:var(--spruce);font-weight:600}
+.step.done .lbl,.step.todo .lbl{color:var(--muted)}
+.step.active .lbl{color:var(--ink)}
+
+/* ============ SUMMARY CARDS ============ */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:15px 16px;box-shadow:var(--shadow-1)}
+.card .k{font-size:11px;font-weight:650;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.card .v{font-size:22px;font-weight:650;letter-spacing:-.02em;line-height:1.1}
+.card .v small{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0}
+.card .d{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.45}
+.card .d b{color:var(--ink);font-weight:600}
+.minibar{height:5px;border-radius:3px;background:var(--line-soft);margin-top:10px;overflow:hidden;display:flex}
+.minibar i{display:block;height:100%}
+.minibar .seg-v{background:var(--verified)}
+.minibar .seg-r{background:#e2b93b}
+.minibar .seg-x{background:var(--spruce)}
+/* oversight */
+.oversight .opt{display:flex;align-items:flex-start;gap:8px;padding:7px 9px;border-radius:8px;border:1px solid transparent;width:100%;text-align:left;transition:all .12s;margin-top:4px}
+.oversight .opt .radio{width:14px;height:14px;border-radius:50%;border:1.5px solid #b9c4be;flex:none;margin-top:2px;position:relative}
+.oversight .opt.on{background:var(--spruce-tint);border-color:#cfe2da}
+.oversight .opt.on .radio{border-color:var(--spruce)}
+.oversight .opt.on .radio::after{content:"";position:absolute;inset:2.5px;border-radius:50%;background:var(--spruce)}
+.oversight .opt .t{font-size:12px;font-weight:600;line-height:1.3}
+.oversight .opt .s{font-size:11px;color:var(--muted);line-height:1.35}
+.oversight .opt.locked{opacity:.62;cursor:not-allowed}
+.oversight .opt.locked .t .lock{font-size:10px;margin-left:4px}
+.oversight .opt:not(.on):not(.locked):hover{background:#f6f9f8}
+</style>
+<style>
+/* ============ WORK AREA ============ */
+.workarea{display:grid;grid-template-columns:1fr 316px;gap:14px;align-items:start}
+.tablewrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-1);overflow:hidden}
+.hintbar{display:flex;align-items:center;gap:10px;background:var(--spruce-tint);border-bottom:1px solid #d7e6df;padding:9px 16px;font-size:12.5px;color:#1c4636}
+.hintbar .spark{flex:none}
+.hintbar b{font-weight:600}
+.hintbar .x{margin-left:auto;color:#5c7a6d;font-size:15px;padding:2px 6px;border-radius:5px}
+.hintbar .x:hover{background:rgba(29,92,69,.1)}
+.toolbar{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line-soft)}
+.tabs{display:flex;background:var(--line-soft);border-radius:9px;padding:3px}
+.tab{font-size:12.5px;font-weight:600;color:var(--muted);padding:6px 13px;border-radius:7px;transition:all .15s}
+.tab.on{background:var(--surface);color:var(--ink);box-shadow:var(--shadow-1)}
+.tab .cnt{display:inline-block;min-width:17px;text-align:center;font-size:10.5px;font-weight:700;padding:1px 5px;border-radius:9px;background:var(--flag-bg);color:var(--flag);margin-left:5px}
+.tab .cnt.zero{background:var(--verified-bg);color:var(--verified)}
+.search{margin-left:auto;display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:8px;padding:6px 10px;min-width:210px;background:#fbfcfc}
+.search input{border:none;outline:none;background:transparent;font-size:12.5px;width:100%}
+.search svg{flex:none;opacity:.45}
+
+/* ============ TABLE ============ */
+.tblscroll{overflow-x:auto}
+table.accts{width:100%;border-collapse:collapse;min-width:1040px}
+.accts th{font-size:10.5px;font-weight:650;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);text-align:right;padding:9px 14px;border-bottom:1px solid var(--line);white-space:nowrap;background:#fbfcfc}
+.accts th:first-child{text-align:left;padding-left:16px}
+.accts th.stat{text-align:left}
+.accts td{padding:11px 14px;border-bottom:1px solid var(--line-soft);text-align:right;font-size:13px;white-space:nowrap}
+.accts td:first-child{text-align:left;padding-left:16px}
+.accts td.stat{text-align:left}
+.accts tbody tr{cursor:pointer;transition:background .1s}
+.accts tbody tr:hover{background:#f8faf9}
+.accts tbody tr.rowflag{background:linear-gradient(90deg,rgba(179,55,44,.045),transparent 30%)}
+.accts tbody tr.rowreview{background:linear-gradient(90deg,rgba(154,106,0,.05),transparent 30%)}
+.accts tbody tr.rowflag:hover,.accts tbody tr.rowreview:hover{background:#f8f7f4}
+.accts .lp .nm{font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:7px}
+.accts .lp .tp{font-size:11px;color:var(--faint);margin-top:1px}
+.accts .ending{font-weight:650}
+.accts .delta-note{display:block;font-size:10.5px;color:var(--agent);font-weight:500}
+.accts .zero{color:var(--faint)}
+.accts .paren{color:var(--muted)}
+.ghostrow td{text-align:center!important;color:var(--faint);font-size:12px;padding:13px;cursor:default;background:#fbfcfc}
+.showwork{opacity:0;font-size:11px;font-weight:600;color:var(--spruce);transition:opacity .12s;white-space:nowrap}
+tr:hover .showwork{opacity:1}
+
+/* confidence meter */
+.conf{display:inline-flex;align-items:center;gap:7px}
+.conf .track{width:38px;height:4px;border-radius:2px;background:var(--line-soft);overflow:hidden}
+.conf .fill{display:block;height:100%;border-radius:2px}
+.conf .pct{font-size:11.5px;font-weight:600;color:var(--muted);min-width:30px;text-align:right}
+.conf.hi .fill{background:var(--verified)}
+.conf.md .fill{background:#e2b93b}
+.conf.lo .fill{background:var(--flag)}
+
+/* status chips */
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:3.5px 9px;border-radius:20px;white-space:nowrap;letter-spacing:.005em}
+.chip .dot{width:6px;height:6px;border-radius:50%;flex:none}
+.chip-verified{background:var(--verified-bg);color:var(--verified)}
+.chip-verified .dot{background:var(--verified)}
+.chip-review{background:var(--review-bg);color:var(--review)}
+.chip-review .dot{background:#d99d0b}
+.chip-flag{background:var(--flag-bg);color:var(--flag)}
+.chip-flag .dot{background:var(--flag)}
+.chip-agent{background:var(--agent-bg);color:var(--agent)}
+.chip-agent .dot{background:var(--agent);animation:pulse 1.2s infinite}
+.chip-expert{background:var(--spruce-tint);color:var(--spruce)}
+.chip-expert .dot{background:var(--spruce)}
+.chip-corrected{background:var(--spruce-tint);color:var(--spruce)}
+.chip-corrected .dot{background:var(--spruce)}
+.chip-reproc{background:var(--validator-bg);color:var(--validator)}
+.chip-reproc .dot{background:var(--validator)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* ============ RIGHT RAIL / AUDIT ============ */
+.rail{display:flex;flex-direction:column;gap:14px;position:sticky;top:66px}
+.railcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-1);overflow:hidden}
+.railcard .rc-head{display:flex;align-items:center;justify-content:space-between;padding:12px 15px;border-bottom:1px solid var(--line-soft)}
+.railcard .rc-head .t{font-size:12.5px;font-weight:650;display:flex;align-items:center;gap:7px}
+.railcard .rc-head .a{font-size:11.5px;font-weight:600;color:var(--spruce);padding:3px 8px;border-radius:6px}
+.railcard .rc-head .a:hover{background:var(--spruce-tint)}
+.auditfeed{max-height:520px;overflow-y:auto;padding:6px 0}
+.aud{display:flex;gap:10px;padding:9px 15px;position:relative}
+.aud::before{content:"";position:absolute;left:24.5px;top:30px;bottom:-4px;width:1.5px;background:var(--line-soft)}
+.aud:last-child::before{display:none}
+.aud .ic{width:20px;height:20px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:9px;font-weight:700;z-index:1}
+.aud.a-agent .ic{background:var(--agent-bg);color:var(--agent)}
+.aud.a-human .ic{background:var(--spruce-tint);color:var(--spruce)}
+.aud.a-validator .ic{background:var(--validator-bg);color:var(--validator)}
+.aud.a-system .ic{background:var(--line-soft);color:var(--muted)}
+.aud .bd{display:block;min-width:0}
+.aud .bd .who{display:block;font-size:11px;font-weight:650}
+.aud .bd .what{display:block;font-size:11.5px;color:var(--muted);line-height:1.45;margin-top:1px}
+.aud .bd .when{display:block;font-size:10px;color:var(--faint);margin-top:3px;font-variant-numeric:tabular-nums}
+.aud.fresh{animation:audin .4s ease}
+@keyframes audin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.audnote{padding:10px 15px;font-size:11px;color:var(--faint);border-top:1px solid var(--line-soft);line-height:1.5}
+
+/* ============ DRAWER ============ */
+.scrim{position:fixed;inset:0;background:rgba(15,42,32,.34);z-index:70;opacity:0;transition:opacity .2s;backdrop-filter:blur(1.5px)}
+.scrim.show{opacity:1}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:600px;max-width:96vw;background:var(--surface);z-index:71;box-shadow:var(--shadow-3);transform:translateX(103%);transition:transform .26s cubic-bezier(.32,.72,.28,1);display:flex;flex-direction:column}
+.drawer.show{transform:none}
+.dr-head{padding:18px 22px 14px;border-bottom:1px solid var(--line)}
+.dr-head .top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.dr-head h2{font-size:17px;font-weight:650;letter-spacing:-.015em}
+.dr-head .sub{font-size:12px;color:var(--muted);margin-top:3px}
+.dr-head .close{font-size:18px;color:var(--faint);padding:4px 9px;border-radius:7px;flex:none}
+.dr-head .close:hover{background:var(--line-soft);color:var(--ink)}
+.dr-head .chips{display:flex;gap:8px;margin-top:11px;align-items:center;flex-wrap:wrap}
+.dr-body{flex:1;overflow-y:auto;padding:18px 22px 26px}
+.dr-sec{margin-bottom:20px}
+.dr-sec .sec-t{font-size:11px;font-weight:650;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:9px;display:flex;align-items:center;gap:7px}
+.narrative{background:var(--agent-bg);border:1px solid var(--agent-line);border-radius:var(--radius);padding:13px 15px;font-size:13px;line-height:1.6;color:#3d3560}
+.narrative .who{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;color:var(--agent);margin-bottom:6px;letter-spacing:.03em}
+/* trace */
+.trace{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.trow{display:flex;align-items:center;gap:10px;padding:9.5px 14px;border-bottom:1px solid var(--line-soft);font-size:13px}
+.trow:last-child{border-bottom:none}
+.trow .lbl{color:var(--muted)}
+.trow .src{margin-left:2px}
+.trow .val{margin-left:auto;font-weight:500}
+.trow.total{background:#fbfcfc;border-top:1.5px solid var(--ink)}
+.trow.total .lbl{font-weight:650;color:var(--ink)}
+.trow.total .val{font-weight:700;font-size:14px;border-bottom:3px double var(--ink);padding-bottom:1px}
+.trow .val.changed{color:var(--spruce)}
+.trow .was{font-size:11px;color:var(--faint);text-decoration:line-through;margin-left:8px}
+.srcchip{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:600;color:var(--validator);background:var(--validator-bg);padding:2.5px 8px;border-radius:6px;cursor:pointer;border:1px solid transparent;transition:all .12s}
+.srcchip:hover{border-color:#b5cde8}
+.srcchip svg{flex:none}
+/* validation */
+.valgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.valbox{border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px}
+.valbox .vt{font-size:11px;font-weight:650;color:var(--validator);display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.valbox .vv{font-size:16px;font-weight:650}
+.valbox .vs{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.45}
+.valbox.disagree{border-color:var(--flag-line);background:linear-gradient(180deg,rgba(179,55,44,.03),transparent)}
+.valbanner{margin-top:10px;border-radius:var(--radius);padding:11px 14px;font-size:12.5px;line-height:1.55;display:flex;gap:9px}
+.valbanner.agree{background:var(--verified-bg);color:#135e45;border:1px solid var(--verified-line)}
+.valbanner.split{background:var(--flag-bg);color:#7e2d24;border:1px solid var(--flag-line)}
+.valbanner b{font-weight:650}
+/* sources */
+.srclist{display:flex;flex-wrap:wrap;gap:8px}
+/* actions */
+.dr-actions{border-top:1px solid var(--line);padding:14px 22px;background:#fbfcfc}
+.dr-actions .row{display:flex;gap:9px;flex-wrap:wrap}
+.dr-actions .why{font-size:11.5px;color:var(--faint);margin-top:9px;line-height:1.5}
+.correctbox,.returnbox{margin-top:12px;border:1px solid var(--line);border-radius:var(--radius);padding:13px 14px;background:var(--surface)}
+.correctbox .lbl2,.returnbox .lbl2{font-size:11.5px;font-weight:650;margin-bottom:7px}
+.correctbox input{width:100%;border:1px solid var(--line);border-radius:8px;padding:8px 11px;font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}
+.correctbox input:focus{outline:2px solid var(--spruce);outline-offset:0;border-color:transparent}
+.returnbox textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:9px 11px;font-size:13px;min-height:64px;resize:vertical}
+.suggest{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--spruce);background:var(--spruce-tint);border:1px solid #cfe2da;padding:5px 10px;border-radius:7px;margin-top:8px}
+.suggest:hover{background:#ddeee6}
+.resolvedbanner{border-radius:var(--radius);padding:13px 15px;font-size:12.5px;line-height:1.55;display:flex;gap:10px;align-items:flex-start}
+.resolvedbanner.ok{background:var(--verified-bg);border:1px solid var(--verified-line);color:#135e45}
+.resolvedbanner.proc{background:var(--agent-bg);border:1px solid var(--agent-line);color:#4a3f8f}
+.resolvedbanner .learn{display:block;margin-top:6px;font-size:11.5px;color:#1d6a4e}
+.learnchip{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:650;color:var(--agent);background:var(--agent-bg);padding:3px 9px;border-radius:12px;margin-top:8px}
+.spinner{width:13px;height:13px;border:2px solid rgba(109,91,208,.25);border-top-color:var(--agent);border-radius:50%;animation:spin .7s linear infinite;flex:none;margin-top:2px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ============ MODALS ============ */
+.modalwrap{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:20px}
+.modal{background:var(--surface);border-radius:16px;box-shadow:var(--shadow-3);width:560px;max-width:100%;max-height:90vh;overflow-y:auto;animation:modalin .22s cubic-bezier(.32,.72,.28,1)}
+@keyframes modalin{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+.modal .m-head{padding:20px 24px 0}
+.modal .m-head h3{font-size:17px;font-weight:650;letter-spacing:-.015em}
+.modal .m-head .s{font-size:12.5px;color:var(--muted);margin-top:4px}
+.modal .m-body{padding:16px 24px 20px}
+.modal .m-foot{display:flex;justify-content:flex-end;gap:10px;padding:0 24px 20px}
+.trust{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:4px}
+.trust .ti{display:flex;gap:11px;padding:11px 14px;border-bottom:1px solid var(--line-soft);font-size:12.5px;align-items:flex-start}
+.trust .ti:last-child{border-bottom:none}
+.trust .ti .ic{color:var(--verified);flex:none;margin-top:1px}
+.trust .ti b{font-weight:650}
+.trust .ti .sm{color:var(--muted)}
+/* source viewer */
+.docview{background:#fbfcfc;border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;font-size:12.5px;line-height:1.7;color:#3d4a44;font-family:'Inter';position:relative}
+.docview .dochead{display:flex;justify-content:space-between;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);font-weight:650;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:10px}
+.docview mark{background:#fdf0c2;border-radius:3px;padding:1px 3px;box-shadow:0 0 0 1.5px #f5dd8a}
+.docview .extract{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:11px;color:var(--agent);display:flex;gap:6px;align-items:center;font-weight:600}
+/* success */
+.successwrap{text-align:center;padding:34px 30px 26px}
+.successwrap .bigcheck{width:64px;height:64px;border-radius:50%;background:var(--verified-bg);display:grid;place-items:center;margin:0 auto 16px;animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+.successwrap h3{font-size:19px;font-weight:650;letter-spacing:-.02em}
+.successwrap .s{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6}
+.lpcard{margin:18px auto 0;text-align:left;border:1px solid var(--line);border-radius:12px;padding:15px 17px;max-width:420px;background:linear-gradient(180deg,#fbfcfc,#fff);box-shadow:var(--shadow-1)}
+.lpcard .lh{display:flex;justify-content:space-between;align-items:center;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);font-weight:650;margin-bottom:9px}
+.lpcard .amt{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.lpcard .al{font-size:11.5px;color:var(--muted)}
+.trustmark{display:inline-flex;align-items:center;gap:6px;margin-top:11px;font-size:11px;font-weight:650;color:var(--spruce);background:var(--spruce-tint);padding:5px 10px;border-radius:8px;border:1px solid #cfe2da}
+
+/* ============ DESIGN SYSTEM PANEL ============ */
+.dspanel{position:fixed;inset:0;z-index:85;background:rgba(15,42,32,.4);backdrop-filter:blur(2px);display:grid;place-items:center;padding:26px}
+.ds{background:var(--bg);border-radius:18px;width:960px;max-width:100%;max-height:92vh;overflow-y:auto;box-shadow:var(--shadow-3)}
+.ds .ds-head{position:sticky;top:0;background:var(--bg);z-index:2;display:flex;align-items:center;justify-content:space-between;padding:20px 26px 14px;border-bottom:1px solid var(--line)}
+.ds .ds-head h3{font-size:17px;font-weight:650;letter-spacing:-.015em}
+.ds .ds-head .s{font-size:12px;color:var(--muted);margin-top:2px}
+.ds-body{padding:20px 26px 28px;display:grid;gap:16px}
+.ds-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:17px 19px}
+.ds-card h4{font-size:13px;font-weight:650;margin-bottom:4px}
+.ds-card .note{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:13px}
+.principles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.principle{border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px}
+.principle .n{font-size:10.5px;font-weight:700;color:var(--spruce);letter-spacing:.06em}
+.principle .t{font-size:13px;font-weight:650;margin-top:3px;letter-spacing:-.01em}
+.principle .d{font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.5}
+.tokens{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.token{display:flex;gap:10px;align-items:center;border:1px solid var(--line-soft);border-radius:9px;padding:9px 11px}
+.token .sw{width:26px;height:26px;border-radius:7px;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.token code{font-size:10.5px;color:var(--ink);font-weight:600;display:block}
+.token .u{font-size:10px;color:var(--faint)}
+.comprow{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:11px 0;border-bottom:1px dashed var(--line-soft)}
+.comprow:last-child{border-bottom:none}
+.comprow .cl{width:170px;flex:none}
+.comprow .cl b{font-size:12px;font-weight:650;display:block}
+.comprow .cl span{font-size:10.5px;color:var(--faint);line-height:1.4;display:block;margin-top:2px}
+.numdemo{display:flex;gap:22px;font-size:15px}
+.numdemo .col b{display:block;font-size:10.5px;color:var(--faint);font-weight:650;letter-spacing:.05em;margin-bottom:5px}
+.numdemo .good{font-variant-numeric:tabular-nums lining-nums}
+
+/* ============ INTRO ============ */
+.intro{position:fixed;inset:0;z-index:90;background:linear-gradient(160deg,#0f2a20 0%,#123528 55%,#17452f 100%);display:grid;place-items:center;padding:24px;overflow-y:auto}
+.introcard{max-width:660px;width:100%;color:#eaf2ee;padding:12px 8px}
+.introcard .eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;color:#7fb89e;margin-bottom:14px}
+.introcard h1{font-family:'Fraunces',serif;font-weight:500;font-size:38px;line-height:1.14;letter-spacing:-.015em;color:#f4f9f6}
+.introcard .lede{font-size:14.5px;line-height:1.7;color:#b9cec3;margin-top:16px;max-width:600px}
+.introcard .lede b{color:#e8f2ec;font-weight:600}
+.ppl{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}
+.ppl .p{display:flex;gap:9px;align-items:flex-start;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:10px 13px;font-size:12px;line-height:1.45;color:#cfe0d6}
+.ppl .p .ic{color:#7fb89e;flex:none;margin-top:1px}
+.trylist{margin-top:20px;font-size:12.5px;color:#a7c2b4}
+.trylist b{color:#e2eee7;font-weight:600}
+.trylist ol{margin:8px 0 0 18px;display:grid;gap:5px}
+.introfoot{display:flex;align-items:center;gap:16px;margin-top:26px;flex-wrap:wrap}
+.btn-enter{background:#fff;color:var(--spruce-deep);font-weight:650;font-size:14px;padding:12px 22px;border-radius:11px;box-shadow:0 8px 28px rgba(0,0,0,.3);transition:transform .15s}
+.btn-enter:hover{transform:translateY(-1px)}
+.introfoot .byline{font-size:11.5px;color:#7d998c;line-height:1.5}
+.intro.hide{display:none}
+
+/* ============ FOOTER / TOASTS ============ */
+.pagefoot{max-width:1380px;margin:0 auto;padding:8px 24px 34px;font-size:11px;color:var(--faint);line-height:1.6;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.pagefoot a{color:var(--muted);font-weight:600;text-decoration:none;cursor:pointer}
+.pagefoot a:hover{color:var(--spruce)}
+.toasts{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:95;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none}
+.toast{background:var(--spruce-deep);color:#e8f2ec;font-size:12.5px;font-weight:500;padding:10px 16px;border-radius:10px;box-shadow:var(--shadow-2);display:flex;gap:9px;align-items:center;animation:toastin .25s ease;max-width:520px}
+.toast.out{opacity:0;transform:translateY(8px);transition:all .3s}
+.toast .tic{color:#7fd4ac;flex:none}
+@keyframes toastin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1120px){.workarea{grid-template-columns:1fr}.rail{position:static}.cards{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){
+  main{padding:16px 14px 30px}
+  .cards{grid-template-columns:1fr}
+  .drawer{width:100vw}
+  .fundpill .ctx{display:none}
+  .introcard h1{font-size:29px}
+  .ppl{grid-template-columns:1fr}
+  .tokens{grid-template-columns:1fr}
+  .principles{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<!-- ============ INTRO ============ -->
+<div class="intro" id="intro">
+  <div class="introcard">
+    <div class="eyebrow">A DESIGN EXPLORATION FOR JUNIPER SQUARE</div>
+    <h1>The close is drafted by an agent.<br>Who signs it?</h1>
+    <p class="lede">Juniper Square's bet is that agents will run fund operations with <b>an expert in the loop</b>. This prototype explores the moment that bet becomes an interface: a fund controller reviewing Junie's draft quarter-end close for a real&nbsp;estate fund — verifying, correcting, and teaching the agent — before capital account statements reach 52&nbsp;LPs.</p>
+    <div class="ppl">
+      <div class="p"><span class="ic">◆</span><span><b>Confidence is a first-class data type</b> — every figure carries a verification state, not just a value.</span></div>
+      <div class="p"><span class="ic">◆</span><span><b>Every number can answer "where did you come from?"</b> — page-level provenance, one click away.</span></div>
+      <div class="p"><span class="ic">◆</span><span><b>Corrections are training signal</b> — expert review compounds; it isn't a compliance checkbox.</span></div>
+      <div class="p"><span class="ic">◆</span><span><b>Autonomy is earned, not configured</b> — oversight loosens the way it would for a new hire.</span></div>
+    </div>
+    <div class="trylist">
+      <b>Things to try</b>
+      <ol>
+        <li>Open <b>Halloran Family Office</b> and resolve a real discrepancy</li>
+        <li>Trace any figure to its source page — every number shows its work</li>
+        <li>Return <b>Marisol Capital</b> to the agent and watch it reprocess</li>
+        <li>Resolve all five exceptions, then publish to the LP portal</li>
+      </ol>
+    </div>
+    <div class="introfoot">
+      <button class="btn-enter" id="enterBtn">Open the review console →</button>
+      <div class="byline">All data fictional · built outside-in from public materials.<br>Unaffiliated with Juniper Square. Concept &amp; code: <b style="color:#cfe0d6">Frank</b> · MHCI</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOPBAR ============ -->
+<header class="topbar">
+  <div class="brand">
+    <span class="mark"><svg viewBox="0 0 32 32" fill="none"><path d="M9 16.5l5 5 9-11" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span>GPX</span>
+    <span class="divider"></span>
+    <span class="app">Junie Verify</span>
+    <span class="chip-beta">CONCEPT</span>
+  </div>
+  <div class="fundpill"><span class="ctx">Fund</span><b>Meridian Real Estate Fund III</b><span class="caret">▾</span></div>
+  <div class="grow"></div>
+  <div class="statuschip-top" id="topStatus"><span class="dot"></span><span id="topStatusTxt">Expert review · Q2 2026 close</span></div>
+  <button class="tb-btn" id="dsBtn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Design system</button>
+  <button class="tb-btn" id="aboutBtn">About</button>
+  <div class="avatar" title="Dana Whitfield · Fund Controller">DW</div>
+</header>
+
+<main>
+  <!-- ============ PAGE HEAD ============ -->
+  <div class="pagehead">
+    <div>
+      <h1>Q2 2026 quarter-end close · capital accounts</h1>
+      <div class="meta">
+        <span>NAV <b class="num">$612.4M</b> <span class="num">(+2.1% QoQ)</span></span>
+        <span><b class="num">52</b> investor accounts</span>
+        <span><b class="num">1,847</b> GL entries reconciled</span>
+        <span>Draft by <b>Junie · Fund Admin Oversight Agent</b> in <b class="num">4h 12m</b></span>
+      </div>
+    </div>
+    <div class="headactions">
+      <div>
+        <button class="btn btn-primary" id="publishBtn" disabled>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          Publish to LP portal
+        </button>
+        <div class="publish-hint" id="publishHint">5 exceptions need review before statements can publish</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PROGRESS ============ -->
+  <ol class="steps" id="steps">
+    <li class="step done"><span class="ic">✓</span><span><span class="lbl">Ingestion</span><br><span class="sub num">14 documents</span></span></li>
+    <li class="step done"><span class="ic">✓</span><span><span class="lbl">Reconciliation</span><br><span class="sub num">1,847 entries · 0 unmatched</span></span></li>
+    <li class="step done"><span class="ic">✓</span><span><span class="lbl">NAV roll-up</span><br><span class="sub num">$612.4M</span></span></li>
+    <li class="step done"><span class="ic">✓</span><span><span class="lbl">Capital accounts</span><br><span class="sub num">52 drafted</span></span></li>
+    <li class="step active" id="stepReview"><span class="ic">5</span><span><span class="lbl">Expert review</span><br><span class="sub" id="stepReviewSub">0 of 5 resolved</span></span></li>
+    <li class="step todo" id="stepPublish"><span class="ic">6</span><span><span class="lbl">Publish</span><br><span class="sub" id="stepPublishSub">Awaiting review</span></span></li>
+  </ol>
+
+  <!-- ============ SUMMARY CARDS ============ -->
+  <section class="cards">
+    <div class="card">
+      <div class="k">Accounts</div>
+      <div class="v num" id="cardAccounts">47<small> of 52 auto-verified</small></div>
+      <div class="d" id="cardAccountsSub"><b class="num">5</b> routed to you — review by exception</div>
+      <div class="minibar" id="cardBar"><i class="seg-v" style="width:90.4%"></i><i class="seg-r" style="width:9.6%"></i></div>
+    </div>
+    <div class="card">
+      <div class="k">Independent validation</div>
+      <div class="v num">104<small> recomputations</small></div>
+      <div class="d">Two validators recompute every account. Agreement pushes accuracy toward <b>four nines</b>.</div>
+    </div>
+    <div class="card">
+      <div class="k">Provenance</div>
+      <div class="v num">100%<small> of figures traceable</small></div>
+      <div class="d"><b class="num">14</b> source documents · page-level citations on every line item</div>
+    </div>
+    <div class="card oversight">
+      <div class="k">Oversight level
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" opacity=".5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      </div>
+      <button class="opt" data-ov="all"><span class="radio"></span><span><span class="t">Review every account</span><br><span class="s">Full manual pass</span></span></button>
+      <button class="opt on" data-ov="exceptions"><span class="radio"></span><span><span class="t">Review exceptions only</span><br><span class="s">47 auto-cleared · you see 5</span></span></button>
+      <button class="opt locked" data-ov="auto"><span class="radio"></span><span><span class="t">Auto-publish clean closes<span class="lock">🔒</span></span><br><span class="s">Earned after 3 clean quarters · 2 of 3</span></span></button>
+    </div>
+  </section>
+
+  <!-- ============ WORK AREA ============ -->
+  <section class="workarea">
+    <div class="tablewrap">
+      <div class="hintbar" id="hintbar">
+        <span class="spark">✦</span>
+        <span id="hintTxt"><b>Start here:</b> open <b>Halloran Family Office</b> and resolve the discrepancy — then click any figure's source to see its provenance.</span>
+        <button class="x" id="hintClose" aria-label="Dismiss hint">×</button>
+      </div>
+      <div class="toolbar">
+        <div class="tabs" role="tablist">
+          <button class="tab on" data-tab="exceptions" role="tab">Needs attention <span class="cnt" id="cntExc">5</span></button>
+          <button class="tab" data-tab="all" role="tab">All accounts <span style="font-weight:500;color:var(--faint)" class="num">52</span></button>
+        </div>
+        <label class="search">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input type="text" id="searchInput" placeholder="Search investors…" aria-label="Search investors">
+        </label>
+      </div>
+      <div class="tblscroll">
+        <table class="accts">
+          <thead>
+            <tr>
+              <th>Investor</th>
+              <th>Beginning</th>
+              <th>Contrib.</th>
+              <th>Distributions</th>
+              <th>Net income</th>
+              <th>Mgmt fees</th>
+              <th>Ending · Q2</th>
+              <th>Confidence</th>
+              <th class="stat">Status</th>
+              <th aria-hidden="true"></th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <aside class="rail">
+      <div class="railcard">
+        <div class="rc-head">
+          <span class="t"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2.5 2.5"/><circle cx="12" cy="12" r="9"/></svg>Audit trail</span>
+          <button class="a" id="exportBtn">Export CSV</button>
+        </div>
+        <div class="auditfeed" id="auditfeed"></div>
+        <div class="audnote">Every action is logged against an identity — <b>the audit trail extends to the agent</b>, not just the human in the loop.</div>
+      </div>
+    </aside>
+  </section>
+</main>
+
+<footer class="pagefoot">
+  <span>A design exploration by <b>Frank</b> — built outside-in from Juniper Square's public materials. All data fictional. Not affiliated with or endorsed by Juniper Square; JunieAI, GPX and Juniper Square are trademarks of their owner.</span>
+  <span><a id="aboutBtn2">About this concept</a> · <a id="dsBtn2">Design system notes</a></span>
+</footer>
+
+<!-- ============ DESIGN SYSTEM PANEL ============ -->
+<div class="dspanel" id="dspanel" style="display:none">
+  <div class="ds">
+    <div class="ds-head">
+      <div>
+        <h3>Design system notes</h3>
+        <div class="s">What this prototype is made of — built to extend an existing system, not fork it.</div>
+      </div>
+      <button class="btn btn-secondary" id="dsClose">Close</button>
+    </div>
+    <div class="ds-body">
+      <div class="ds-card">
+        <h4>Principles for agentic-AI surfaces</h4>
+        <div class="note">Four rules this concept encodes. They generalize to any surface where an agent's output needs an expert's sign-off — quarter-end close, DDQ responses, KYC checks, distribution notices.</div>
+        <div class="principles">
+          <div class="principle"><div class="n">01</div><div class="t">Confidence is a first-class data type</div><div class="d">Every figure carries a verification state (verified / needs review / discrepancy) with a numeric confidence — rendered consistently everywhere the figure appears.</div></div>
+          <div class="principle"><div class="n">02</div><div class="t">Every number answers "where did you come from?"</div><div class="d">A calculation trace plus page-level source citations, one click from any value. Trust is inspected, not asserted.</div></div>
+          <div class="principle"><div class="n">03</div><div class="t">Corrections are training signal</div><div class="d">Approve / correct / return aren't just workflow states — the UI shows what the agent learned, so review effort visibly compounds.</div></div>
+          <div class="principle"><div class="n">04</div><div class="t">Autonomy is earned, not configured</div><div class="d">Oversight levels unlock with track record, like a new hire earning trust. The control communicates *why* it's locked, not just that it is.</div></div>
+        </div>
+      </div>
+      <div class="ds-card">
+        <h4>Semantic status tokens</h4>
+        <div class="note">Status colors carry meaning and are never used decoratively. One hue per verification state, shared across chips, row tints, banners and meters — so "amber" means the same thing on every screen of the suite.</div>
+        <div class="tokens">
+          <div class="token"><span class="sw" style="background:#17805c"></span><span><code>--status-verified</code><span class="u">models agree · auto-cleared</span></span></div>
+          <div class="token"><span class="sw" style="background:#9a6a00"></span><span><code>--status-review</code><span class="u">below confidence threshold</span></span></div>
+          <div class="token"><span class="sw" style="background:#b3372c"></span><span><code>--status-discrepancy</code><span class="u">validators disagree</span></span></div>
+          <div class="token"><span class="sw" style="background:#6d5bd0"></span><span><code>--actor-agent</code><span class="u">Junie's voice &amp; actions</span></span></div>
+          <div class="token"><span class="sw" style="background:#2563a8"></span><span><code>--actor-validator</code><span class="u">independent recomputation</span></span></div>
+          <div class="token"><span class="sw" style="background:#1d5c45"></span><span><code>--actor-expert</code><span class="u">human sign-off · primary</span></span></div>
+        </div>
+      </div>
+      <div class="ds-card">
+        <h4>Financial numerals</h4>
+        <div class="note">All figures use tabular lining numerals (<code>font-variant-numeric: tabular-nums</code>) so columns scan vertically, with accounting-style parentheses for outflows. Small detail, disproportionate trust payoff.</div>
+        <div class="numdemo">
+          <div class="col"><b>PROPORTIONAL (WRONG)</b><span style="font-variant-numeric:normal">$1,847,204<br>$311,168<br>$97,500</span></div>
+          <div class="col"><b>TABULAR (RIGHT)</b><span class="good">$1,847,204<br>$311,168<br>$97,500</span></div>
+          <div class="col"><b>OUTFLOWS</b><span class="good">(311,168)<br>(97,500)<br>(75,000)</span></div>
+        </div>
+      </div>
+      <div class="ds-card">
+        <h4>Components in this prototype</h4>
+        <div class="note">Each is a composition of existing primitives (chip, meter, drawer, table row) plus the semantic tokens above — the AI-trust layer should extend the design system, not fork it.</div>
+        <div class="comprow"><div class="cl"><b>Status chip</b><span>dot + label; state is redundant in shape+color+text</span></div>
+          <span class="chip chip-verified"><span class="dot"></span>Verified · models agree</span>
+          <span class="chip chip-review"><span class="dot"></span>Needs review</span>
+          <span class="chip chip-flag"><span class="dot"></span>Discrepancy</span>
+          <span class="chip chip-expert"><span class="dot"></span>Expert verified</span>
+          <span class="chip chip-agent"><span class="dot"></span>With agent…</span>
+        </div>
+        <div class="comprow"><div class="cl"><b>Confidence meter</b><span>threshold ≥97% auto-clears; below routes to expert</span></div>
+          <span class="conf hi"><span class="track"><span class="fill" style="width:99%"></span></span><span class="pct num">99%</span></span>
+          <span class="conf md"><span class="track"><span class="fill" style="width:94%"></span></span><span class="pct num">94%</span></span>
+          <span class="conf lo"><span class="track"><span class="fill" style="width:86%"></span></span><span class="pct num">86%</span></span>
+        </div>
+        <div class="comprow"><div class="cl"><b>Provenance chip</b><span>document + page; opens cited excerpt</span></div>
+          <span class="srcchip"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Distribution notice · p.2</span>
+          <span class="srcchip"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>LPA §2.3 · p.41</span>
+        </div>
+        <div class="comprow"><div class="cl"><b>Audit entry</b><span>actor-typed; agent actions logged like human ones</span></div>
+          <div style="flex:1;min-width:240px">
+            <div class="aud a-agent" style="padding:2px 0"><span class="ic">J</span><span class="bd"><span class="who">Junie · Agent</span><span class="what">Flagged 5 accounts for expert review</span><span class="when">10:20:14 · #EV-1038</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="drawerRoot"></div>
+<div id="modalRoot"></div>
+<div class="toasts" id="toasts"></div>
+<script>
+/* ================= DATA ================= */
+/* All figures fictional. ending = beginning + contrib - dist + ni - fees (computed, always ties). */
+
+const SOURCES = {
+  q1close:   {doc:'Q1 2026 Close · Carried balances', page:'—', excerpt:'Capital account balances as of March 31, 2026, expert-verified and published April 14, 2026. Balances roll forward as Q2 beginning balances.', hl:'expert-verified and published April 14, 2026'},
+  glq2:      {doc:'General Ledger export · Q2 2026', page:'row 214', excerpt:'06/12/2026 · JE-4471 · Distribution — Halloran Family Office · DR Partners’ Capital $280,051 · CR Cash $280,051 · Memo: per wire batch 6/12.', hl:'DR Partners’ Capital $280,051'},
+  hallnotice:{doc:'Q2 Distribution Notice · Halloran Family Office', page:'p.2', excerpt:'Gross distribution: $311,168. Non-resident withholding (10%, per Form W-8BEN status): $31,117, remitted to the IRS on the investor’s behalf. Net cash remittance: $280,051.', hl:'Gross distribution: $311,168'},
+  waterfall: {doc:'LPA §5.1 · Distribution waterfall', page:'p.58', excerpt:'Net income and gain shall be allocated pro rata to Partners’ capital accounts in proportion to balances as of the first day of the fiscal quarter, subject to §5.4 (clawback).', hl:'allocated pro rata to Partners’ capital accounts'},
+  feesched:  {doc:'LPA §2.3 · Management fee', page:'p.41', excerpt:'The Management Fee shall accrue at an annual rate of 1.25% of aggregate Capital Commitments, payable quarterly in arrears.', hl:'1.25% of aggregate Capital Commitments'},
+  cedarside: {doc:'Side Letter · Cedar Point Endowment §3', page:'p.3', excerpt:'Where the Investor’s aggregate Commitments — including commitments of Affiliated Vehicles — equal or exceed $40,000,000, the Management Fee attributable to the Investor shall be reduced by 22%.', hl:'reduced by 22%'},
+  cedaraff:  {doc:'Subscription Agreement · Cedar Point Working Fund LLC', page:'p.1', excerpt:'Subscriber: Cedar Point Working Fund LLC · Commitment: $8,000,000 · Tax ID: 84-•••1177 (matches Cedar Point Endowment master account).', hl:'Tax ID: 84-•••1177'},
+  westwire:  {doc:'Wire confirmation · Westbrook County ERS', page:'p.1', excerpt:'Amount: $2,000,000.00 · Value date: July 1, 2026, 09:14 ET · Ref: Capital Call No. 14 (due June 30, 2026) · Beneficiary: Meridian RE Fund III.', hl:'Value date: July 1, 2026, 09:14 ET'},
+  cutoff:    {doc:'LPA §3.6 · Contributions', page:'p.44', excerpt:'Contributions shall be recognized in Partners’ capital accounts upon receipt of immediately available funds by the Partnership.', hl:'upon receipt of immediately available funds'},
+  marisolsl: {doc:'Side Letter · Marisol Capital §4', page:'p.2', excerpt:'Eighty percent (80%) of Consulting Fees received from Portfolio Investments shall offset the Management Fee otherwise payable by the Investor.', hl:'Eighty percent (80%)'},
+  marisolam: {doc:'Amendment No. 2 · Marisol Capital §1(b)', page:'p.3', excerpt:'Effective January 1, 2026, the offset percentage in Side Letter §4 is amended from eighty percent (80%) to one hundred percent (100%) of Consulting Fees.', hl:'one hundred percent (100%)'},
+  appraisal: {doc:'Appraisal · Riverline Logistics Center (scanned)', page:'p.4', excerpt:'Concluded value: $77,400,000 (prior: $74,280,000, +4.2%). Direct capitalization at 5.1% on stabilized NOI of $3,947,400. Inspection date: June 11, 2026.', hl:'Concluded value: $77,400,000'},
+  bankq2:    {doc:'Bank activity statement · Q2 2026', page:'p.6', excerpt:'06/12/2026 · OUTGOING WIRE · $280,051.00 · BEN: Halloran Family Office · Ref: Q2 distribution, net of withholding.', hl:'$280,051.00'}
+};
+
+const ACCOUNTS = [
+  /* ---- 5 exceptions ---- */
+  {id:'halloran', name:'Halloran Family Office', kind:'Family office · Class A · W-8BEN', commitment:24000000,
+   beginning:18412336, contrib:0, dist:280051, ni:196410, fees:75000, conf:86, status:'flag',
+   exc:{
+     kind:'flag', short:'Distribution: bank feed vs. notice',
+     narrative:'I reconciled Halloran’s Q2 distribution across three sources. The bank feed and GL entry JE-4471 show <b>$280,051</b> leaving the account; the distribution notice specifies <b>$311,168 gross</b> with 10% non-resident withholding ($31,117) remitted to the IRS on Halloran’s behalf. My validators disagree on which figure belongs in the capital account, so I’ve paused this one for you. My read: the notice gross is the distribution — the withholding is part of Halloran’s economics — but the GL was booked from the wire amount.',
+     field:'dist', agentVal:280051, altVal:311168,
+     valA:{label:'Validator A · GL + bank feed', val:280051, note:'Recomputed from JE-4471 and the outgoing wire — net cash that left the fund.', src:'glq2'},
+     valB:{label:'Validator B · Distribution notice', val:311168, note:'Recomputed from the notice: gross $311,168 less $31,117 withholding remitted for the LP.', src:'hallnotice'},
+     valNote:'Validators disagree by <b>$31,117</b> — exactly the 10% withholding. This isn’t noise; it’s a booking-policy question the agent shouldn’t decide alone.',
+     traceSrc:{dist:'hallnotice'},
+     sources:['hallnotice','glq2','bankq2','q1close'],
+     actions:['correct','approve','return'],
+     correctLbl:'Use notice gross — $311,168', correctHint:'Capital accounts reflect the gross distribution; withholding is the LP’s money too, remitted on their behalf.',
+     learning:'Pattern captured: for W-8BEN investors, reconcile capital-account distributions to the <b>notice gross</b>, with withholding tracked as a remittance line — not to the net wire amount.'
+   }},
+  {id:'cedarpoint', name:'Cedar Point Endowment', kind:'Endowment · Class A', commitment:40000000,
+   beginning:30845112, contrib:0, dist:521282, ni:327304, fees:97500, conf:94, status:'review',
+   exc:{
+     kind:'review', short:'Side-letter fee tier · first quarter applied',
+     narrative:'Cedar Point’s management fee came in below the standard schedule — on purpose. Their side letter grants a <b>22% discount</b> when aggregate commitments reach $40M, and that aggregation includes <b>Cedar Point Working Fund LLC ($8M)</b>, which I linked through a shared tax ID on the subscription documents. Both validators agree on the math ($125,000 → $97,500). I’m flagging it because this is the first quarter the tier applies and the affiliate linkage is inferred, not explicit.',
+     valA:{label:'Validator A · Fee schedule', val:97500, note:'1.25% × $40M ÷ 4 = $125,000, less 22% side-letter tier = $97,500.', src:'feesched'},
+     valB:{label:'Validator B · Side letter §3', val:97500, note:'Aggregated $48M ≥ $40M threshold via affiliate; tier confirmed.', src:'cedarside'},
+     valNote:'Both validators agree. Confidence is <b>94%</b> — below the 97% auto-clear bar — because the affiliate linkage rests on a matched tax ID, not an explicit designation.',
+     traceSrc:{fees:'cedarside'},
+     sources:['cedarside','cedaraff','feesched','q1close'],
+     actions:['approve','return'],
+     approveHint:'Confirms the affiliate aggregation and locks the tier for future quarters.'
+   }},
+  {id:'westbrook', name:'Westbrook County Employees’ Retirement', kind:'Public pension · Class A', commitment:60000000,
+   beginning:44208779, contrib:0, dist:747128, ni:470112, fees:187500, conf:92, status:'review',
+   exc:{
+     kind:'review', short:'Late wire · quarter cutoff',
+     narrative:'Westbrook’s $2,000,000 call was due June 30. The wire arrived <b>July 1 at 09:14 ET</b>. LPA §3.6 recognizes contributions on receipt, so I’ve excluded it from Q2 and scheduled it for Q3 — but the call notice says “effective June 30,” and cutoff treatment is a judgment your team has exercised before. Confirm my treatment or override.',
+     valA:{label:'Validator A · LPA §3.6', val:0, valTxt:'Q3', note:'Recognition on receipt of funds → July 1 lands in Q3.', src:'cutoff'},
+     valB:{label:'Validator B · Wire confirm', val:0, valTxt:'Q3', note:'Value date July 1, 09:14 ET, confirmed against Fedwire reference.', src:'westwire'},
+     valNote:'Both validators support Q3 recognition. Flagged because the notice’s “effective June 30” language creates cutoff ambiguity a policy owner should settle.',
+     traceSrc:{contrib:'westwire'},
+     sources:['westwire','cutoff','q1close'],
+     actions:['approve','return'],
+     approveHint:'Confirms receipt-basis recognition; the $2.0M wire posts to Q3 beginning activity.'
+   }},
+  {id:'marisol', name:'Marisol Capital Partners', kind:'Fund of funds · Class B', commitment:15000000,
+   beginning:11489205, contrib:0, dist:194168, ni:122664, fees:22875, conf:88, status:'flag',
+   exc:{
+     kind:'flag', short:'Fee offset: side letter vs. amendment',
+     narrative:'Marisol’s management fee reflects their consulting-fee offset — I applied the <b>80%</b> offset from §4 of the original side letter ($24,000 credit against a $46,875 base). Validator B, reading <b>Amendment No. 2</b>, computed a <b>100%</b> offset ($30,000 credit). I used the original because the amendment’s effective-date language reads ambiguously to me. If the amendment governs, my figure overstates the fee by $6,000.',
+     field:'fees', agentVal:22875, altVal:16875,
+     valA:{label:'Validator A · Side letter §4', val:22875, note:'$46,875 base − 80% × $30,000 consulting fees = $22,875.', src:'marisolsl'},
+     valB:{label:'Validator B · Amendment 2 §1(b)', val:16875, note:'$46,875 base − 100% × $30,000 = $16,875, effective Jan 1, 2026.', src:'marisolam'},
+     valNote:'Validators disagree by <b>$6,000</b>. The amendment appears to supersede — a good candidate to send back so the agent re-reads it and carries the rule forward.',
+     traceSrc:{fees:'marisolam'},
+     sources:['marisolam','marisolsl','feesched','q1close'],
+     actions:['return','correct','approve'],
+     correctLbl:'Use amendment — $16,875',
+     returnPrefill:'Amendment 2 §1(b) governs — offset stepped up to 100% effective Jan 1, 2026. Re-read the amendment and reprocess.',
+     learning:'Pattern captured: when a side letter and an amendment conflict, the <b>latest effective amendment governs</b>; check amendment effective dates before applying original terms.',
+     reprocess:{field:'fees', newVal:16875, conf:98,
+       note:'Re-read Amendment No. 2 §1(b). Effective Jan 1, 2026 the offset is 100% of consulting fees. Recomputed fee: $46,875 − $30,000 = <b>$16,875</b>. Both validators now agree.',
+       audit:'Reprocessed Marisol Capital — applied Amendment 2 §1(b) (100% offset). Fee $22,875 → $16,875. Validators agree · confidence 98%'}
+   }},
+  {id:'brightharbor', name:'Bright Harbor Insurance Co.', kind:'Insurance · Class A', commitment:32000000,
+   beginning:24516880, contrib:0, dist:414335, ni:351222, fees:100000, conf:91, status:'review',
+   exc:{
+     kind:'review', short:'Revaluation source · scanned appraisal',
+     narrative:'Bright Harbor’s net income allocation includes <b>$118,004 of unrealized gain</b> from the Riverline Logistics Center reappraisal (+4.2%, to $77.4M at a 5.1% cap rate). The appraisal arrived as a <b>scanned PDF</b> and my extraction confidence is 91% — below the 97% auto-clear threshold — so I’d like a human eye on the source before this flows into 52 LP statements.',
+     valA:{label:'Validator A · Appraisal extract', val:351222, note:'Allocation recomputed from extracted value $77.4M; OCR confidence 91% on the scanned table.', src:'appraisal'},
+     valB:{label:'Validator B · Waterfall model', val:351222, note:'Pro-rata allocation recomputed independently from the same extracted value.', src:'waterfall'},
+     valNote:'Validators agree with each other — the open question is the <b>extraction</b>, not the math. One glance at p.4 of the appraisal settles it.',
+     traceSrc:{ni:'appraisal'},
+     sources:['appraisal','waterfall','q1close'],
+     actions:['approve','return'],
+     approveHint:'Confirms the extracted value against the cited appraisal page.'
+   }},
+  /* ---- verified (11 shown of 47) ---- */
+  {id:'aldercreek', name:'Aldercreek Pension Trust', kind:'Public pension · Class A', commitment:50000000, beginning:38412650, contrib:0, dist:650000, ni:407174, fees:156250, conf:99, status:'verified'},
+  {id:'tallgrass', name:'Tallgrass Sovereign Holdings', kind:'Sovereign wealth · Class A', commitment:75000000, beginning:57618975, contrib:0, dist:975000, ni:610761, fees:234375, conf:98, status:'verified'},
+  {id:'ironharbor', name:'Iron Harbor Pension Authority', kind:'Public pension · Class A', commitment:45000000, beginning:34571385, contrib:0, dist:585000, ni:366456, fees:140625, conf:99, status:'verified'},
+  {id:'redstone', name:'Redstone County Retirement', kind:'Public pension · Class A', commitment:38000000, beginning:29184451, contrib:0, dist:494000, ni:309356, fees:118750, conf:97, status:'verified'},
+  {id:'northgate', name:'Northgate University Endowment', kind:'Endowment · Class A', commitment:35000000, beginning:26880415, contrib:0, dist:455000, ni:284933, fees:109375, conf:98, status:'verified'},
+  {id:'cormorant', name:'Cormorant Insurance Group', kind:'Insurance · Class A', commitment:28000000, beginning:21504332, contrib:0, dist:364000, ni:227946, fees:87500, conf:99, status:'verified'},
+  {id:'kestrelbay', name:'Kestrel Bay Partners', kind:'Fund of funds · Class B', commitment:22000000, beginning:16896260, contrib:0, dist:286000, ni:179101, fees:68750, conf:99, status:'verified'},
+  {id:'sableridge', name:'Sable Ridge Capital', kind:'Family office · Class B', commitment:20000000, beginning:15360237, contrib:0, dist:260000, ni:162819, fees:62500, conf:99, status:'verified'},
+  {id:'palmera', name:'Palmera Investment Co.', kind:'Family office · Class B', commitment:18000000, beginning:13824213, contrib:0, dist:234000, ni:146537, fees:56250, conf:98, status:'verified'},
+  {id:'bellwether', name:'Bellwether Foundation', kind:'Foundation · Class A', commitment:16000000, beginning:12288190, contrib:0, dist:208000, ni:130255, fees:50000, conf:98, status:'verified'},
+  {id:'winslow', name:'Winslow Family Trust', kind:'Family office · Class B', commitment:12000000, beginning:9216142, contrib:0, dist:156000, ni:97691, fees:37500, conf:97, status:'verified'}
+];
+
+const AUDIT_SEED = [
+  {actor:'agent', who:'Junie · Agent', what:'Ingested 14 source documents — 3 wire confirmations, 2 distribution notices, 1 appraisal, 8 GL exports', when:'09:02:11', id:'EV-1031'},
+  {actor:'agent', who:'Junie · Agent', what:'Reconciled 1,847 GL entries against bank activity · 0 unmatched', when:'09:41:47', id:'EV-1033'},
+  {actor:'agent', who:'Junie · Agent', what:'NAV roll-up computed — $612.4M (+2.1% QoQ)', when:'10:18:05', id:'EV-1035'},
+  {actor:'validator', who:'Validators A + B', what:'Independent recomputation ×2 complete · 47 of 52 accounts agree ≥97% confidence', when:'10:19:22', id:'EV-1037'},
+  {actor:'agent', who:'Junie · Agent', what:'5 accounts routed for expert review · close paused at Expert review', when:'10:20:14', id:'EV-1038'}
+];
+/* ================= STATE & HELPERS ================= */
+const state = {
+  tab:'exceptions', search:'', published:false, drawerId:null,
+  audit:[...AUDIT_SEED], evCounter:1039,
+  resolution:{} /* id -> 'approved'|'corrected'|'returned' */
+};
+const $ = s => document.querySelector(s);
+const fmtN = new Intl.NumberFormat('en-US');
+const money = n => '$' + fmtN.format(n);
+const paren = n => n === 0 ? '<span class="zero">—</span>' : '<span class="paren num">(' + fmtN.format(n) + ')</span>';
+const plain = n => n === 0 ? '<span class="zero">—</span>' : '<span class="num">' + fmtN.format(n) + '</span>';
+const ending = a => a.beginning + a.contrib - a.dist + a.ni - a.fees;
+const acct = id => ACCOUNTS.find(a => a.id === id);
+const isResolved = a => a.status === 'expert' || a.status === 'corrected';
+const unresolvedCount = () => ACCOUNTS.filter(a => a.exc && !isResolved(a)).length;
+const nowTime = () => new Date().toTimeString().slice(0,8);
+
+const CHIP = {
+  verified:  ['chip-verified','Verified · models agree'],
+  review:    ['chip-review','Needs review'],
+  flag:      ['chip-flag','Discrepancy'],
+  processing:['chip-agent','With Junie…'],
+  reprocessed:['chip-reproc','Reprocessed — re-review'],
+  expert:    ['chip-expert','Expert verified'],
+  corrected: ['chip-corrected','Corrected · signal captured']
+};
+const chip = st => { const c = CHIP[st]; return '<span class="chip ' + c[0] + '"><span class="dot"></span>' + c[1] + '</span>'; };
+const confMeter = c => {
+  const cls = c >= 97 ? 'hi' : c >= 92 ? 'md' : 'lo';
+  return '<span class="conf ' + cls + '"><span class="track"><span class="fill" style="width:' + c + '%"></span></span><span class="pct num">' + c + '%</span></span>';
+};
+const DOCICON = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>';
+const srcChip = key => {
+  const s = SOURCES[key]; if (!s) return '';
+  const short = s.doc.split('·')[0].trim();
+  return '<button class="srcchip" data-src="' + key + '" title="View cited source">' + DOCICON + short + (s.page !== '—' ? ' · ' + s.page : '') + '</button>';
+};
+
+/* ================= AUDIT ================= */
+function addAudit(actor, who, what){
+  state.evCounter++;
+  state.audit.push({actor, who, what, when: nowTime(), id: 'EV-' + state.evCounter, fresh:true});
+  renderAudit();
+}
+function renderAudit(){
+  const feed = $('#auditfeed');
+  const icon = {agent:'J', human:'DW', validator:'V', system:'S'};
+  feed.innerHTML = [...state.audit].reverse().map((e,i) =>
+    '<div class="aud a-' + e.actor + (e.fresh && i === 0 ? ' fresh' : '') + '">' +
+      '<span class="ic">' + icon[e.actor] + '</span>' +
+      '<span class="bd"><span class="who">' + e.who + '</span>' +
+      '<span class="what">' + e.what + '</span>' +
+      '<span class="when">' + e.when + ' · #' + e.id + '</span></span>' +
+    '</div>').join('');
+}
+
+/* ================= TABLE ================= */
+function visibleAccounts(){
+  let list = state.tab === 'exceptions' ? ACCOUNTS.filter(a => a.exc) : ACCOUNTS;
+  if (state.search) list = list.filter(a => a.name.toLowerCase().includes(state.search.toLowerCase()));
+  return list;
+}
+function renderTable(){
+  const list = visibleAccounts();
+  const rows = list.map(a => {
+    const st = a.status;
+    const rowCls = st === 'flag' ? 'rowflag' : (st === 'review' || st === 'reprocessed') ? 'rowreview' : '';
+    const end = ending(a);
+    const delta = a._orig ? '<span class="delta-note num">was ' + fmtN.format(a._orig.ending) + '</span>' : '';
+    const excNote = a.exc && !isResolved(a) && st !== 'processing' && st !== 'reprocessed'
+      ? '<span class="chip ' + (st === 'flag' ? 'chip-flag' : 'chip-review') + '" style="padding:2px 7px;font-size:10px">' + a.exc.short + '</span>' : '';
+    return '<tr class="' + rowCls + '" data-id="' + a.id + '" tabindex="0" role="button" aria-label="Open ' + a.name + '">' +
+      '<td class="lp"><span class="nm">' + a.name + '</span><span class="tp">' + a.kind + ' · Commitment ' + money(a.commitment) + '</span></td>' +
+      '<td class="num">' + fmtN.format(a.beginning) + '</td>' +
+      '<td>' + plain(a.contrib) + '</td>' +
+      '<td>' + paren(a.dist) + '</td>' +
+      '<td class="num">' + fmtN.format(a.ni) + '</td>' +
+      '<td>' + paren(a.fees) + '</td>' +
+      '<td class="ending num">' + fmtN.format(end) + delta + '</td>' +
+      '<td>' + confMeter(a.conf) + '</td>' +
+      '<td class="stat">' + chip(st) + (excNote ? '<div style="margin-top:4px">' + excNote + '</div>' : '') + '</td>' +
+      '<td><span class="showwork">Show the work →</span></td>' +
+    '</tr>';
+  }).join('');
+  const ghost = state.tab === 'all' && !state.search
+    ? '<tr class="ghostrow"><td colspan="10">+ 36 more verified accounts in this close — demo shows a representative subset</td></tr>' : '';
+  $('#tbody').innerHTML = rows + ghost || '<tr class="ghostrow"><td colspan="10">No investors match "' + state.search + '"</td></tr>';
+  document.querySelectorAll('#tbody tr[data-id]').forEach(tr => {
+    tr.addEventListener('click', () => openDrawer(tr.dataset.id));
+    tr.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDrawer(tr.dataset.id); } });
+  });
+}
+
+/* ================= SUMMARY / PUBLISH ================= */
+function renderSummary(){
+  const un = unresolvedCount(), done = 5 - un;
+  $('#cntExc').textContent = un;
+  $('#cntExc').classList.toggle('zero', un === 0);
+  $('#stepReviewSub').textContent = done + ' of 5 resolved';
+  $('#cardAccountsSub').innerHTML = '<b class="num">5</b> routed to you · <b class="num">' + done + '</b> resolved';
+  const btn = $('#publishBtn'), hint = $('#publishHint');
+  if (state.published){
+    btn.disabled = true; btn.innerHTML = '✓ Published to 52 LPs';
+    hint.textContent = 'Q2 2026 statements are live on the LP portal';
+    $('#stepReview').className = 'step done'; $('#stepReview').querySelector('.ic').textContent = '✓';
+    $('#stepPublish').className = 'step done'; $('#stepPublish').querySelector('.ic').textContent = '✓';
+    $('#stepPublishSub').textContent = 'Live · 52 LPs';
+    const ts = $('#topStatus'); ts.classList.add('published');
+    $('#topStatusTxt').textContent = 'Published · Q2 2026 close';
+  } else if (un === 0){
+    btn.disabled = false;
+    hint.textContent = 'All exceptions resolved — the close is ready for your sign-off';
+    $('#stepReview').className = 'step done'; $('#stepReview').querySelector('.ic').textContent = '✓';
+    $('#stepPublish').className = 'step active'; $('#stepPublishSub').textContent = 'Ready';
+    const h = $('#hintTxt'); if (h) h.innerHTML = '<b>All five resolved.</b> Review the trust chain and publish when ready.';
+  } else {
+    btn.disabled = true;
+    hint.textContent = un + ' exception' + (un > 1 ? 's' : '') + ' need review before statements can publish';
+  }
+}
+function renderAll(){ renderTable(); renderSummary(); }
+
+/* ================= DRAWER ================= */
+function traceRows(a){
+  const ts = (a.exc && a.exc.traceSrc) || {};
+  const was = f => a._orig && a._orig[f] !== undefined ? '<span class="was num">' + fmtN.format(a._orig[f]) + '</span>' : '';
+  const chg = f => a._orig && a._orig[f] !== undefined ? ' changed' : '';
+  const contribNote = a.id === 'westbrook' ? ' <span style="font-size:10.5px;color:var(--review)">· $2.0M wire → Q3</span>' : '';
+  return '<div class="trace">' +
+    '<div class="trow"><span class="lbl">Beginning balance · Apr 1</span><span class="src">' + srcChip('q1close') + '</span><span class="val num">' + fmtN.format(a.beginning) + '</span></div>' +
+    '<div class="trow"><span class="lbl">Contributions' + contribNote + '</span>' + (ts.contrib ? '<span class="src">' + srcChip(ts.contrib) + '</span>' : '') + '<span class="val num">' + (a.contrib === 0 ? '—' : fmtN.format(a.contrib)) + '</span></div>' +
+    '<div class="trow"><span class="lbl">Distributions</span><span class="src">' + srcChip(ts.dist || 'waterfall') + '</span><span class="val num' + chg('dist') + '">(' + fmtN.format(a.dist) + ')' + '</span>' + was('dist') + '</div>' +
+    '<div class="trow"><span class="lbl">Net income allocation</span><span class="src">' + srcChip(ts.ni || 'waterfall') + '</span><span class="val num">' + fmtN.format(a.ni) + '</span></div>' +
+    '<div class="trow"><span class="lbl">Management fees</span><span class="src">' + srcChip(ts.fees || 'feesched') + '</span><span class="val num' + chg('fees') + '">(' + fmtN.format(a.fees) + ')</span>' + was('fees') + '</div>' +
+    '<div class="trow total"><span class="lbl">Ending balance · Jun 30</span><span class="val num' + (a._orig ? ' changed' : '') + '">' + money(ending(a)) + '</span></div>' +
+  '</div>';
+}
+function validationCard(a){
+  if (!a.exc){
+    return '<div class="valbanner agree"><span>✓</span><span><b>Validators agree to the cent.</b> Two independent recomputations of this account matched Junie’s draft — dual-model agreement pushes accuracy toward four nines.</span></div>';
+  }
+  const e = a.exc;
+  const box = (v, dis) => '<div class="valbox' + (dis ? ' disagree' : '') + '"><div class="vt">◈ ' + v.label + '</div><div class="vv num">' + (v.valTxt || money(v.val)) + '</div><div class="vs">' + v.note + ' ' + srcChip(v.src) + '</div></div>';
+  const split = e.kind === 'flag' && !isResolved(a) && a.status !== 'reprocessed';
+  const banner = a.status === 'reprocessed'
+    ? '<div class="valbanner agree"><span>✓</span><span><b>Validators now agree.</b> ' + (e.reprocess ? e.reprocess.note : '') + '</span></div>'
+    : split
+      ? '<div class="valbanner split"><span>!</span><span>' + e.valNote + '</span></div>'
+      : '<div class="valbanner ' + (e.kind === 'flag' ? 'split' : 'agree') + '"><span>' + (e.kind === 'flag' ? '!' : '✓') + '</span><span>' + e.valNote + '</span></div>';
+  return '<div class="valgrid">' + box(e.valA, split) + box(e.valB, split) + '</div>' + banner;
+}
+function narrativeBlock(a){
+  const txt = a.exc ? a.exc.narrative
+    : 'Beginning balance rolled forward from the expert-verified Q1 close. I applied the pro-rata Q2 distribution (' + money(a.dist) + '), allocated net income of ' + money(a.ni) + ' per the LPA §5.1 waterfall, and accrued the quarterly management fee (' + money(a.fees) + ' — 1.25% of commitment). Both validators recomputed the ending balance independently and agree to the cent.';
+  return '<div class="narrative"><div class="who">◆ JUNIE · FUND ADMIN OVERSIGHT AGENT</div>' + txt + '</div>';
+}
+function sourcesBlock(a){
+  const keys = a.exc ? a.exc.sources : ['q1close','waterfall','feesched'];
+  return '<div class="srclist">' + keys.map(srcChip).join('') + '</div>';
+}
+/* ================= TOASTS ================= */
+function toast(msg){
+  const t = document.createElement('div');
+  t.className = 'toast'; t.innerHTML = '<span class="tic">✓</span><span>' + msg + '</span>';
+  $('#toasts').appendChild(t);
+  setTimeout(() => { t.classList.add('out'); setTimeout(() => t.remove(), 320); }, 3400);
+}
+
+/* ================= DRAWER ================= */
+function closeDrawer(){
+  state.drawerId = null;
+  const r = $('#drawerRoot');
+  const d = r.querySelector('.drawer'), s = r.querySelector('.scrim');
+  if (d){ d.classList.remove('show'); s.classList.remove('show'); setTimeout(() => r.innerHTML = '', 260); }
+}
+function actionButtons(a){
+  if (!a.exc) return '';
+  const e = a.exc;
+  if (a.status === 'processing') return '';
+  if (a.status === 'reprocessed'){
+    return '<div class="dr-actions"><div class="row"><button class="btn btn-primary" data-act="approve">Approve reprocessed draft</button></div>' +
+      '<div class="why">Junie updated the draft from your note. Your approval finalizes it and confirms the pattern for future closes.</div></div>';
+  }
+  if (isResolved(a)) return '';
+  const LBL = {
+    approve: e.kind === 'flag' ? 'Approve as drafted' : 'Approve — looks right',
+    correct: 'Correct value…',
+    return: 'Return to Junie…'
+  };
+  const btns = e.actions.map((act, i) =>
+    '<button class="btn ' + (i === 0 ? 'btn-primary' : 'btn-secondary') + '" data-act="' + act + '">' + LBL[act] + '</button>'
+  ).join('');
+  const why = e.kind === 'flag'
+    ? 'Whatever you choose becomes precedent: Junie applies it to future ' + (e.field === 'dist' ? 'withholding' : 'fee-offset') + ' cases and cites this decision.'
+    : (e.approveHint || '');
+  return '<div class="dr-actions"><div class="row">' + btns + '</div>' +
+    '<div id="actionSlot"></div>' +
+    (why ? '<div class="why">' + why + '</div>' : '') + '</div>';
+}
+function resolvedBanner(a){
+  if (a.status === 'processing'){
+    return '<div class="resolvedbanner proc"><span class="spinner"></span><span><b>With Junie.</b> Re-reading the cited documents against your note — the row updates when it’s back.</span></div>';
+  }
+  if (a.status === 'corrected'){
+    return '<div class="resolvedbanner ok"><span>✓</span><span><b>Corrected and expert-verified.</b> Your change is in the draft and logged.' +
+      '<span class="learn">' + (a.exc.learning || '') + '</span>' +
+      '<span class="learnchip">◆ Junie learns from this correction</span></span></div>';
+  }
+  if (a.status === 'expert'){
+    const wasReturned = state.resolution[a.id] === 'returned';
+    return '<div class="resolvedbanner ok"><span>✓</span><span><b>Expert verified.</b> ' +
+      (wasReturned ? 'Reprocessed from your note, then approved — the corrected rule carries forward.' + (a.exc.learning ? '<span class="learn">' + a.exc.learning + '</span><span class="learnchip">◆ Junie learns from this return</span>' : '') : 'Signed off as drafted. Junie raises its confidence prior for this pattern.') +
+      '</span></div>';
+  }
+  return '';
+}
+function openDrawer(id){
+  state.drawerId = id;
+  const a = acct(id);
+  const r = $('#drawerRoot');
+  r.innerHTML = '<div class="scrim"></div>' +
+    '<aside class="drawer" role="dialog" aria-label="' + a.name + ' — show the work">' +
+      '<div class="dr-head"><div class="top"><div><h2>' + a.name + '</h2>' +
+        '<div class="sub">' + a.kind + ' · Commitment ' + money(a.commitment) + '</div></div>' +
+        '<button class="close" aria-label="Close">✕</button></div>' +
+        '<div class="chips">' + chip(a.status) + confMeter(a.conf) +
+        (a.exc && !isResolved(a) && a.status !== 'processing' && a.status !== 'reprocessed' ? '<span style="font-size:11px;color:var(--faint)">' + a.exc.short + '</span>' : '') +
+        '</div></div>' +
+      '<div class="dr-body">' +
+        (resolvedBanner(a) ? '<div class="dr-sec">' + resolvedBanner(a) + '</div>' : '') +
+        '<div class="dr-sec">' + narrativeBlock(a) + '</div>' +
+        '<div class="dr-sec"><div class="sec-t">Calculation trace — every line cites its source</div>' + traceRows(a) + '</div>' +
+        '<div class="dr-sec"><div class="sec-t">Independent validation</div>' + validationCard(a) + '</div>' +
+        '<div class="dr-sec"><div class="sec-t">Source documents</div>' + sourcesBlock(a) + '</div>' +
+      '</div>' +
+      actionButtons(a) +
+    '</aside>';
+  requestAnimationFrame(() => {
+    r.querySelector('.scrim').classList.add('show');
+    r.querySelector('.drawer').classList.add('show');
+  });
+  r.querySelector('.scrim').addEventListener('click', closeDrawer);
+  r.querySelector('.close').addEventListener('click', closeDrawer);
+  r.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => handleAction(a.id, b.dataset.act)));
+}
+
+/* ================= ACTIONS ================= */
+function handleAction(id, act){
+  const a = acct(id);
+  if (act === 'approve'){
+    const wasReproc = a.status === 'reprocessed';
+    a.status = 'expert';
+    if (!state.resolution[id]) state.resolution[id] = wasReproc ? 'returned' : 'approved';
+    a.conf = Math.max(a.conf, 98);
+    addAudit('human', 'Dana Whitfield · Fund Controller', 'Expert-verified ' + a.name + (wasReproc ? ' (after agent reprocess)' : ' as drafted'));
+    toast(a.name + ' expert-verified');
+    renderAll(); openDrawer(id);
+  }
+  if (act === 'correct'){
+    const slot = $('#actionSlot'); const e = a.exc;
+    slot.innerHTML = '<div class="correctbox"><div class="lbl2">Corrected ' + (e.field === 'dist' ? 'distribution' : 'management fee') + '</div>' +
+      '<input type="text" id="correctInput" value="' + fmtN.format(a[e.field]) + '" inputmode="numeric" aria-label="Corrected value">' +
+      '<button class="suggest" id="suggestBtn">◈ ' + e.correctLbl + '</button>' +
+      '<div class="row" style="display:flex;gap:8px;margin-top:11px">' +
+        '<button class="btn btn-primary" id="saveCorrect">Save correction</button>' +
+        '<button class="btn btn-ghost" id="cancelCorrect">Cancel</button></div>' +
+      (e.correctHint ? '<div class="why" style="margin-top:9px;font-size:11.5px;color:var(--faint)">' + e.correctHint + '</div>' : '') + '</div>';
+    $('#suggestBtn').addEventListener('click', () => { $('#correctInput').value = fmtN.format(e.altVal); $('#correctInput').focus(); });
+    $('#cancelCorrect').addEventListener('click', () => slot.innerHTML = '');
+    $('#saveCorrect').addEventListener('click', () => {
+      const raw = parseInt($('#correctInput').value.replace(/[^0-9]/g, ''), 10);
+      if (!raw || raw < 1){ toast('Enter a valid amount'); return; }
+      a._orig = a._orig || {}; a._orig[e.field] = a[e.field]; a._orig.ending = ending(a);
+      a[e.field] = raw; a.status = 'corrected'; a.conf = 99; state.resolution[id] = 'corrected';
+      addAudit('human', 'Dana Whitfield · Fund Controller', 'Corrected ' + a.name + ': ' + (e.field === 'dist' ? 'distribution' : 'fee') + ' ' + fmtN.format(a._orig[e.field]) + ' → ' + fmtN.format(raw) + ' · training signal captured');
+      addAudit('agent', 'Junie · Agent', 'Learning captured from correction on ' + a.name + ' — rule added to close playbook');
+      toast('Correction captured — Junie learns from this');
+      renderAll(); openDrawer(id);
+    });
+  }
+  if (act === 'return'){
+    const slot = $('#actionSlot'); const e = a.exc;
+    slot.innerHTML = '<div class="returnbox"><div class="lbl2">Tell Junie what to re-check</div>' +
+      '<textarea id="returnNote" placeholder="e.g. Re-read the amendment and reprocess…">' + (e.returnPrefill || '') + '</textarea>' +
+      '<div class="row" style="display:flex;gap:8px;margin-top:10px">' +
+        '<button class="btn btn-primary" id="sendReturn">Send to Junie</button>' +
+        '<button class="btn btn-ghost" id="cancelReturn">Cancel</button></div></div>';
+    $('#cancelReturn').addEventListener('click', () => slot.innerHTML = '');
+    $('#sendReturn').addEventListener('click', () => {
+      const note = $('#returnNote').value.trim() || 'Re-check against cited sources.';
+      a.status = 'processing';
+      addAudit('human', 'Dana Whitfield · Fund Controller', 'Returned ' + a.name + ' to Junie — “' + (note.length > 90 ? note.slice(0, 90) + '…' : note) + '”');
+      renderAll(); openDrawer(id);
+      setTimeout(() => {
+        if (e.reprocess){
+          a._orig = a._orig || {}; a._orig[e.reprocess.field] = a[e.reprocess.field]; a._orig.ending = ending(a);
+          a[e.reprocess.field] = e.reprocess.newVal; a.conf = e.reprocess.conf;
+          addAudit('agent', 'Junie · Agent', e.reprocess.audit);
+        } else {
+          a.conf = 98;
+          addAudit('agent', 'Junie · Agent', 'Re-verified ' + a.name + ' against cited sources — figures unchanged · confidence 98%');
+        }
+        a.status = 'reprocessed';
+        toast('Junie reprocessed ' + a.name + ' — ready for re-review');
+        renderAll();
+        if (state.drawerId === id) openDrawer(id);
+      }, 2600);
+    });
+  }
+}
+
+/* ================= SOURCE VIEWER ================= */
+document.addEventListener('click', e => {
+  const chipEl = e.target.closest('.srcchip[data-src]');
+  if (!chipEl) return;
+  const s = SOURCES[chipEl.dataset.src];
+  const marked = s.excerpt.replace(s.hl, '<mark>' + s.hl + '</mark>');
+  $('#modalRoot').innerHTML = '<div class="modalwrap"><div class="scrim show" data-close="1" style="z-index:-1"></div>' +
+    '<div class="modal"><div class="m-head"><h3>Cited source</h3><div class="s">Page-level provenance — the passage Junie extracted from</div></div>' +
+    '<div class="m-body"><div class="docview"><div class="dochead"><span>' + s.doc + '</span><span>' + (s.page !== '—' ? 'PAGE ' + s.page.replace('p.', '') : 'RECORD') + '</span></div>' +
+    s.excerpt.replace(s.hl, '<mark>' + s.hl + '</mark>') +
+    '<div class="extract">◆ Extracted by Junie · verified against this passage</div></div></div>' +
+    '<div class="m-foot"><button class="btn btn-secondary" data-close="1">Close</button></div></div></div>';
+  $('#modalRoot').querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', () => $('#modalRoot').innerHTML = ''));
+  $('#modalRoot').querySelector('.modalwrap').addEventListener('click', ev => { if (ev.target.classList.contains('modalwrap')) $('#modalRoot').innerHTML = ''; });
+});
+
+/* ================= PUBLISH ================= */
+function openPublishModal(){
+  const res = Object.values(state.resolution);
+  const corrected = res.filter(r => r === 'corrected').length;
+  const returned = res.filter(r => r === 'returned').length;
+  const approved = res.filter(r => r === 'approved').length;
+  const CK = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+  $('#modalRoot').innerHTML = '<div class="modalwrap"><div class="scrim show" style="z-index:-1"></div>' +
+    '<div class="modal"><div class="m-head"><h3>Sign &amp; publish the Q2 2026 close</h3><div class="s">Statements go live for 52 LPs on the investor portal. Here is the trust chain behind every figure:</div></div>' +
+    '<div class="m-body"><div class="trust">' +
+      '<div class="ti"><span class="ic">' + CK + '</span><span><b class="num">52 accounts verified</b> — <span class="sm num">47 by dual-model agreement · ' + approved + ' expert-approved · ' + corrected + ' corrected · ' + returned + ' returned &amp; reprocessed</span></span></div>' +
+      '<div class="ti"><span class="ic">' + CK + '</span><span><b class="num">' + (corrected + returned) + ' correction' + (corrected + returned === 1 ? '' : 's') + ' captured as training signal</b> — <span class="sm">your review compounds into future closes</span></span></div>' +
+      '<div class="ti"><span class="ic">' + CK + '</span><span><b class="num">104 independent validations</b> — <span class="sm">two recomputations per account, toward four-nines accuracy</span></span></div>' +
+      '<div class="ti"><span class="ic">' + CK + '</span><span><b class="num">14 source documents</b> — <span class="sm">page-level citations on every line item</span></span></div>' +
+      '<div class="ti"><span class="ic">' + CK + '</span><span><b class="num">' + state.audit.length + ' audit events</b> — <span class="sm">exportable · the trail extends to the agent, not just you</span></span></div>' +
+    '</div></div>' +
+    '<div class="m-foot"><button class="btn btn-ghost" data-close="1">Not yet</button><button class="btn btn-primary" id="confirmPublish">Sign as Fund Controller &amp; publish</button></div></div></div>';
+  $('#modalRoot').querySelector('[data-close]').addEventListener('click', () => $('#modalRoot').innerHTML = '');
+  $('#confirmPublish').addEventListener('click', () => {
+    state.published = true;
+    addAudit('human', 'Dana Whitfield · Fund Controller', 'Signed the Q2 2026 close — statements published to 52 LPs');
+    addAudit('system', 'GPX · System', 'Close locked · audit trail sealed and exportable · ref #C2Q26-8F3A');
+    renderAll();
+    const ald = acct('aldercreek');
+    $('#modalRoot').innerHTML = '<div class="modalwrap"><div class="scrim show" style="z-index:-1"></div>' +
+      '<div class="modal"><div class="successwrap">' +
+      '<div class="bigcheck"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#17805c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+      '<h3>Q2 2026 statements are live</h3>' +
+      '<div class="s">Published to 52 LPs · prepared by Junie, verified by you.<br>Every figure carries its provenance.</div>' +
+      '<div class="lpcard"><div class="lh"><span>Capital account statement · Q2 2026</span><span style="color:var(--verified)">VERIFIED</span></div>' +
+      '<div class="amt num">' + money(ending(ald)) + '</div><div class="al">Aldercreek Pension Trust · ending balance, June 30 2026</div>' +
+      '<div class="trustmark">✓ Prepared by Junie · Reviewed by D. Whitfield, Fund Controller · every figure traceable to source</div></div>' +
+      '<div style="margin-top:20px"><button class="btn btn-primary" data-close="1">Done</button></div>' +
+      '</div></div></div>';
+    $('#modalRoot').querySelector('[data-close]').addEventListener('click', () => $('#modalRoot').innerHTML = '');
+    toast('Published — the LP portal now shows verified Q2 statements');
+  });
+}
+
+/* ================= GLOBAL UI ================= */
+function init(){
+  renderAudit(); renderAll();
+  $('#enterBtn').addEventListener('click', () => $('#intro').classList.add('hide'));
+  const showIntro = () => $('#intro').classList.remove('hide');
+  $('#aboutBtn').addEventListener('click', showIntro);
+  $('#aboutBtn2').addEventListener('click', showIntro);
+  const dsOpen = () => $('#dspanel').style.display = 'grid';
+  $('#dsBtn').addEventListener('click', dsOpen);
+  $('#dsBtn2').addEventListener('click', dsOpen);
+  $('#dsClose').addEventListener('click', () => $('#dspanel').style.display = 'none');
+  $('#dspanel').addEventListener('click', e => { if (e.target.id === 'dspanel') $('#dspanel').style.display = 'none'; });
+  document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+    state.tab = t.dataset.tab;
+    document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x === t));
+    renderTable();
+  }));
+  $('#searchInput').addEventListener('input', e => { state.search = e.target.value; renderTable(); });
+  document.querySelectorAll('.oversight .opt').forEach(o => o.addEventListener('click', () => {
+    const ov = o.dataset.ov;
+    if (ov === 'auto'){ toast('🔒 Auto-publish unlocks after 3 consecutive clean quarters — 2 of 3 complete. Agents earn autonomy the way new hires do.'); return; }
+    document.querySelectorAll('.oversight .opt').forEach(x => x.classList.toggle('on', x === o));
+    state.tab = ov === 'all' ? 'all' : 'exceptions';
+    document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x.dataset.tab === state.tab));
+    toast(ov === 'all' ? 'Full manual pass — showing all 52 accounts' : 'Review by exception — 47 auto-cleared, you see 5');
+    renderTable();
+  }));
+  $('#hintClose').addEventListener('click', () => $('#hintbar').style.display = 'none');
+  $('#exportBtn').addEventListener('click', () => {
+    toast('Audit log queued — CSV · ' + state.audit.length + ' events, agent actions included');
+  });
+  $('#publishBtn').addEventListener('click', () => { if (!$('#publishBtn').disabled && !state.published) openPublishModal(); });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if ($('#modalRoot').innerHTML){ $('#modalRoot').innerHTML = ''; return; }
+    if ($('#dspanel').style.display !== 'none'){ $('#dspanel').style.display = 'none'; return; }
+    if (state.drawerId) closeDrawer();
+  });
+}
+init();
+</script>
+</body>
+</html>
