@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://halcykon.github.io/UXPortfolio/sitemap.xml

@@ -1,618 +1,406 @@
 <!DOCTYPE html>
-<html  >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/logo-1.png" type="image/x-icon">
-  <meta name="description" content="How might we digitize NASA's work authorization procedures?">
-  
-  
-  <title>NASA: Digitizing paper processes</title>
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/animatecss/animate.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=WViI5v"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=WViI5v" type="text/css">
-
-  
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NASA — Modernizing Work Authorization for the Space Launch System | Frank Teng</title>
+  <meta name="description" content="Digitizing NASA's paper-based Work Authorization Documents (WADs): field research at Kennedy Space Center and a tablet + heads-up-display concept that cuts alteration approvals from days to hours while preserving safety standards.">
+  <link rel="canonical" href="https://halcykon.github.io/UXPortfolio/nasa-WADs.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="NASA — Modernizing Work Authorization for the Space Launch System">
+  <meta property="og:description" content="How might we digitize paper-based procedures while maintaining safety standards?">
+  <meta property="og:url" content="https://halcykon.github.io/UXPortfolio/nasa-WADs.html">
+  <meta property="og:image" content="https://halcykon.github.io/UXPortfolio/assets/images/letf-osmu-test.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0c0b09">
+  <link rel="icon" href="assets/images/logo-1.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
-  
-  <section data-bs-version="5.1" class="menu menu2 cid-v5CflZLCom" once="menu" id="menu2-99">
-    
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container">
-            <div class="navbar-brand">
-                <span class="navbar-logo">
-                    <a href="index.html">
-                        <img src="assets/images/logo-1.png" alt="Frank Teng" style="height: 3.6rem;">
-                    </a>
-                </span>
-                
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#features038-d"><strong>Work</strong></a></li>
-                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="mailto:frank.t.teng@gmail.com"><strong>Contact</strong></a>
-                    </li></ul>
-                
-                
-            </div>
-        </div>
-    </nav>
-</section>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="read-progress" aria-hidden="true"></div>
 
-<section data-bs-version="5.1" class="header10 cid-v5Cfm0yh4c" id="header10-9a">
-
-    
-
-    
-    
-
-    <div class="align-center container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h1 class="mbr-section-title mbr-fonts-style mb-3 display-2"><strong>Modernizing Work Authorization for NASA's Space Launch System</strong></h1>
-                <p class="mbr-text mbr-fonts-style display-7">Redesigning how technicians and engineers coordinate critical maintenance procedures<br></p>
-                
-                <div class="image-wrap mt-4">
-                    <img src="assets/images/letf-osmu-test.webp" alt="LETF OSMU test" title="">
-                </div>
-            </div>
-        </div>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/images/logo-1.png" alt="" width="42" height="42">
+        <span>Frank Teng</span>
+        <span class="brand-role">/ product design × research</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html#work">Work</a></li>
+          <li><a href="index.html#lab">Lab</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-</section>
+  </header>
 
-<section data-bs-version="5.1" class="social06 cid-v5Cfm0RJ3U" id="social06-9b">
-	
+  <main id="main">
 
-	
-	
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-12 content-head">
-				
-			</div>
-		</div>
-		<div class="row">
-			<div class="item features-without-image col-12 col-md-6 col-lg-3 active">
-				<div class="item-wrapper">
-					
-					<div class="card-box">
-						<h4 class="card-title mbr-fonts-style mb-1 display-5">
-							<strong>Duration</strong></h4>
-						<h5 class="card-text mbr-fonts-style display-7">8 months</h5>
-					</div>
-				</div>
-			</div><div class="item features-without-image col-12 col-md-6 col-lg-3">
-				<div class="item-wrapper">
-					
-					<div class="card-box">
-						<h4 class="card-title mbr-fonts-style mb-1 display-5"><strong>Role</strong></h4>
-						<h5 class="card-text mbr-fonts-style display-7">Research Lead<br></h5>
-					</div>
-				</div>
-			</div>
-
-			<div class="item features-without-image col-12 col-md-6 col-lg-3">
-				<div class="item-wrapper">
-					
-					<div class="card-box">
-						<h4 class="card-title mbr-fonts-style mb-1 display-5"><p><strong>Organization</strong></p></h4>
-						<h5 class="card-text mbr-fonts-style display-7">NASA Kennedy / TOSC <br>(Test &amp; Operations Support Contract)</h5>
-					</div>
-				</div>
-			</div><div class="item features-without-image col-12 col-md-6 col-lg-3">
-				<div class="item-wrapper">
-					
-					<div class="card-box">
-						<h4 class="card-title mbr-fonts-style mb-1 display-5">
-							<strong>Team</strong></h4>
-						<h5 class="card-text mbr-fonts-style display-7">Ames RC HCI group<br>(via&nbsp; Capstone project)</h5>
-					</div>
-				</div>
-			</div>
-			
-			
-		</div>
-	</div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7EBNXI4i9" id="article18-gm">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        
-        <div class="mbr-text mbr-fonts-style display-4"><em>This Capstone project was completed as part of the Master of Human-Computer Interaction program at Carnegie Mellon University.</em><div><em>Special thanks to our NASA and TOSC partners for their time, expertise, and trust in sharing their challenges with us!</em></div></div>
+    <header class="chapter">
+      <div class="bgimg" style="background-image:url('assets/images/letf-osmu-test.webp')" role="img" aria-label="Technicians conducting an OSMU test at NASA's Launch Equipment Test Facility"></div>
+      <div class="inner wrap">
+        <p class="case-no">Case 03 · NASA Kennedy / TOSC · Research lead</p>
+        <h1>Modernizing work authorization for NASA&rsquo;s Space Launch System</h1>
+        <p class="dek">Redesigning how technicians and engineers coordinate critical maintenance procedures.</p>
       </div>
-    </div>
-  </div>
-</section>
+    </header>
 
-<section data-bs-version="5.1" class="article12 cid-v7EmoDDejx" id="article12-ft">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>CONTEXT</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Paper-based procedures create dangerous inefficiencies.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">As NASA is preparing to launch the Space Launch System (SLS), the most powerful rocket ever built.<br><br>At Kennedy Space Center, technicians rely on paper-based Work Authorization Documents (WADs) to execute every step of hardware assembly and testing. One mistake could delay a multi-billion dollar launch or compromise crew safety.<br><br>The current system creates serious inefficiencies: engineers hand-deliver paper forms across the facility by bicycle, critical information gets lost when procedures need changes during execution, and lessons learned from field work rarely inform future procedures<br></p>
-            </div>
+    <div class="wrap">
+      <div class="case-layout">
+        <aside class="case-rail">
+          <nav aria-label="Chapters">
+            <p class="rail-title">Chapters</p>
+            <a href="#s01">01 · Context</a>
+            <a href="#s02">02 · The question</a>
+            <a href="#s03">03 · The solution</a>
+            <a href="#s04">04 · The problem space</a>
+            <a href="#s05">05 · Research process</a>
+            <a href="#s06">06 · Critical findings</a>
+            <a href="#s07">07 · Design principles</a>
+            <a href="#s08">08 · Explored concepts</a>
+            <a href="#s09">09 · Impact &amp; outcomes*</a>
+            <a href="#s10">10 · What I learned</a>
+            <a href="#s11">11 · Future opportunities</a>
+          </nav>
+        </aside>
+        <div class="case-main">
+          <dl class="case-meta">
+          <div>
+            <dt>Duration</dt>
+            <dd>8 months</dd>
+          </div>
+          <div>
+            <dt>Role</dt>
+            <dd>Research Lead</dd>
+          </div>
+          <div>
+            <dt>Organization</dt>
+            <dd>NASA Kennedy / TOSC (Test &amp; Operations Support Contract)</dd>
+          </div>
+          <div>
+            <dt>Team</dt>
+            <dd>Ames RC HCI group (via Capstone project)</dd>
+          </div>
+        </dl>
+
+<section class="case-section" id="s01">
+        <span class="ghost-num" aria-hidden="true">01</span>
+        <div class="kicker"><span class="num" aria-hidden="true">01</span><span class="label">Context</span></div>
+        <h2>Paper-based procedures create dangerous inefficiencies.</h2>
+        <div class="prose">
+          <p>NASA is preparing to launch the Space Launch System (SLS) — the most powerful rocket ever built. At Kennedy Space Center, technicians rely on paper-based Work Authorization Documents (WADs) to execute every step of hardware assembly and testing. One mistake could delay a multi-billion dollar launch or compromise crew safety.</p>
+          <p>The current system creates serious inefficiencies: engineers hand-deliver paper forms across the facility by bicycle, critical information gets lost when procedures need changes during execution, and lessons learned from field work rarely inform future procedures.</p>
         </div>
-    </div>
-</section>
+      </section>
 
-<section data-bs-version="5.1" class="article12 cid-v7EmpFSH1D" id="article12-fu">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>QUESTION</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>How can we modernize rocket installation instructions while maintaining safety standards?</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Design a digital system that preserves the precision and safety of NASA's work authorization process while enabling real-time collaboration between field technicians and engineering teams.<br></p>
-            </div>
+<section class="case-section" id="s02">
+        <span class="ghost-num" aria-hidden="true">02</span>
+        <div class="kicker"><span class="num" aria-hidden="true">02</span><span class="label">The question</span></div>
+        <h2>How can we modernize rocket installation instructions while maintaining safety standards?</h2>
+        <div class="prose">
+          <p>Design a digital system that preserves the precision and safety of NASA&rsquo;s work authorization process while enabling real-time collaboration between field technicians and engineering teams.</p>
         </div>
-    </div>
-</section>
+      </section>
 
-<section data-bs-version="5.1" class="article12 cid-v7Emr1axhE" id="article12-fv">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>SOLUTION</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Replace Paper-Based Procedures with a Real-Time Digital Platform</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">We designed a tablet-based platform that replaces paper WADs with interactive step-by-step guidance, embedded multimedia references, and real-time digital alteration workflows that eliminate physical document delivery and work stoppages. <br><br>The system captures field context through voice notes and photos that feed back to procedure authors, creating continuous improvement loops while maintaining full offline functionality for RF-shielded areas.<br></p>
-            </div>
+<section class="case-section" id="s03">
+        <span class="ghost-num" aria-hidden="true">03</span>
+        <div class="kicker"><span class="num" aria-hidden="true">03</span><span class="label">The solution</span></div>
+        <h2>Replace paper-based procedures with a real-time digital platform.</h2>
+        <div class="prose">
+          <p>We designed a tablet-based platform that replaces paper WADs with interactive step-by-step guidance, embedded multimedia references, and real-time digital alteration workflows that eliminate physical document delivery and work stoppages. The system captures field context through voice notes and photos that feed back to procedure authors, creating continuous improvement loops while maintaining full offline functionality for RF-shielded areas.</p>
+          <h3>Potential organizational impact</h3>
+          <p>The platform reduces alteration approval times from days to hours, minimizing costly work stoppages and crew idle time that currently delay multi-billion dollar launches. By digitally preserving field feedback and creating audit trails with complete context, the system transforms tacit knowledge into accessible organizational learning that continuously improves procedure quality and trains future technicians.</p>
         </div>
-    </div>
-</section>
+      </section>
 
-<section data-bs-version="5.1" class="article12 cid-v7Eo0eUjiJ" id="article12-g2">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>POTENTIAL ORGANIZATIONAL IMPACT</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Accelerate Launch Timelines While Preserving Institutional Knowledge</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">The platform reduces alteration approval times from days to hours, minimizing costly work stoppages and crew idle time that currently delay multi-billion dollar launches. <br><br>By digitally preserving field feedback and creating audit trails with complete context, the system <strong>transforms tacit knowledge into accessible organizational learning </strong>that continuously improves procedure quality and trains future technicians.</p>
-            </div>
+<section class="case-section" id="s04">
+        <span class="ghost-num" aria-hidden="true">04</span>
+        <div class="kicker"><span class="num" aria-hidden="true">04</span><span class="label">The problem space</span></div>
+        <h2>Work Authorization Documents are cumbersome.</h2>
+        <div class="prose">
+          <p>WADs are step-by-step instruction manuals that guide technicians through complex tasks — assembling rocket stages, testing fuel systems, moving multi-ton spacecraft components. Every step must be followed exactly as written and signed off to ensure safety and reliability.</p>
         </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article12 cid-v7EpcgE9Rp" id="article12-g3">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>THE PROBLEM SPACE</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Work Authorization Documents (WADs) are cumbersome.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">WADs are step-by-step instruction manuals that guide technicians through complex tasks—assembling rocket stages, testing fuel systems, moving multi-ton spacecraft components. Every step must be followed exactly as written and signed off to ensure safety and reliability.<br><br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7DtYN5ARt" id="article18-be">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        
-        <div class="mbr-text mbr-fonts-style display-7"><p><strong style="font-size: 1.2rem;">Why this matters</strong><br></p><p>●&nbsp;&nbsp;&nbsp;&nbsp;A single error could cause catastrophic hardware failure</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Launches cost upwards of $500M and delays have massive ripple effects</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Crew safety depends on flawless execution</p><p><br></p><p><strong>How the current process works</strong></p><p>1.&nbsp;&nbsp;&nbsp;&nbsp;Engineers author detailed procedures (this takes weeks to months)</p><p>2.&nbsp;&nbsp;&nbsp;&nbsp;Multiple stakeholders review and approve—safety, quality, engineering</p><p>3.&nbsp;&nbsp;&nbsp;&nbsp;Paper documents are delivered to technicians for execution</p><p>4.&nbsp;&nbsp;&nbsp;&nbsp;When issues arise, all work stops until alterations are approved</p><p>5.&nbsp;&nbsp;&nbsp;&nbsp;Alterations require physical delivery to signatories for approval</p><p>6.&nbsp;&nbsp;&nbsp;&nbsp;After completion, papers go into filing cabinets</p><p></p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7Dv15r0Mi" id="article18-bh">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><strong>RESEARCH PROCESS</strong></h3>
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-5"><strong>Over three months, we conducted:</strong></h5>
+        <div class="impact-groups mt-4">
+          <div>
+            <h3>Why this matters</h3>
+            <ul>
+              <li>A single error could cause catastrophic hardware failure</li>
+              <li>Launches cost upwards of $500M, and delays have massive ripple effects</li>
+              <li>Crew safety depends on flawless execution</li>
+            </ul>
+          </div>
+          <div>
+            <h3>How the current process works</h3>
+            <ul>
+              <li>Engineers author detailed procedures (weeks to months)</li>
+              <li>Multiple stakeholders review and approve — safety, quality, engineering</li>
+              <li>Paper documents are delivered to technicians for execution</li>
+              <li>When issues arise, all work stops until alterations are approved</li>
+              <li>Alterations require physical delivery to signatories for approval</li>
+              <li>After completion, papers go into filing cabinets</li>
+            </ul>
           </div>
         </div>
-        <div class="mbr-text mbr-fonts-style display-7"><p>●&nbsp;&nbsp;&nbsp;&nbsp;6 site visits across Kennedy Space Center facilities</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;15 interviews with technicians, engineers, test directors, and quality assurance specialists</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Field observations at the Launch Equipment Test Facility and Vehicle Assembly Building</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Competitive analysis of 12 industrial work execution platforms</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Analogous domain research in field service, manufacturing, and telemedicine</p><p></p></div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-<section data-bs-version="5.1" class="image01 cid-v5MezrBKXC" id="image01-an">
-  
-
-  
-  
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-11">
-        <div class="image-wrapper mb-4">
-          <img class="w-100" src="assets/images/kscmap-4.webp" alt="KSC Interviews">
+<section class="case-section" id="s05">
+        <span class="ghost-num" aria-hidden="true">05</span>
+        <div class="kicker"><span class="num" aria-hidden="true">05</span><span class="label">Research process</span></div>
+        <h2>Three months of field research at Kennedy Space Center.</h2>
+        <div class="prose">
+          <ul>
+            <li><strong>6 site visits</strong> across Kennedy Space Center facilities</li>
+            <li><strong>15 interviews</strong> with technicians, engineers, test directors, and quality assurance specialists</li>
+            <li><strong>Field observations</strong> at the Launch Equipment Test Facility and Vehicle Assembly Building</li>
+            <li><strong>Competitive analysis</strong> of 12 industrial work execution platforms</li>
+            <li><strong>Analogous domain research</strong> in field service, manufacturing, and telemedicine</li>
+          </ul>
         </div>
-        
-        <p class="mbr-description mbr-fonts-style mb-0 align-center display-7"><em>Locations of our user interviews</em></p>
-      </div>
-    </div>
-  </div>
-</section>
+        <figure>
+          <img src="assets/images/kscmap-4.webp" alt="Map of Kennedy Space Center marking user interview locations" loading="lazy" width="1500" height="610">
+          <figcaption>Locations of our user interviews across Kennedy Space Center</figcaption>
+        </figure>
+      </section>
 
-<section data-bs-version="5.1" class="article07 cid-v5Cfm2YkC6" id="article07-9m">
-  
+<section class="case-section" id="s06">
+        <span class="ghost-num" aria-hidden="true">06</span>
+        <div class="kicker"><span class="num" aria-hidden="true">06</span><span class="label">Critical findings</span></div>
+        <h2>Where paper breaks down.</h2>
 
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-10">
-        <div class="card-wrapper">
-          <h4 class="card-title mbr-fonts-style mbr-white mt-3 mb-4 display-1"><strong>CRITICAL FINDINGS</strong></h4>
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                
-                
-              </div>
-            </div>
-            
-            
-            
+        <article class="insight">
+          <h3>&ldquo;Alterations are where everything falls apart.&rdquo;</h3>
+          <p>When technicians encounter unexpected issues in the field (wrong part, unclear instruction, safety concern) they have to stop all work immediately, contact the original engineer, wait for alteration paperwork to be created, have someone physically deliver it to multiple signatories for approval, and only resume work after all approvals are collected.</p>
+          <blockquote><p>&ldquo;I&rsquo;ve literally had to get on a bicycle and ride around Kennedy Space Center hunting down three different people to sign off on a simple tool substitution. Meanwhile, my whole crew is waiting.&rdquo;</p></blockquote>
+          <p class="response"><strong>Why this matters:</strong> a simple change that takes 5 minutes to identify can result in hours or days of downtime.</p>
+        </article>
+
+        <article class="insight">
+          <h3>Valuable knowledge disappears into filing cabinets.</h3>
+          <p>Technicians learn a lot during execution: which steps are confusing, which tools don&rsquo;t work well, what safety concerns should be flagged. But once WADs are completed and filed away, this context is gone.</p>
+          <p class="response"><strong>Why this matters:</strong> the same problems keep happening across similar procedures, and future WADs are written without any benefit from field experience.</p>
+        </article>
+
+        <article class="insight">
+          <h3>Paper creates impossible tradeoffs.</h3>
+          <p>Technicians work in challenging environments — high places, tight spaces, extreme temperatures. Paper is hard to reference while using both hands, difficult to read in dim spaces, nearly impossible to annotate while wearing thick gloves, and gets damaged by weather or industrial conditions.</p>
+          <p class="response"><strong>What this means:</strong> workers develop workarounds (taking photos of steps, memorizing sequences) that actually undermine the safety-critical documentation process.</p>
+        </article>
+
+        <article class="insight">
+          <h3>There is no one-size-fits-all template.</h3>
+          <p>The same WAD format gets used for routine inspections (15 minutes, one person), complex multi-day assemblies (weeks, teams of 20+), and emergency repairs (time-critical, high-stress).</p>
+          <p class="response"><strong>What this means:</strong> simple procedures are over-documented while complex ones lack the dynamic support teams actually need.</p>
+        </article>
+
+        <figure>
+          <img src="assets/images/insightsintoalterations.webp" alt="Diagram of user frustrations with WADs throughout the workflow" loading="lazy" width="1500" height="883">
+          <figcaption>Various user frustrations with WADs throughout the workflow</figcaption>
+        </figure>
+      </section>
+
+<section class="case-section" id="s07">
+        <span class="ghost-num" aria-hidden="true">07</span>
+        <div class="kicker"><span class="num" aria-hidden="true">07</span><span class="label">Design principles</span></div>
+        <h2>Four principles from the research guided our work.</h2>
+        <ol class="learnings">
+          <li>
+            <h3>Facilitate precision without rigidity.</h3>
+            <p>Maintain procedure consistency while allowing for adaptation.</p>
+          </li>
+          <li>
+            <h3>Build real-time collaboration.</h3>
+            <p>Connect field technicians with engineering support instantly.</p>
+          </li>
+          <li>
+            <h3>Capture institutional knowledge.</h3>
+            <p>Turn field insights into organizational learning.</p>
+          </li>
+          <li>
+            <h3>Design for extreme conditions.</h3>
+            <p>Support work in challenging physical environments.</p>
+          </li>
+        </ol>
+      </section>
+
+<section class="case-section" id="s08">
+        <span class="ghost-num" aria-hidden="true">08</span>
+        <div class="kicker"><span class="num" aria-hidden="true">08</span><span class="label">Explored concepts</span></div>
+        <h2>Two complementary concepts: a tablet platform and a heads-up display.</h2>
+
+        <div class="fig-row">
+          <figure>
+            <img src="assets/images/sprint3-visioning-page-9.webp" alt="Concept A visioning sketch: tablet interface for digital WADs" loading="lazy" width="750" height="580">
+            <figcaption>Concept A — tablet interface</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/sprint3-visioning-page-11.webp" alt="Concept B visioning sketch: heads-up display for hands-free execution" loading="lazy" width="750" height="580">
+            <figcaption>Concept B — heads-up display</figcaption>
+          </figure>
+        </div>
+
+        <div class="prose">
+          <h3>Concept A: Dynamic digital WAD platform (tablet)</h3>
+          <h4>Step-by-step execution with smart assistance</h4>
+          <ul>
+            <li>Large, glove-friendly touch targets</li>
+            <li>Auto-advancing steps with a voice confirmation option</li>
+            <li>Embedded photos, videos, and 3D model references</li>
+            <li>Automatic logging of timestamps and conditions</li>
+          </ul>
+          <h4>Real-time alteration workflow</h4>
+          <ul>
+            <li>Technician flags an issue directly in the interface</li>
+            <li>System routes to the appropriate engineer based on procedure type</li>
+            <li>Engineer can video chat with the technician to assess the situation</li>
+            <li>Digital approval chain replaces physical delivery</li>
+            <li>All stakeholders get notified in real time</li>
+          </ul>
+          <h4>Context capture</h4>
+          <ul>
+            <li>Quick voice notes for each step</li>
+            <li>Photo annotations for &ldquo;as-built&rdquo; documentation</li>
+            <li>Difficulty ratings to flag confusing procedures</li>
+            <li>Suggested improvements that feed back to authors</li>
+          </ul>
+          <h4>Offline resilience</h4>
+          <ul>
+            <li>Full functionality without a network connection</li>
+            <li>Automatic sync when connectivity is restored</li>
+            <li>Critical for work in RF-shielded or remote areas</li>
+          </ul>
+
+          <h3>Concept B: Heads-up display for hands-free execution</h3>
+          <p>For scenarios where technicians need both hands free or can&rsquo;t safely handle a tablet, we designed an AR-enabled heads-up display concept.</p>
+          <h4>Hands-free operation</h4>
+          <ul>
+            <li>Voice-controlled navigation through steps</li>
+            <li>Visual overlay of instructions in the field of view</li>
+            <li>Gesture recognition for confirmation and flagging issues</li>
+          </ul>
+          <h4>Spatial awareness</h4>
+          <ul>
+            <li>AR markers show exactly where to perform each action</li>
+            <li>Measurements and alignments projected onto hardware</li>
+            <li>Safety zones highlighted in real time</li>
+          </ul>
+          <h4>Remote supervision</h4>
+          <ul>
+            <li>Engineer sees what the technician sees</li>
+            <li>Can annotate the technician&rsquo;s view in real time</li>
+            <li>Reduces the need for physical presence during routine oversight</li>
+          </ul>
+        </div>
+      </section>
+
+<section class="case-section" id="s09">
+        <span class="ghost-num" aria-hidden="true">09</span>
+        <div class="kicker"><span class="num" aria-hidden="true">09</span><span class="label">Impact &amp; outcomes*</span></div>
+        <h2>From days to hours — and knowledge that stops disappearing.</h2>
+        <div class="impact-groups">
+          <div>
+            <h3>Process efficiency</h3>
+            <ul>
+              <li>Reduction in alteration approval time — from days to hours</li>
+              <li>Elimination of physical document delivery</li>
+              <li>Reduced work stoppages and crew idle time</li>
+            </ul>
           </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v5Cfm3e1zx" id="article07-9o">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-9">
-        <div class="card-wrapper">
-          
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>"Alterations are where everything falls apart"</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">When technicians encounter unexpected issues in the field (wrong part, unclear instruction, safety concern) they have to:<br><br>●&nbsp; &nbsp; Stop all work immediately<br>●&nbsp; &nbsp; Contact the original engineer<br>●&nbsp; &nbsp; Wait for alteration paperwork to be created<br>●&nbsp; &nbsp; Have someone physically deliver it to multiple signatories for approval<br>●&nbsp; &nbsp; Only resume work after all approvals are collected<br><br><strong>Why this matters:</strong> A simple change that takes 5 minutes to identify can result in hours or days of downtime.<br><br><em>"I've literally had to get on a bicycle and ride around Kennedy Space Center hunting down three different people to sign off on a simple tool substitution. Meanwhile, my whole crew is waiting."</em><br></p>
-              </div>
-            </div>
-            
-            
-            
+          <div>
+            <h3>Safety &amp; quality</h3>
+            <ul>
+              <li>Richer documentation of as-built conditions</li>
+              <li>Real-time expert support reduces errors</li>
+              <li>Complete audit trail with timestamps and context</li>
+            </ul>
           </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v7EroN16qK" id="article07-g8">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-9">
-        <div class="card-wrapper">
-          
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>Valuable knowledge disappears into filing cabinets.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Technicians learn a lot during execution: which steps are confusing, which tools don't work well, what safety concerns should be flagged. But once WADs are completed and filed away, this context is gone.<br><br><strong>Why this matters:</strong> The same problems keep happening across similar procedures, and future WADs are written without any benefit from field experience.<br></p>
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v5Cfm3m3Po" id="article07-9p">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-9">
-        <div class="card-wrapper">
-          
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>Paper creates impossible tradeoffs.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Technicians work in challenging environments—high places, tight spaces, extreme temperatures. Paper is hard to reference while using both hands, difficult to read in dim spaces, nearly impossible to annotate while wearing thick gloves, and gets damaged by weather or industrial conditions.<br><br><strong>What this means: </strong>Workers develop workarounds (taking photos of steps, memorizing sequences) <strong>that actually undermine the safety-critical documentation process.</strong><br></p>
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v5Cfm3yhUv" id="article07-9q">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-9">
-        <div class="card-wrapper">
-          
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>There is no "one-size-fits-all" template.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">The same WAD format gets used for:<br><br>●&nbsp; &nbsp; Routine inspections (15 minutes, one person)<br>●&nbsp; &nbsp; Complex multi-day assemblies (weeks, teams of 20+)<br>●&nbsp; &nbsp; Emergency repairs (time-critical, high-stress)<br><br><strong>What this means:</strong> Simple procedures are over-documented while complex ones lack the dynamic support teams actually need.<br></p>
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="image01 cid-v5NySB8DAg" id="image01-aq">
-  
-
-  
-  
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-11">
-        <div class="image-wrapper mb-4">
-          <img class="w-100" src="assets/images/insightsintoalterations.webp" alt="Insights into WAD Alterations">
-        </div>
-        
-        <p class="mbr-description mbr-fonts-style mb-0 align-center display-7"><em>Various user frustrations with WADs throughout the workflow</em></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article17 cid-v7EmzrbrW3" id="article17-fy">
-  
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><strong>DESIGN PRINCIPLES</strong></h3>
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-2"><strong>From our research, we identified four principles to guide our work:</strong></h5>
+          <div>
+            <h3>Organizational learning</h3>
+            <ul>
+              <li>Field feedback loops back to procedure authors</li>
+              <li>Patterns in alterations inform continuous improvement</li>
+              <li>Institutional knowledge preserved digitally</li>
+            </ul>
           </div>
         </div>
-        <div class="mbr-text mbr-fonts-style display-7">
-          <ol>
-            <li><strong>Facilitate Precision without Rigidity.&nbsp;</strong>Maintain procedure consistency while allowing for adaptation.</li><li><strong>Build Real-time collaboration.</strong> Connect field technicians with engineering support instantly.</li><li><strong>Capture institutional knowledge. </strong>Turn field insights into organizational learning.</li><li><strong>Design for extreme conditions.&nbsp;</strong>Support work in challenging physical environments.</li></ol>
-          <ol>
-          </ol>
+        <div class="prose mt-3">
+          <p><strong>Next steps:</strong> the TOSC team is evaluating our proposals for pilot testing with select procedures.</p>
+        </div>
+      </section>
+
+<section class="case-section" id="s10">
+        <span class="ghost-num" aria-hidden="true">10</span>
+        <div class="kicker"><span class="num" aria-hidden="true">10</span><span class="label">What I learned</span></div>
+        <h2>Designing for a domain where 99% isn&rsquo;t good enough.</h2>
+        <ol class="learnings">
+          <li>
+            <h3>Designing for 100% reliability contexts may require convenience tradeoffs.</h3>
+            <p>In most consumer products, a 99% success rate is excellent. In aerospace, 99.9% isn&rsquo;t good enough. This fundamentally changed how we prioritized redundant gateways over convenient usability.</p>
+          </li>
+          <li>
+            <h3>Chesterton&rsquo;s Fence: understand why current processes exist.</h3>
+            <p>My first instinct was to simplify the approval chain. But through research, I learned that each signatory served a critical safety function. Good design enhances these processes rather than trying to work around them.</p>
+          </li>
+          <li>
+            <h3>The best insights come from observing workarounds.</h3>
+            <p>When we saw technicians taking photos of WAD steps on their phones, we realized they encountered pain points around accessing information in difficult environments.</p>
+          </li>
+        </ol>
+      </section>
+
+<section class="case-section" id="s11">
+        <span class="ghost-num" aria-hidden="true">11</span>
+        <div class="kicker"><span class="num" aria-hidden="true">11</span><span class="label">Future opportunities</span></div>
+        <h2>If I had more time, I would&hellip;</h2>
+        <div class="prose">
+          <ul>
+            <li>Conduct usability testing with actual technicians in realistic work environments</li>
+            <li>Explore integration with existing NASA systems (Solumina, Maximo)</li>
+            <li>Design for edge cases: emergency procedures, multi-facility coordination</li>
+            <li>Develop detailed information architecture for the institutional knowledge repository</li>
+            <li>Prototype an AR heads-up display with actual hardware</li>
+          </ul>
+        </div>
+      </section>
+
+          <p class="footnote">*Certain details have been omitted due to disclosure policies.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<section data-bs-version="5.1" class="article07 cid-v5Cfm4JrFZ" id="article07-9v">
-  
+    <a class="next-slab" href="socialAR.html">
+      <span class="lbl">Next case study</span>
+      <span class="next-title">Carnegie Mellon — Augmented reality for conference networking</span>
+      <span class="arr" aria-hidden="true">&rarr;</span>
+    </a>
+  </main>
 
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-10">
-        <div class="card-wrapper">
-          
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-1"><strong>EXPLORED CONCEPTS</strong></h4>
-                
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="cols">
+        <p class="sig">Frank Teng</p>
+        <nav aria-label="Footer">
+          <ul>
+            <li><a href="index.html#work">Work</a></li>
+            <li><a href="index.html#lab">Lab</a></li>
+            <li><a href="https://github.com/Halcykon" rel="noopener">GitHub</a></li>
+            <li><a href="mailto:frank.t.teng@gmail.com">Email</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="fine">
+        <span>&copy; 2026 Frank Teng</span>
+        <span>AI+Hand Coded in HTML, CSS &amp; vanilla JS</span>
       </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-<section data-bs-version="5.1" class="image02 cid-v5NxVIzj28" id="image02-ap">
-  
-  
-  
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-lg-12">
-        <div class="row">
-          <div class="col-12 col-lg-6">
-            <div class="img-item">
-              <img class="w-100 mb-4" src="assets/images/sprint3-visioning-page-9.webp" alt="Solution 2">
-              <h5 class="mbr-section-title mbr-fonts-style mb-3 display-7">
-                <em><strong>Concept A. </strong>Tablet Interface</em></h5>
-              
-            </div>
-          </div>
-          <div class="col-12 col-lg">
-            <div class="img-item">
-              <img class="w-100 mb-4" src="assets/images/sprint3-visioning-page-11.webp" alt="Solution 2">
-              <h5 class="mbr-section-title mbr-fonts-style mb-3 display-7"><em><strong>Concept B. </strong>Heads Up Display</em></h5>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7EwdB8tyC" id="article18-gg">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"><strong>Concept A: Dynamic Digital WAD Platform (Tablet Interface)</strong></h3>
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-7"><strong>Key Features:</strong></h5>
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7"><p><strong style="font-size: 1.2rem;">Step-by-step execution with smart assistance</strong><br></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Large, glove-friendly touch targets</span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Auto-advancing steps with voice confirmation option</span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Embedded photos, videos, and 3D model references</span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Automatic logging of timestamps and conditions</span></p><p><span style="font-size: 1.2rem;"><br></span></p><p><span style="font-size: 1.2rem;"><strong>Real-time alteration workflow</strong></span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Technician flags an issue directly in the interface</span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">System routes to the appropriate engineer based on procedure type</span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Engineer can video chat with technician to assess the situation</span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Digital approval chain replaces physical delivery</span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">All stakeholders get notified in real-time</span></p><p><span style="font-size: 1.2rem;"><br></span></p><p><span style="font-size: 1.2rem;"><strong>Context capture</strong></span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Quick voice notes for each step</span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Photo annotations for "as-built" documentation</span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Difficulty ratings to flag confusing procedures</span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Suggested improvements that get fed back to authors</span></p><p><span style="font-size: 1.2rem;"><br></span></p><p><span style="font-size: 1.2rem;"><strong>Offline resilience</strong></span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Full functionality without network connection</span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Automatic sync when connectivity is restored</span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Critical for work in RF-shielded or remote areas</span><span style="font-size: 1.2rem;">&nbsp;</span></p><p></p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7ExscKOtt" id="article18-gi">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"><strong>Concept B: Heads-Up Display for Hands-Free Execution</strong></h3>
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-7">For scenarios where technicians need both hands free or can't safely handle a tablet, we designed an AR-enabled heads-up display concept.</h5>
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7"><p><strong style="font-size: 1.2rem;">Key Features:</strong><br></p><p><strong><br></strong></p><p><strong>Hands-free operation</strong></p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Voice-controlled navigation through steps</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Visual overlay of instructions in field of view</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Gesture recognition for confirmation and flagging issues</p><p><br></p><p><strong>Spatial awareness</strong></p><p>●&nbsp;&nbsp;&nbsp;&nbsp;AR markers show exactly where to perform each action</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Measurements and alignments projected onto hardware</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Safety zones highlighted in real-time</p><p><br></p><p><strong>Remote supervision</strong></p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Engineer sees what technician sees</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Can annotate the technician's view in real-time</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Reduces need for physical presence during routine oversight</p><p></p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7DvPwyy31" id="article18-bi">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><strong>IMPACT AND OUTCOMES*</strong></h3>
-            
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7"><p><strong>Process Efficiency</strong></p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Reduction in alteration approval time (from days to hours)</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Elimination of physical document delivery</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Reduced work stoppages and crew idle time</p><p><br></p><p><strong>Safety &amp; Quality</strong></p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Richer documentation of as-built conditions</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Real-time expert support reduces errors</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Complete audit trail with timestamps and context</p><p><br></p><p><strong>Organizational Learning</strong></p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Field feedback loops back to procedure authors</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Patterns in alterations inform continuous improvement</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Institutional knowledge preserved digitally</p><p><br></p><p><strong>Next Steps:&nbsp;</strong><span style="font-size: 1.2rem;">The TOSC team is evaluating our proposals for pilot testing with select procedures.</span></p><p></p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7EzHPrL8Z" id="article18-gl">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        
-        <div class="mbr-text mbr-fonts-style display-4"><div><em style="font-size: 1rem;">*Certain details have been omitted due to disclosure policies.</em><br></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article17 cid-v7EyGqvhuh" id="article17-gk">
-  
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><strong>WHAT I LEARNED</strong></h3>
-            
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7">
-          <ol>
-            <li><strong>Designing for 100% reliability contexts may require convenience tradeoffs.</strong><br>In most consumer products, a 99% success rate is excellent. In aerospace, 99.9% isn't good enough. This fundamentally changed how we prioritized redundant gateways over convenient usability.</li><li><strong>Chesterton's Fence: Understand why current processes exist.</strong><br>My first instinct was to simplify the approval chain. But through research, I learned that each signatory served a critical safety function.<strong> Good design enhances these processes rather than trying to work around them.</strong></li><li><strong>The best insights come from observing workarounds.</strong><br>When we saw technicians taking photos of WAD steps on their phones, we realized they encountered pain points around accessing information in difficult environments.</li>
-          </ol>
-          <ol>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7Dwe7F3t6" id="article18-bj">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><strong>FUTURE OPPORTUNITIES</strong></h3>
-            
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7"><p><strong>If I had more time, I would</strong></p><p><strong>●</strong>&nbsp;&nbsp;&nbsp;&nbsp;Conduct usability testing with actual technicians in realistic work environments.</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Explore integration with existing NASA systems (Solumina, Maximo).</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Design for edge cases: emergency procedures, multi-facility coordination.</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Develop detailed information architecture for the institutional knowledge repository.</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Prototype an AR heads-up display with actual hardware.</p><p></p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="content12 cid-v5Cfmbarml" id="content12-aj">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="exxonmobil-upstream.html">Redesigning Upstream </a>
-                    <a class="btn btn-primary display-4" href="socialAR.html">Prototyping Networking AR</a></div>
-            </div>
-        </div>
-    </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/4374593" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/builder/ai-website-generator.html">AI Website Generator</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
-  
- <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
-    <input name="animation" type="hidden">
-  </body>
+  <script src="js/main.js?v=3"></script>
+</body>
 </html>
