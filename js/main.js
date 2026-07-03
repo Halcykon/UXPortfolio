@@ -162,8 +162,9 @@
         var s = document.createElement('span');
         s.className = 'w';
         s.style.transitionDelay = Math.min(idx * 34, 1400) + 'ms';
-        s.textContent = w + ' ';
+        s.textContent = w;
         p.appendChild(s);
+        p.appendChild(document.createTextNode(' '));
       });
       var qo = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
