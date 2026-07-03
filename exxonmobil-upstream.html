@@ -1,1025 +1,477 @@
 <!DOCTYPE html>
-<html  >
+<html lang="en">
 <head>
-  <!-- Site made with Mobirise Website Builder v6.1.12, https://mobirise.com -->
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v6.1.12, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/logo-1.png" type="image/x-icon">
-  <meta name="description" content="How might we reimagine Petrophysicists subsurface data workflows?">
-  
-  
-  <title>Reimagining How Petrophysicists Work</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/animatecss/animate.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=GvHMFb"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=GvHMFb" type="text/css">
-
-  
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ExxonMobil — Streamlining Subsurface Data Analysis | Frank Teng</title>
+  <meta name="description" content="How UX research redirected an automation mandate at ExxonMobil: a spatial data validation dashboard that cut petrophysicists' data-prep time by 40% and caught 85% of errors in the first week instead of weeks 6–8.">
+  <link rel="canonical" href="https://halcykon.github.io/UXPortfolio/exxonmobil-upstream.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ExxonMobil — Streamlining Subsurface Data Analysis">
+  <meta property="og:description" content="How might we automate data preparation without removing the human-in-the-loop?">
+  <meta property="og:url" content="https://halcykon.github.io/UXPortfolio/exxonmobil-upstream.html">
+  <meta property="og:image" content="https://halcykon.github.io/UXPortfolio/assets/images/upstream-it.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/images/logo-1.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  
-  <section data-bs-version="5.1" class="menu menu2 cid-v5w5zdeqVD" once="menu" id="menu2-1u">
-    
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container">
-            <div class="navbar-brand">
-                <span class="navbar-logo">
-                    <a href="index.html">
-                        <img src="assets/images/logo-1.png" alt="Frank Teng" style="height: 3.6rem;">
-                    </a>
-                </span>
-                
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#features038-d"><strong>Work</strong></a></li>
-                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="mailto:frank.t.teng@gmail.com"><strong>Contact</strong></a>
-                    </li></ul>
-                
-                
-            </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/images/logo-1.png" alt="" width="42" height="42">
+        <span>Frank Teng</span>
+        <span class="brand-role">/ product design × research</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html#work">Work</a></li>
+          <li><a href="index.html#lab">Lab</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="wrap">
+      <section class="case-hero">
+        <p class="eyebrow">ExxonMobil · Research &amp; interaction design</p>
+        <h1>Improving upstream data analysis</h1>
+        <p class="dek">Restructuring how petrophysicists understand subsurface data.</p>
+
+        <dl class="case-meta">
+          <div>
+            <dt>Duration</dt>
+            <dd>6 months</dd>
+          </div>
+          <div>
+            <dt>Role</dt>
+            <dd>Research Lead +<br>Interaction Designer</dd>
+          </div>
+          <div>
+            <dt>Organization</dt>
+            <dd>ExxonMobil</dd>
+          </div>
+          <div>
+            <dt>Team</dt>
+            <dd>Upstream IT</dd>
+          </div>
+        </dl>
+
+        <div class="case-hero-media">
+          <img src="assets/images/upstream-it.jpg" alt="Spatial data validation dashboard showing wells on an interactive map with freshness indicators" width="2511" height="1395">
         </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">01</span><span class="label">The original ask</span></div>
+        <h2>Automate data preparation so petrophysicists can focus on critical work.</h2>
+        <div class="prose">
+          <p>Senior petrophysicists are expensive, specialized experts who make core drilling decisions. However, they spend over 60% of their time on data cleaning and processing.</p>
+          <p>Leadership wanted to automate data preparation for petrophysicists, removing low-value tasks so they could focus on work supporting critical business decisions.</p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">02</span><span class="label">Uncovering the real issue</span></div>
+        <h2>Petrophysicists analyzed data they couldn&rsquo;t trust.</h2>
+        <div class="prose">
+          <p>Petrophysicists spent 25&ndash;30 hours per week on data prep, but the issue was more than wasted time — it was the lack of visibility and trust.</p>
+          <p>They were discovering critical errors 6&ndash;8 weeks into projects because they couldn&rsquo;t verify data quality, pipeline status, or raw measurements upfront. Building automation that bypassed them for data validation would fail.</p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">03</span><span class="label">The solution</span></div>
+        <h2>Reduced data processing time by designing a workflow that aligned with mental models.</h2>
+        <div class="prose">
+          <p>We designed a spatial data validation dashboard that gives petrophysicists real-time visibility into data quality and pipeline status before they start analysis. The system catches errors early, shows where data is stuck, and maintains access to raw measurements — making data prep faster without removing user control.</p>
+        </div>
+        <ul class="stat-list mt-4">
+          <li>
+            <span class="stat-value">40%</span>
+            <span class="stat-desc">reduction in data prep time (25&ndash;30 hrs/week &rarr; 11&ndash;14 hrs/week)</span>
+          </li>
+          <li>
+            <span class="stat-value">85%</span>
+            <span class="stat-desc">of errors caught within the first week — versus 6&ndash;8 weeks before</span>
+          </li>
+          <li>
+            <span class="stat-value">$xxM*</span>
+            <span class="stat-desc">saved per year by preventing late-stage data corrections</span>
+          </li>
+        </ul>
+        <div class="prose mt-3">
+          <ul>
+            <li>Reduced ~4&ndash;6 weeks of project delays due to data quality issues</li>
+            <li>Accelerated site acquisitions — faster site evaluation for assessing potential drilling sites more quickly, cheaply, and accurately</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">04</span><span class="label">Challenge</span></div>
+        <h2>It is expensive to keep datasets accurate and updated.</h2>
+        <div class="prose">
+          <p>Petrophysicists described the data validation process as &ldquo;herding cats in the dark.&rdquo;</p>
+          <p>Just when they thought they had compiled all their drilling reports, a new dataset would appear and invalidate previous work. Teams kept discovering critical data errors late into projects, forcing costly rework.</p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">05</span><span class="label">Research process</span></div>
+        <h2>How is data relayed from one user to the next? How is it transformed?</h2>
+        <div class="prose">
+          <p>I needed to map how data flows from raw measurements to final geological reports. I organized research questions into four categories:</p>
+        </div>
+        <div class="impact-groups mt-3">
+          <div>
+            <h3>Framing</h3>
+            <ul>
+              <li><strong>People</strong> — who handles data at each stage?</li>
+              <li><strong>Pain points</strong> — where do handoffs break down?</li>
+              <li><strong>Priorities</strong> — what quick wins vs. transformative changes should we target?</li>
+              <li><strong>Processes</strong> — how and why is data transformed?</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Methods</h3>
+            <ul>
+              <li>2 contextual inquiries — shadowed petrophysicists during an active project</li>
+              <li>8 stakeholder interviews — data engineers, geologists, petrophysicists</li>
+              <li>Data flow mapping workshop with 8 cross-functional team members</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Participants</h3>
+            <ul>
+              <li>1 senior petrophysicist (15+ years experience)</li>
+              <li>2 junior petrophysicists (2&ndash;4 years experience)</li>
+              <li>3 senior geologists (for comparative workflow analysis)</li>
+              <li>2 data engineers (to understand technical constraints)</li>
+            </ul>
+          </div>
+        </div>
+
+        <figure>
+          <img src="assets/images/2.-currentstateworkflow.jpg" alt="Flowchart of the current-state petrophysicist workflow for subsurface analysis" loading="lazy" width="1500" height="370">
+          <figcaption>Synthesized interview findings became a flowchart of the current petrophysicist workflow for subsurface analysis (specifically, formation evaluation).</figcaption>
+        </figure>
+        <div class="fig-row">
+          <figure><img src="assets/images/3a-.png" alt="Workflow notes: senior petrophysicist 1" loading="lazy" width="300" height="485"></figure>
+          <figure><img src="assets/images/3b.png" alt="Workflow notes: senior petrophysicist 2" loading="lazy" width="300" height="485"></figure>
+          <figure><img src="assets/images/3c-.png" alt="Workflow notes: junior petrophysicist 1" loading="lazy" width="300" height="485"></figure>
+          <figure><img src="assets/images/3d.png" alt="Workflow notes: junior petrophysicist 2" loading="lazy" width="300" height="485"></figure>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">06</span><span class="label">Critical findings</span></div>
+        <h2>Four findings that reframed the problem.</h2>
+
+        <article class="insight">
+          <h3>Simple errors have massive ripple effects.</h3>
+          <p>Unit conversion errors and mislabeled wells don&rsquo;t get caught until weeks into analysis. One junior petrophysicist told me about spending three weeks analyzing what she thought was Well A-12, only to discover it was mislabeled — it was actually B-09, in a completely different geological formation. She had to start over.</p>
+          <p class="response"><strong>Why this matters:</strong> catching these errors at ingestion could save at least 15&ndash;20 hours per project.</p>
+        </article>
+
+        <article class="insight">
+          <h3>Petrophysicists operate blind on data availability.</h3>
+          <p>Teams waste days waiting for data that is stuck in legal review, already exists elsewhere, or was never collected. There&rsquo;s no centralized system to check data status.</p>
+          <blockquote><p>&ldquo;I&rsquo;ve waited a month for a dataset only to discover it never made it out of the wellsite. No one told me.&rdquo;</p></blockquote>
+          <p class="response"><strong>Why this matters:</strong> visibility into the pipeline prevents false starts and allows teams to prioritize work intelligently.</p>
+        </article>
+
+        <article class="insight">
+          <h3>Raw data access is trust.</h3>
+          <p>Petrophysicists need to see original measurements to validate any transformed data.</p>
+          <blockquote><p>&ldquo;If I can&rsquo;t see the raw gamma ray logs, I can&rsquo;t tell you if the formation boundary is real or an artifact of smoothing algorithms.&rdquo;</p></blockquote>
+          <p class="response"><strong>Why this matters:</strong> any automation that removes raw data access will be rejected by users.</p>
+        </article>
+
+        <article class="insight">
+          <h3>Relevant data is fragmented across vendors.</h3>
+          <p>A single analysis might require data from 8+ vendors, internal databases, and legacy systems. Files arrive over 6&ndash;12 months with no intuitive grouping.</p>
+          <p class="response"><strong>Why this matters:</strong> the cognitive overhead of tracking scattered files slows every project.</p>
+        </article>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">07</span><span class="label">Pivoting from learnings</span></div>
+        <h2>Augment — don&rsquo;t automate — data validation.</h2>
+        <div class="prose">
+          <ul>
+            <li><strong>Our original hypothesis was wrong.</strong> We assumed petrophysicists wanted us to automate data preparation so they could focus on analysis.</li>
+            <li><strong>Humans need to be in the loop.</strong> Petrophysicists need to stay involved in data prep because that&rsquo;s where they build intuition about data quality.</li>
+            <li><strong>How might we surface critical data at the right time?</strong> Instead of removing petrophysicists from data prep, we focused on making data preparation radically more efficient while preserving their ability to validate data.</li>
+          </ul>
+        </div>
+
+        <blockquote class="pull-quote">
+          <p>If I don&rsquo;t see how the sausage is made, I can&rsquo;t trust the sausage. You can&rsquo;t take this away from me; you need to make it faster.</p>
+          <cite>Senior petrophysicist, research participant</cite>
+        </blockquote>
+
+        <div class="prose">
+          <p><strong class="label-strong">Design principle</strong><br>
+          Surface problems early, provide tools to investigate, and never hide the raw truth.</p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">08</span><span class="label">Design exploration</span></div>
+        <h2>I ran a co-design session with an expert user.</h2>
+        <div class="prose">
+          <p>I ran a half-day workshop with a senior petrophysicist. Using his past projects as case studies, we sketched interface concepts and storyboarded ideal workflows.</p>
+          <p><strong>Key insight: petrophysicists think geographically.</strong> They locate wells on a map mentally before diving into data. A list-based interface forces unnecessary cognitive translation from their usual mental model.</p>
+        </div>
+        <div class="fig-row">
+          <figure>
+            <img src="assets/images/ui-ideas-from-user.png" alt="Interface sketches produced during the co-design workshop" loading="lazy" width="1500" height="455">
+            <figcaption>UI ideas sketched by the expert user during our co-design workshop</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/4b.-ideation.png" alt="Ideation sketches exploring concepts for the data dashboard" loading="lazy" width="1500" height="598">
+            <figcaption>Storyboarding ideal workflows from past project case studies</figcaption>
+          </figure>
+        </div>
+        <div class="prose">
+          <h3>Explored concepts</h3>
+          <ul>
+            <li><strong>Concept A:</strong> Automated data validator</li>
+            <li><strong>Concept B:</strong> Notification-based system</li>
+            <li><strong>Concept C:</strong> Spatial data dashboard <span class="mono selected-flag">&larr; selected</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">09</span><span class="label">Interface design &amp; testing</span></div>
+        <h2>Three rounds of usability testing, five users, three success criteria.</h2>
+        <div class="prose">
+          <p>I conducted three rounds of testing with 5 total users (3 petrophysicists, 2 geologists as proxies).</p>
+          <h3>Success criteria</h3>
+          <ol>
+            <li>Users can identify data quality issues without reading documentation</li>
+            <li>Users can locate needed datasets within 30 seconds</li>
+            <li>Users understand what every UI element does without asking questions</li>
+          </ol>
+
+          <h3>Iteration 1 — Map view vs. list view</h3>
+          <p><strong>Map view:</strong> 4/5 users found target datasets in 18&ndash;25 seconds.<br>
+          <strong>List view:</strong> 5/5 users took 45&ndash;90 seconds and expressed frustration.</p>
+          <p><strong>Issues found:</strong> color coding was ambiguous (&ldquo;what does red mean?&rdquo;), data age icons were too small to notice, and pipeline status was buried in a sidebar.</p>
+        </div>
+
+        <figure>
+          <img src="assets/images/5a-v1.png" alt="Version 1 of the spatial dashboard: map-based well browser" loading="lazy" width="1500" height="911">
+          <figcaption>Iteration V1 — users validated that the map-based design reflected their mental models more accurately than a list-based view.</figcaption>
+        </figure>
+
+        <blockquote class="pull-quote">
+          <p>The map makes sense because I already know where the wells are geographically. Why would I search through an alphabetical list?</p>
+          <cite>Usability test participant</cite>
+        </blockquote>
+
+        <div class="prose">
+          <h3>Iteration 2 — Refining progressive disclosure</h3>
+          <p><strong>Changed:</strong> introduced a &ldquo;freshness&rdquo; color metaphor (green = fresh, yellow = aging, brown = stale), made error flags primary visual elements (&ldquo;!&rdquo; icons on map pins), and moved pipeline status to hover cards on each well.</p>
+          <p><strong>Impact:</strong> 5/5 users immediately understood data freshness without explanation; 4/5 spotted error flags within 5 seconds of viewing the map. Remaining issue: pipeline status still felt &ldquo;hidden.&rdquo;</p>
+        </div>
+
+        <blockquote class="pull-quote">
+          <p>This view finally matches how I think. Why didn&rsquo;t we do this years ago?</p>
+          <cite>Usability test participant</cite>
+        </blockquote>
+
+        <div class="prose">
+          <h3>Iteration 3 — Surfacing pipeline visibility</h3>
+          <p><strong>Changed:</strong> added a left-panel filter showing data pipeline stages (&ldquo;Collected,&rdquo; &ldquo;In Transit,&rdquo; &ldquo;In Legal Review,&rdquo; &ldquo;Available&rdquo;), made pipeline stage a first-class attribute visible on hover, and created an &ldquo;Expected Data&rdquo; section showing what should exist but hasn&rsquo;t arrived.</p>
+          <p><strong>Impact:</strong> 5/5 users successfully filtered wells by pipeline status, users called out &ldquo;Expected Data&rdquo; as &ldquo;game-changing&rdquo; for planning, and no UI elements caused confusion.</p>
+        </div>
+
+        <blockquote class="pull-quote">
+          <p>This &lsquo;Expected Data&rsquo; section would have saved me two weeks on my last project. I would&rsquo;ve known immediately that three wells were stuck in legal.</p>
+          <cite>Usability test participant</cite>
+        </blockquote>
+
+        <figure>
+          <img src="assets/images/5b-v3.png" alt="Version 3 of the spatial dashboard with freshness colors, error flags, and pipeline filters" loading="lazy" width="1500" height="811">
+          <figcaption>Iteration V3 significantly improved data visibility — users easily grasped &ldquo;data age&rdquo; from the color palette while data status surfaced action items.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">10</span><span class="label">Final design</span></div>
+        <h2>Five features, each anchored to a research finding.</h2>
+        <ol class="learnings">
+          <li>
+            <h3>Map view browser</h3>
+            <p>Wells displayed on an interactive map with color-coded freshness indicators. Users can zoom to regions, filter by data type, and see availability at a glance. <strong>Rationale:</strong> matches the spatial mental model petrophysicists already use — no translation between geography and abstract lists.</p>
+          </li>
+          <li>
+            <h3>Proactive error detection</h3>
+            <p>Automated checks flag unit inconsistencies, labeling errors, and suspicious values at data ingestion; errors appear as visual alerts on well markers. <strong>Rationale:</strong> catches issues when they&rsquo;re cheapest to fix — at ingestion, not mid-analysis.</p>
+          </li>
+          <li>
+            <h3>Transparent data lineage</h3>
+            <p>Two-click access to raw measurements from any transformed dataset, with a visual timeline of transformation steps. <strong>Rationale:</strong> preserves trust by making the &ldquo;sausage-making&rdquo; visible — validation without friction.</p>
+          </li>
+          <li>
+            <h3>Pipeline status awareness</h3>
+            <p>A left panel shows all data stages — collected, in transit, stuck in approval, available — and an &ldquo;Expected Data&rdquo; section shows gaps. <strong>Rationale:</strong> eliminates the black box of availability; teams plan around data arrival instead of waiting blindly.</p>
+          </li>
+          <li>
+            <h3>Relevant data grouping suggestions</h3>
+            <p>Related datasets (logs, cores, seismic) are clustered by well and project, with custom collections. <strong>Rationale:</strong> mirrors how petrophysicists think about data relationships and cuts time spent hunting for files.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">11</span><span class="label">Tech constraints</span></div>
+        <h2>Designing within a 40-year-old data landscape.</h2>
+        <div class="impact-groups">
+          <div>
+            <h3>Legacy database integration</h3>
+            <ul>
+              <li><strong>Issue:</strong> data lived across 15+ disconnected systems, some dating to the 1980s; real-time freshness required new APIs</li>
+              <li><strong>Solution:</strong> prioritized the 5 most-used databases for MVP based on user interviews, leaving 10 for Phase 2</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Colorblind accessibility</h3>
+            <ul>
+              <li><strong>Issue:</strong> the &ldquo;freshness&rdquo; color system failed for colorblind users</li>
+              <li><strong>Solution:</strong> added pattern overlays (solid/hatched/dotted) and text labels on hover — validated with 2 colorblind users</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Offshore connectivity</h3>
+            <ul>
+              <li><strong>Issue:</strong> field teams on oil rigs have intermittent internet; the dashboard required live data</li>
+              <li><strong>Solution:</strong> Phase 1 focused on onshore teams (75% of users); Phase 2 roadmap includes offline sync. I documented offline requirements for future designers</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">12</span><span class="label">Outcome</span></div>
+        <h2>Impact after 6 months post-launch.</h2>
+        <div class="impact-groups">
+          <div>
+            <h3>Efficiency gains</h3>
+            <ul>
+              <li>Data prep time: 25&ndash;30 hrs/week &rarr; <strong>11&ndash;14 hrs/week</strong> (40% reduction)</li>
+              <li>Time to identify missing data: 3&ndash;5 days &rarr; <strong>2 hours</strong> (96% reduction)</li>
+              <li>Error detection speed: 6&ndash;8 weeks &rarr; <strong>3&ndash;5 days</strong> (85% faster)</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Business impact</h3>
+            <ul>
+              <li>Estimated <strong>$xxM*</strong> annual savings in rework costs</li>
+              <li>Project timelines shortened by <strong>2&ndash;4 weeks</strong> on average</li>
+              <li><strong>Zero late-stage data errors</strong> in the pilot group during the 6-month period</li>
+              <li>Faster site evaluation for acquisitions</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Adoption &amp; satisfaction</h3>
+            <ul>
+              <li>Piloted with <strong>12 petrophysicists</strong> across Houston, Calgary, and Singapore</li>
+              <li><strong>95% user satisfaction</strong> (&ldquo;would recommend to a colleague&rdquo;)</li>
+              <li><strong>87% daily active usage</strong> within the pilot group</li>
+              <li>Full rollout prioritized to <strong>150+ global petrophysicists</strong> in 2020</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">13</span><span class="label">What I learned</span></div>
+        <h2>Lessons from designing for expert users.</h2>
+        <ol class="learnings">
+          <li>
+            <h3>Domain expertise &ne; design expertise.</h3>
+            <p>Petrophysicists knew their pain points but couldn&rsquo;t articulate solutions. They said &ldquo;automate everything&rdquo; but really meant &ldquo;make manual work faster.&rdquo; I had to translate their needs into design principles. <strong>Lesson:</strong> trust users to tell you problems, not solutions — probe beneath feature requests to find the real need.</p>
+          </li>
+          <li>
+            <h3>Preventing bad builds is a UX win.</h3>
+            <p>I initially felt disappointed that interface design was far down the backlog, but our research prevented the team from building automated pipelines that would&rsquo;ve been rejected by users. <strong>Lesson:</strong> in enterprise contexts, preventing bad builds is as valuable as shipping features.</p>
+          </li>
+          <li>
+            <h3>Show work to build trust.</h3>
+            <p>Petrophysicists initially resisted &ldquo;black box&rdquo; automation because they had experienced bad data ruining projects. Once I showed them exactly how validation worked, they became advocates. <strong>Lesson:</strong> transparency isn&rsquo;t just good UX — it&rsquo;s how you earn trust with expert users who have strong mental models.</p>
+          </li>
+          <li>
+            <h3>Small sample sizes can be sufficient in specialized domains.</h3>
+            <p>With only 50&ndash;60 petrophysicists at ExxonMobil&rsquo;s Houston office, 3 interviews represented 5&ndash;6% of the user base. In specialized domains, users share similar workflows — depth matters more than breadth. <strong>Lesson:</strong> in enterprise B2B contexts, prioritize deep contextual inquiry over large sample sizes.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">14</span><span class="label">Future roadmap ideas</span></div>
+        <h2>How might we&hellip;</h2>
+        <div class="prose">
+          <ul>
+            <li><strong>Proxy trust signals when raw data doesn&rsquo;t exist?</strong> Some legacy wells only have processed data. How can we help users assess reliability when they can&rsquo;t verify the source? Maybe: surface metadata transparency (who processed it, when, using what algorithms) and peer validation markers.</li>
+            <li><strong>Balance data accessibility vs. cognitive overload?</strong> Users claimed they wanted complete data access, yet complained about being overwhelmed. Maybe: relevance ranking that surfaces likely-needed datasets while keeping everything accessible.</li>
+            <li><strong>Crowdsource quality assessments?</strong> Petrophysicists currently validate data in isolation. Maybe: a &ldquo;flag for review&rdquo; feature that alerts colleagues when someone spots an issue, building institutional knowledge over time.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">15</span><span class="label">Reflection</span></div>
+        <h2>&ldquo;The art of knowing what to leave undone is as important as knowing what to do.&rdquo;</h2>
+        <div class="prose">
+          <p>This project taught me that the best UX research changes what gets built. By proving that petrophysicists needed to stay in the data prep workflow, we prevented the product team from spending 6 months building unwanted automation.</p>
+          <p>If I could do one thing differently, I&rsquo;d involve field teams earlier to address offline access from the start rather than deferring it to Phase 2.</p>
+        </div>
+      </section>
+
+      <p class="footnote">*Certain details have been omitted due to disclosure policies.</p>
+    </div>
+
+    <nav class="case-next" aria-label="Next case study">
+      <div class="wrap">
+        <span class="next-label">Next case study</span>
+        <a href="nasa-WADs.html">NASA — Modernizing work authorization for the Space Launch System &rarr;</a>
+      </div>
     </nav>
-</section>
+  </main>
 
-<section data-bs-version="5.1" class="header10 cid-v5w7H8b9Gz" id="header10-1x">
-
-    
-
-    
-    
-
-    <div class="align-center container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h4 class="mbr-section-title mbr-fonts-style mb-3 display-2"><strong>Improving Upstream Data Analysis</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">
-                    Restructuring how petrophysicists understand subsurface data</p>
-                
-                <div class="image-wrap mt-4">
-                    <img src="assets/images/upstream-it.jpg" alt="Upstream Data Analysis Dashboard v1" title="">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="social06 cid-v5ulRReZCf" id="social06-h">
-	
-
-	
-	
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-12 content-head">
-				
-			</div>
-		</div>
-		<div class="row">
-			<div class="item features-without-image col-12 col-md-6 col-lg-3 active">
-				<div class="item-wrapper">
-					
-					<div class="card-box">
-						<h4 class="card-title mbr-fonts-style mb-1 display-5">
-							<strong>Duration</strong></h4>
-						<h5 class="card-text mbr-fonts-style display-7">6 months</h5>
-					</div>
-				</div>
-			</div><div class="item features-without-image col-12 col-md-6 col-lg-3">
-				<div class="item-wrapper">
-					
-					<div class="card-box">
-						<h4 class="card-title mbr-fonts-style mb-1 display-5"><strong>Role</strong></h4>
-						<h5 class="card-text mbr-fonts-style display-7">Research Lead +<br> Interaction Designer</h5>
-					</div>
-				</div>
-			</div><div class="item features-without-image col-12 col-md-6 col-lg-3">
-				<div class="item-wrapper">
-					
-					<div class="card-box">
-						<h4 class="card-title mbr-fonts-style mb-1 display-5"><p><strong>Organization</strong></p></h4>
-						<h5 class="card-text mbr-fonts-style display-7">ExxonMobil</h5>
-					</div>
-				</div>
-			</div>
-
-			<div class="item features-without-image col-12 col-md-6 col-lg-3">
-				<div class="item-wrapper">
-					
-					<div class="card-box">
-						<h4 class="card-title mbr-fonts-style mb-1 display-5">
-							<strong>Team</strong></h4>
-						<h5 class="card-text mbr-fonts-style display-7">Upstream IT</h5>
-					</div>
-				</div>
-			</div>
-			
-			
-		</div>
-	</div>
-</section>
-
-<section data-bs-version="5.1" class="article12 cid-v7DQ7pQysG" id="article12-dr">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>THE ORIGINAL ASK</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Automate data preparation so petrophysicists can focus on critical work.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Senior petrophysicists are expensive, specialized experts who make core drilling decisions. However, they spend over 60% of their time on data cleaning and processing.<br><br>Leadership wanted to automate data preparation for petrophysicists, removing low-value tasks so they could focus on work supporting critical business decisions.<br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article12 cid-v7E0DPSPgB" id="article12-ew">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>UNCOVERING THE REAL ISSUE</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Petrophysicists analyzed data they couldn't trust.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Petrophysicists spent 25-30 hours per week on data prep, but the issue more than just wasted time, it was the lack of visibility and trust.<br><br>They were discovering critical errors 6-8 weeks into projects because they couldn't verify data quality, pipeline status, or raw measurements upfront. Building automation that bypassed them for data validation would fail.<br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article12 cid-v7DQ7UTfmX" id="article12-ds">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>THE SOLUTION</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Reduced data processing time by designing a workflow that aligned with mental models.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">We designed a spatial data validation dashboard that gives petrophysicists real-time visibility into data quality and pipeline status before they start analysis. <br><br>The system catches errors early, shows where data is stuck, and maintains access to raw measurements—making data prep faster without removing user control.<br><strong><br>This resulted in 40% reduction in data prep time, </strong>85% of errors caught within the first week (vs. 6-8 weeks), and faster site evaluation for acquisitions—helping ExxonMobil assess potential drilling sites more quickly, cheaply, and accurately.<br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7DZ7VnKbQ" id="article18-et">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><strong>BUSINESS IMPACT</strong></h3>
-            
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7"><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Saved&nbsp;</strong><span style="font-size: 1.2rem;"><strong>$xxM* per year</strong> from preventing late-stage data corrections</span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;<strong>&nbsp;</strong><span style="font-size: 1.2rem;"><strong>Reduced ~4-6 weeks of project delays </strong>due to data quality issues</span></p><p><span style="font-size: 1.2rem;">●&nbsp; &nbsp; <strong>Accelerated</strong></span><span style="font-size: 1.2rem;"><strong>&nbsp;site acquisitions</strong>: Increased site evaluation analysis to acquire drilling sites.</span></p><p></p></div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="cols">
+        <p class="sig">Frank Teng</p>
+        <nav aria-label="Footer">
+          <ul>
+            <li><a href="index.html#work">Work</a></li>
+            <li><a href="index.html#lab">Lab</a></li>
+            <li><a href="https://github.com/Halcykon" rel="noopener">GitHub</a></li>
+            <li><a href="mailto:frank.t.teng@gmail.com">Email</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="fine">
+        <span>&copy; 2026 Frank Teng</span>
+        <span>Hand-coded HTML &amp; CSS — no frameworks, no builders.</span>
       </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-<section data-bs-version="5.1" class="article12 cid-v7DQcjXh93" id="article12-dv">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>CHALLENGE</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>It is expensive to keep datasets accurate and updated.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Petrophysicists described the data validation process as "herding cats in the dark".<br><br>Just when they thought they compiled all their drilling reports, a new dataset would appear and invalidate previous work. Teams kept discovering critical data errors late into projects, forcing costly rework.<br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article12 cid-v7E9ienZBA" id="article12-fd">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>RESEARCH PROCESS</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>How is data relayed from one user to the next? How is it transformed?</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">I needed to map how data flows from raw measurements to final geological reports. I organized research questions into four categories:<br><br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7E2INUhfa" id="article18-ex">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        
-        <div class="mbr-text mbr-fonts-style display-7"><p><strong>People —</strong> Who handles data at each stage?</p><p><strong>Pain Points — </strong>Where do handoffs break down?</p><p><strong>Priorities — </strong>What quick wins vs. transformative changes should we target?</p><p><strong>Processes — </strong>How and why is data transformed?</p><p><strong><br></strong></p><p><strong>RESEARCH METHODS</strong></p><p>●&nbsp; &nbsp; 2 contextual inquiries (shadowed petrophysicists during active project)&nbsp;</p><p><span style="font-size: 1.2rem;">●&nbsp; &nbsp; 8 stakeholder interviews (data engineers, geologists, petrophysicists)</span></p><p>●&nbsp; &nbsp; Data flow mapping workshop with 8 cross-functional team members</p><p><br></p><p><span style="font-size: 1.2rem;"><strong>PARTICIPANTS</strong></span></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">1 senior petrophysicist (15+ years experience)</span></p><p><span style="font-size: 1.2rem;">●&nbsp; &nbsp; 2 junior petrophysicists (2-4 years experience)</span></p><p><span style="font-size: 1.2rem;">●&nbsp; &nbsp; 3 senior geologists (for comparative workflow analysis)</span></p><p><span style="font-size: 1.2rem;">●&nbsp; &nbsp; 2 data engineers (to understand technical constraints)</span></p><p></p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7Dpba2whc" id="article18-b6">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        
-        <div class="mbr-text mbr-fonts-style display-7"><p><br></p><p></p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="gallery3 cid-v5zH08VBdt" id="gallery3-5c">
-    
-    
-    <div class="container">
-        
-        <div class="row mt-4">
-            <div class="item features-image col-12 col-md-6 col-lg-12 active">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <img src="assets/images/2.-currentstateworkflow.jpg" alt="Sr. P1" data-slide-to="0" data-bs-slide-to="0">
-                    </div>
-                    <div class="item-content">
-                        
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7"><em>Synthesized interview findings allowed me to create a flowchart denoting current petrophysicist workflow for subsurface analysis</em><br><em>(specifically, formation evaluation)</em></h6>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            
-            
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="gallery3 cid-v5zG17Nm0l" id="gallery3-59">
-    
-    
-    <div class="container">
-        
-        <div class="row mt-4">
-            <div class="item features-image col-12 col-md-6 col-lg-3 active">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <img src="assets/images/3a-.png" alt="Sr. P1" data-slide-to="0" data-bs-slide-to="0">
-                    </div>
-                    
-                    
-                </div>
-            </div><div class="item features-image col-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <img src="assets/images/3b.png" alt="Sr. P2" data-slide-to="1" data-bs-slide-to="1">
-                    </div>
-                    
-                    
-                </div>
-            </div>
-            
-            <div class="item features-image col-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <img src="assets/images/3c-.png" alt="Jr P1">
-                    </div>
-                    
-                    
-                </div>
-            </div>
-            <div class="item features-image col-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <img src="assets/images/3d.png" alt="Jr P2" title="">
-                    </div>
-                    
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7DpWDpfgB" id="article18-b8">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        
-        <div class="mbr-text mbr-fonts-style display-7"><em>Created pocket personas for reference during design sessions</em></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v5ziWqfpLf" id="article07-2q">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-10">
-        <div class="card-wrapper">
-          <h4 class="card-title mbr-fonts-style mbr-white mt-3 mb-4 display-1"><strong>CRITICAL FINDINGS</strong></h4>
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                
-                
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v5zwVRuwP7" id="article07-3q">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-9">
-        <div class="card-wrapper">
-          
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>Simple errors have massive ripple effects.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Unit conversion errors and mislabeled wells don't get caught until weeks into analysis. One junior petrophysicist told me about spending three weeks analyzing what she thought was Well A-12, only to discover it was mislabeled; it was actually B-09, in a completely different geological formation. She had to start over.<br><br><strong>Why this matters:</strong> Catching these errors at ingestion could save at least 15-20 hours per project.<br></p>
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v5zj5d6m7i" id="article07-2r">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-9">
-        <div class="card-wrapper">
-          
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>Petrophysicists operate blind on data availabilty.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Teams waste days waiting for data that is stuck in legal review, already exists elsewhere, or was never collected. There's no centralized system to check data status.<br><br><strong>Why this matters: </strong>Visibility into the pipeline prevents false starts and allows teams to prioritize work intelligently.<br><br><em>"I've waited a month for a dataset only to discover it never made it out of the wellsite. No one told me."</em><br></p>
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v5zja5IxmH" id="article07-2s">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-9">
-        <div class="card-wrapper">
-          
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>Raw data access is trust.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Petrophysicists need to see original measurements to validate any transformed data.<br><br><strong>Why this matters:</strong> Any automation that removes raw data access will be rejected by users.<br><br><em>"If I can't see the raw gamma ray logs, I can't tell you if the formation boundary is real or an artifact of smoothing algorithms."</em><br></p>
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v5zlssoILT" id="article07-32">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-9">
-        <div class="card-wrapper">
-          
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>Relevant data is fragmented across vendors.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">A single analysis might require data from 8+ vendors, internal databases, and legacy systems. Files arrive over 6-12 months with no intuitive grouping.<br><strong><br>Why this matters: </strong>The cognitive overhead of tracking scattered files slows every project.<br></p>
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article17 cid-v7DTMs17hS" id="article17-ei">
-  
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><strong>PIVOTING FROM LEARNINGS</strong></h3>
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-5"><strong>Augment, not automate, data validation.</strong></h5>
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7">
-          <ol>
-            <li><strong>Our original hypothesis was wrong.&nbsp;</strong><span style="font-size: 1.2rem;">We assumed petrophysicists wanted us to automate data preparation so they could focus on analysis.</span></li><li><strong style="font-size: 1.2rem;">Humans need to be in the loop.&nbsp;</strong><span style="font-size: 1.2rem;">Petrophysicists need to stay involved in data prep because that's where they build intuition about data quality.</span></li><li><span style="font-size: 1.2rem;"><strong>How might we surface critical data at the right time?</strong> Instead of removing petrophysicists from data prep, we focused on making data preparation radically more efficient while preserving their ability to validate data.</span></li></ol>
-          <ol>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="content6 cid-v7DTtBEgDe" id="content6-eh">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                <hr class="line">
-                <p class="mbr-text align-center mbr-fonts-style my-4 display-7"><em>If I don't see how the sausage is made, I can't trust the sausage. You can't take this away from me; you need to make it faster.</em><br></p>
-                <hr class="line">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v5zjIUeClc" id="article07-2u">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-8">
-        <div class="card-wrapper">
-          <h4 class="card-title mbr-fonts-style mbr-white mt-3 mb-4 display-1"><strong>DESIGN PRINCIPLE</strong></h4>
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                
-                <p class="mbr-text mbr-fonts-style display-7">Surface problems early, <br>provide tools to investigate, <br><strong>and never hide the raw truth.</strong><br></p>
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article12 cid-v7DQkf55dq" id="article12-dz">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>DESIGN EXPLORATION</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>I ran a co-design session with an expert user.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">I ran a half-day workshop with a senior petrophysicist. Using his past projects as case studies, we sketched interface concepts and storyboarded ideal workflows.<br><br><strong>Key insight:&nbsp;</strong><strong>Petrophysicists think geographically.<br></strong>They locate wells on a map mentally before diving into data. A list-based interface forces unnecessary cognitive translation from their usual mental model.<br><strong> </strong></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="gallery1 mbr-gallery cid-v5zHKHoKvY" id="gallery01-5d">
-    
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 content-head">
-                
-            </div>
-        </div>
-        
-        <div class="row mbr-gallery">
-            <div class="col-12 col-md-6 col-lg-12 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#v7SFZDvMNm-modal" data-bs-target="#v7SFZDvMNm-modal">
-                    <img class="w-100" src="assets/images/ui-ideas-from-user.png" alt="Co-design workshop examples" data-slide-to="0" data-bs-slide-to="0" data-target="#lb-v7SFZDvMNm" data-bs-target="#lb-v7SFZDvMNm">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div><div class="col-12 col-md-6 col-lg-12 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#v7SFZDvMNm-modal" data-bs-target="#v7SFZDvMNm-modal">
-                    <img class="w-100" src="assets/images/4b.-ideation.png" alt="Co-design workshop examples" data-slide-to="1" data-bs-slide-to="1" data-target="#lb-v7SFZDvMNm" data-bs-target="#lb-v7SFZDvMNm">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div>
-            
-            
-            
-            
-            
-            
-            
-        </div>
-
-        <div class="modal mbr-slider" tabindex="-1" role="dialog" aria-hidden="true" id="v7SFZDvMNm-modal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="carousel slide" data-pause="false" data-bs-pause="false" id="lb-v7SFZDvMNm" data-interval="5000" data-bs-interval="5000">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="assets/images/ui-ideas-from-user.png" alt="Mobirise Website Builder">
-                                </div><div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/4b.-ideation.png" alt="Mobirise Website Builder">
-                                </div>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                            <ol class="carousel-indicators">
-                                <li data-slide-to="0" data-bs-slide-to="0" class="active" data-target="#lb-v7SFZDvMNm" data-bs-target="#lb-v7SFZDvMNm"></li><li data-slide-to="1" data-bs-slide-to="1" class="" data-target="#lb-v7SFZDvMNm" data-bs-target="#lb-v7SFZDvMNm"></li>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                            </ol>
-                            <a role="button" href="" class="close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close">
-                            </a>
-                            <a class="carousel-control-prev carousel-control" role="button" data-slide="prev" data-bs-slide="prev" href="#lb-v7SFZDvMNm">
-                                <span class="mobi-mbri mobi-mbri-arrow-prev" aria-hidden="true"></span>
-                                <span class="sr-only visually-hidden">Previous</span>
-                            </a>
-                            <a class="carousel-control-next carousel-control" role="button" data-slide="next" data-bs-slide="next" href="#lb-v7SFZDvMNm">
-                                <span class="mobi-mbri mobi-mbri-arrow-next" aria-hidden="true"></span>
-                                <span class="sr-only visually-hidden">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7E5DZeHIJ" id="article18-f4">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><strong>EXPLORED CONCEPTS</strong></h3>
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-5"><strong>Concept A: Automated Data Validator</strong></h5>
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7">A system that runs validation rules and only surfaces "clean" datasets.<div><br></div><div><strong>Rejected</strong>: Users felt this was a black box. They wanted to see what was validated and how, not just a green checkmark.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7E5KCBVfL" id="article18-f5">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-5"><strong>Concept B: Notification-Based System</strong></h5>
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7">Push alerts when new data arrives or errors are detected.<div><br></div><div><strong>Rejected</strong>: Users are already drowning in emails. They needed a "pull" system they check when starting a project, not more interruptions.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7E5RJfZHB" id="article18-f6">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-5"><strong>Concept C: Spatial Data Dashboard (Selected)</strong></h5>
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7">A map-centric interface showing well locations, with layered information about data freshness, pipeline status, and quality flags.<div><br></div><div><strong>Selected</strong>: Aligns with spatial mental models, allows progressive disclosure of detail, and keeps raw data accessible within two clicks.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article12 cid-v7E76yVIPW" id="article12-f9">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>INTERFACE DESIGN AND TESTING</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Usability Testing Goals</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">I conducted three rounds of testing with 5 total users (3 petrophysicists, 2 geologists as proxies).<br><br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7E6JAnG7x" id="article18-f8">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        
-        <div class="mbr-text mbr-fonts-style display-7"><p><strong style="font-size: 1.2rem;">Success criteria</strong><br></p><p><span style="font-size: 1.2rem;">1. Users can identify data quality issues without reading documentation</span></p><p><span style="font-size: 1.2rem;">2. Users can locate needed datasets within 30 seconds</span></p><p><span style="font-size: 1.2rem;">3. Users understand what every UI element does without asking questions</span></p><p></p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7DYKBniLq" id="article18-er">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-5"><strong>Iteration 1: Map view vs. List view</strong></h5>
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7"><p><strong style="font-size: 1.2rem;">Map view</strong><span style="font-size: 1.2rem;">: 4/5 users found target datasets in 18-25 seconds</span><br></p><p><strong>List view</strong>: 5/5 users took 45-90 seconds and expressed frustration</p><p><br></p><p><strong>Issues found</strong></p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Color coding was ambiguous ("<em>what does red mean?</em>")</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Data age icons were too small to notice</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Pipeline status was buried in a sidebar</p><p></p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="image3 cid-v5A6evHCWJ" id="image3-7l">
-    
-
-    
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/5a-v1.png" alt="V1">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-7"><em><strong>Iteration V1.</strong>&nbsp;Users validated that our map-based design reflected their mental models more accurately than a list-based view</em></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="content6 cid-v5zNyUqxac" id="content6-5h">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                <hr class="line">
-                <p class="mbr-text align-center mbr-fonts-style my-4 display-7"><em>The map makes sense because I already know where the wells are geographically. Why would I search through an alphabetical list?</em></p>
-                <hr class="line">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7Dr7sIEz0" id="article18-ba">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><br></h3>
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-5"><strong>Iteration 2: Refining Progressive Disclosure</strong></h5>
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7"><p><strong>Changed</strong></p><p><strong>●</strong>&nbsp;&nbsp;&nbsp;&nbsp;Introduced "freshness" color metaphor (green=fresh, yellow=aging, brown=stale)</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Made error flags primary visual elements (! icons on map pins)</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Moved pipeline status to hover cards on each well</p><p><strong><br></strong></p><p><strong>Impact</strong></p><p><strong>●</strong>&nbsp;&nbsp;&nbsp;&nbsp;5/5 users immediately understood data freshness without explanation</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;4/5 users spotted error flags within 5 seconds of viewing the map</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Issue: Pipeline status still felt "hidden"</p><p></p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="content6 cid-v7yUxRLiUG" id="content6-at">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                <hr class="line">
-                <p class="mbr-text align-center mbr-fonts-style my-4 display-7"><em>This view finally matches how I think. Why didn't we do this years ago?</em></p>
-                <hr class="line">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7DrS0Wq1R" id="article18-bb">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><br></h3>
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-5"><strong>Iteration 3: Surfacing Pipeline Visibility</strong></h5>
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7"><p><strong style="font-size: 1.2rem;">Changed</strong></p><p><strong style="font-size: 1.2rem;">●</strong>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Added a left-panel filter showing data pipeline stages ("Collected," "In Transit," "In Legal Review," "Available")</span><br></p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Made pipeline stage a first-class attribute visible on hover</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Created an "Expected Data" section showing what should exist but hasn't arrived</p><p><strong><br></strong></p><p><strong>Impact</strong></p><p><strong>●</strong>&nbsp;&nbsp;&nbsp;&nbsp;5/5 users successfully filtered wells by pipeline status</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Users called out "Expected Data" as "game-changing" for planning</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;No confusion about any UI elements</p><p></p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="content6 cid-v7yULlHa5s" id="content6-au">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                <hr class="line">
-                <p class="mbr-text align-center mbr-fonts-style my-4 display-7"><em>This 'Expected Data' section would have saved me two weeks on my last project. <br>I would've known immediately that three wells were stuck in legal.</em><br></p>
-                <hr class="line">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="image3 cid-v5A5aSPLea" id="image3-7j">
-    
-
-    
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/5b-v3.png" alt="V3">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-7"><em><strong>Iteration V3 significantly improved data visibility. </strong>Users easily grasped "Data Age" based on the color palette while data status readily surfaced action items.</em></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v5zo2Rvi6n" id="article07-38">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-9">
-        <div class="card-wrapper">
-          <h4 class="card-title mbr-fonts-style mbr-white mt-3 mb-4 display-1"><div><strong>FINAL DESIGN FEATURES</strong></div></h4>
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>1. Map View Browser</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Wells displayed on an interactive map with color-coded freshness indicators. Users can zoom to regions, filter by data type, and see availability at a glance.<br><br><strong>Design rationale</strong>: Matches the spatial mental model petrophysicists already use. Reduces cognitive load by eliminating translation between geography and abstract lists.<br><br></p>
-              </div>
-            </div><div class="item features-without-image col-12">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>2. Proactive Error Detection</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Automated checks flag unit inconsistencies, labeling errors, and suspicious values at data ingestion. Errors appear as visual alerts on well markers.<br><br><strong>Design rationale: </strong>Catches issues when they're cheapest to fix (at ingestion vs. mid-analysis). Visual alerts create immediate awareness without requiring active monitoring.<br><br></p>
-              </div>
-            </div><div class="item features-without-image col-12">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>3. Transparent Data Lineage</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Two-click access to raw measurements from any transformed dataset. Visual timeline shows transformation steps.<br><br><strong>Design rationale:</strong> Preserves user trust by making the "sausage-making" visible. Enables validation without adding friction.<br><br></p>
-              </div>
-            </div><div class="item features-without-image col-12">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>4. Pipeline Status Awareness</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Left panel shows all data stages: what's collected, in-transit, stuck in approval, or available. "Expected Data" section shows gaps.<br><br><strong>Design rationale:</strong> Eliminates the black box of data availability. Allows teams to plan around data arrival rather than waiting blindly.<br><br></p>
-              </div>
-            </div><div class="item features-without-image col-12">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>5. Relevant Data Grouping Suggestions</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Recommended related datasets (logs, cores, seismic) clustered by well and project. Users can create custom collections.<br><br><strong>Design rationale:</strong> Reduces time spent hunting for related files. Mirrors how petrophysicists think about data relationships.<br></p>
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article12 cid-v7E8EeG1QE" id="article12-fa">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>TECH CONSTRAINTS</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Legacy Database Integration</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"><strong>Issue:</strong> ExxonMobil's data lived across 15+ disconnected systems, some dating to the 1980s. Real-time data freshness required building new APIs.<br><br><strong>Solution: </strong>Based on user interviews, we prioritized the 5 most-used databases for MVP, leaving 10 for Phase 2.<br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article12 cid-v7EaP0TUN3" id="article12-fe">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Colorblind Accessibility</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"><strong>Issue</strong>: My "freshness" color system failed for colorblind users.<br><br><strong>Solution:</strong> I&nbsp;added pattern overlays (solid/hatched/dotted) and text labels on hover and tested with 2 colorblind users to validate.<br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article12 cid-v7EaWcy5pH" id="article12-ff">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Offshore Connectivity</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"><strong>Issue:</strong> Field teams work on oil rigs with intermittent internet. They needed offline access but our dashboard required live data.<br><br><strong>Solution: </strong>Phase 1 focused on onshore teams (75% of users). Phase 2 roadmap includes offline sync mode. I documented offline requirements for future designers.<br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7EdrLmw4i" id="article18-fh">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><strong>OUTCOME</strong></h3>
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-5"><strong>Impact after 6 months post-launch</strong></h5>
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7"><p><strong>Efficiency Gains</strong></p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Data prep time: 25-30 hrs/week → 11-14 hrs/week (40% reduction)</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Time to identify missing data: 3-5 days → 2 hours (96% reduction)</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Error detection speed: 6-8 weeks → 3-5 days (85% faster)</p><p><strong><br></strong></p><p><strong>Business Impact</strong></p><p><span style="font-size: 1.2rem;">●</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 1.2rem;">Estimated $xxM* annual savings in rework costs&nbsp;</span></p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Project timelines shortened by 2-4 weeks on average</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Zero late-stage data errors in pilot group during 6-month period</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Faster site evaluation for acquisitions</p><p><strong><br></strong></p><p><strong>Adoption &amp; Satisfaction</strong></p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Piloted with 12 petrophysicists across Houston, Calgary, and Singapore</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;95% user satisfaction ("Would recommend to colleague")</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;87% daily active usage rate within pilot group</p><p>●&nbsp;&nbsp;&nbsp;&nbsp;Product team prioritized full rollout to 150+ global petrophysicists in 2020</p><p></p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article17 cid-v7Ee47sonU" id="article17-fi">
-  
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><strong>WHAT I LEARNED</strong></h3>
-            
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7">
-          <ol>
-            <li><strong>Domain Expertise ≠ Design Expertise.&nbsp;</strong>Petrophysicists knew their pain points but couldn't articulate solutions. They said "automate everything" but really meant "make manual work faster." I had to translate their needs into design principles.<br><span style="font-size: 1.2rem;"><br><strong>Lesson Learned:</strong></span><span style="font-size: 1.2rem;"> Trust users to tell you problems, not solutions. Probe beneath feature requests to find the real need.<br><br></span></li><li><strong>Preventing Bad Builds is a UX Win.</strong><br>I initially felt disappointed that interface design was far down the backlog, but our research prevented the team from building automated pipelines that would've been rejected by users.<br><span style="font-size: 1.2rem;"><br><strong>Lesson Learned: </strong>In enterprise contexts, preventing bad builds is as valuable as shipping features.<br><br></span></li><li><strong>Show Work to Build Trust.&nbsp;</strong>Petrophysicists initially resisted "black box" automation because they have experienced bad data ruining projects. Once I showed them exactly how validation worked, they became advocates.<br><span style="font-size: 1.2rem;"><br><strong>Lesson Learned: </strong>Transparency isn't just good UX, it's how you earn trust with expert users who have strong mental models.<br><br></span></li><li><strong>Small Sample Sizes Can Be Sufficient in Specialized Domains.&nbsp;</strong>With only 50-60 petrophysicists at ExxonMobil's Houston office, 3 interviews represented 5-6% of the user base. In specialized domains, users share similar workflows. Depth matters more than breadth.<br><br><strong>Lesson Learned</strong>: In enterprise B2B contexts, prioritize deep contextual inquiry over large sample sizes.</li>
-          </ol>
-          <ol>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article17 cid-v7Egrcmnyq" id="article17-fk">
-  
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><strong>FUTURE ROADMAP IDEAS. HOW MIGHT WE...</strong></h3>
-            
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7">
-          <ol>
-            <li><span style="font-size: 1.2rem;"><strong>Proxy Trust Signals when Raw Data Doesn't Exist? </strong>Some legacy wells only have processed data. How can we help users assess reliability when they can't verify the source?<br><br><strong>Maybe we can...</strong>&nbsp;surface metadata transparency (who processed it, when, using what algorithms) and peer validation markers.<br><br></span></li><li><strong>Balance Data Accessibility vs Cognitive Overload? </strong>Users claimed they wanted complete data access, yet complained about being overwhelmed. This tension is solvable through smart defaults and progressive disclosure.<br><br><strong>Maybe we can... </strong>build&nbsp;relevance ranking that surfaces likely-needed datasets while keeping everything accessible.</li><li><strong>Crowdsource quality assessments? </strong>Currently, petrophysicists validate data in isolation. Could there be a collaborative data view?<br><br><strong>Maybe we can... </strong>test a&nbsp;"Flag for review" feature that alerts colleagues when someone spots an issue, building institutional knowledge over time.</li>
-          </ol>
-          <ol>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article12 cid-v7DQy0MpOJ" id="article12-eb">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>REFLECTION</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>“The art of knowing what to leave undone is as important as knowing what to do.”</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">This project taught me that the best UX research changes what gets built. By proving that petrophysicists needed to stay in the data prep workflow, we prevented the product team from spending 6 months building unwanted automation.<br><br>If I could do one thing differently, I'd involve field teams earlier to address offline access from the start rather than deferring it to Phase 2.<br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7GzOdr9Cu" id="article18-j7">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        
-        <div class="mbr-text mbr-fonts-style display-4"><div><em style="font-size: 1rem;">*Certain details have been omitted due to disclosure policies.</em><br></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="content12 cid-v5w42OBy0m" id="content12-1a">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="mayo-telehealth.html">Improving Teleheath</a>
-                    <a class="btn btn-primary display-4" href="nasa-WADs.html">Assembling NASA Rockets</a></div>
-            </div>
-        </div>
-    </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/4374593" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/builder/ai-website-builder.html">AI Website Builder</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
-  
- <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
-    <input name="animation" type="hidden">
-  </body>
+  <script src="js/main.js"></script>
+</body>
 </html>

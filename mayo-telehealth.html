@@ -1,601 +1,326 @@
 <!DOCTYPE html>
-<html  >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/logo-1.png" type="image/x-icon">
-  <meta name="description" content="Restructuring Mayo's Telehealth platform post-COVID">
-  
-  
-  <title>Improving Mayo Clinic's Telehealth Platform</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/animatecss/animate.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=zfKWia"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=zfKWia" type="text/css">
-
-  
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mayo Clinic — Transforming a Pandemic Response into Scalable Care | Frank Teng</title>
+  <meta name="description" content="How service-level UX research helped Mayo Clinic evolve COVID-era video visits into a sustainable telehealth platform: 40% fewer pre-visit questionnaires, 15,000+ added monthly appointment capacity, $1.2M annual savings.">
+  <link rel="canonical" href="https://halcykon.github.io/UXPortfolio/mayo-telehealth.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Mayo Clinic — Transforming a Pandemic Response into Scalable Care">
+  <meta property="og:description" content="Service-level research across Mayo's virtual care ecosystem — and the redesigns it unlocked.">
+  <meta property="og:url" content="https://halcykon.github.io/UXPortfolio/mayo-telehealth.html">
+  <meta property="og:image" content="https://halcykon.github.io/UXPortfolio/assets/images/pexels-tima-miroshnichenko-8376233.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/images/logo-1.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  
-  <section data-bs-version="5.1" class="menu menu2 cid-v5A7g0Nn4L" once="menu" id="menu2-7m">
-    
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container">
-            <div class="navbar-brand">
-                <span class="navbar-logo">
-                    <a href="index.html">
-                        <img src="assets/images/logo-1.png" alt="Frank Teng" style="height: 3.6rem;">
-                    </a>
-                </span>
-                
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#features038-d"><strong>Work</strong></a></li>
-                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="mailto:frank.t.teng@gmail.com"><strong>Contact</strong></a>
-                    </li></ul>
-                
-                
-            </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/images/logo-1.png" alt="" width="42" height="42">
+        <span>Frank Teng</span>
+        <span class="brand-role">/ product design × research</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html#work">Work</a></li>
+          <li><a href="index.html#lab">Lab</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="wrap">
+      <section class="case-hero">
+        <p class="eyebrow">Mayo Clinic · Service design &amp; research</p>
+        <h1>Transforming a pandemic response into a sustainable care platform</h1>
+        <p class="dek">Fixing the hidden friction behind rapidly scaled telehealth.</p>
+
+        <dl class="case-meta">
+          <div>
+            <dt>Duration</dt>
+            <dd>6 months research<br>2 years implementation</dd>
+          </div>
+          <div>
+            <dt>Role</dt>
+            <dd>UX Researcher +<br>Product Manager</dd>
+          </div>
+          <div>
+            <dt>Organization</dt>
+            <dd>Center for Digital Health</dd>
+          </div>
+          <div>
+            <dt>Team</dt>
+            <dd>Video Visits Team, across 11 medical departments</dd>
+          </div>
+        </dl>
+
+        <div class="case-hero-media">
+          <img src="assets/images/pexels-tima-miroshnichenko-8376233.jpeg" alt="A clinician conducting a telehealth video visit from her desk" width="4128" height="2322">
         </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">01</span><span class="label">Problem context</span></div>
+        <h2>Scaling telehealth exposed hidden operational and experience debt.</h2>
+        <div class="prose">
+          <p>Mayo Clinic rapidly expanded video visits during COVID to maintain access to care. While the clinical interaction itself performed well, the supporting systems — scheduling, pre-check-in, portal access, and staff coordination — were not designed for sustained, high-volume virtual care.</p>
+          <p>As a Senior Product Designer within the Center for Digital Health, I was asked to evaluate the end-to-end Video Visit experience to identify systemic breakdowns affecting patients, providers, and operational teams.</p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">02</span><span class="label">The question</span></div>
+        <h2>How might we evolve video visits from a &ldquo;functional&rdquo; solution into a scalable, low-friction care platform?</h2>
+        <div class="prose">
+          <p>Despite strong patient satisfaction scores, Mayo saw rising support costs, provider frustration, and patient abandonment in pre-appointment workflows. The core challenge was not improving the video call itself, but redesigning the product and service layers that enable virtual care at scale.</p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">03</span><span class="label">Our approach</span></div>
+        <h2>Service-level research across the full virtual care ecosystem.</h2>
+        <div class="prose">
+          <p>I led a multi-stakeholder research initiative spanning physicians, patients, and operational staff (DOS, PASS, allied health). Through interviews, journey mapping, service blueprints, and affinity synthesis, I translated over 500 qualitative insights into a small set of prioritized opportunity areas.</p>
+          <p>The work aligned clinical leadership, operations, and IT around shared root causes and informed a phased roadmap balancing immediate workflow improvements with longer-term platform investments.</p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">04</span><span class="label">Business impact*</span></div>
+        <h2>Research-driven prioritization enabled measurable operational gains.</h2>
+        <ul class="stat-list">
+          <li>
+            <span class="stat-value">40%</span>
+            <span class="stat-desc">reduction in mandatory patient questionnaires, lowering pre-visit friction while maintaining clinical quality</span>
+          </li>
+          <li>
+            <span class="stat-value">15,000+</span>
+            <span class="stat-desc">increase in monthly appointment capacity through streamlined registration and check-in workflows</span>
+          </li>
+          <li>
+            <span class="stat-value">$1.2M</span>
+            <span class="stat-desc">in annual cost savings via automation and reduced support burden</span>
+          </li>
+        </ul>
+        <div class="prose mt-3">
+          <ul>
+            <li>Improved provider efficiency and reduced scheduling errors by clarifying hybrid in-person / video workflows</li>
+            <li>Foundational research artifact that continues to guide telehealth platform evolution and prioritization</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">05</span><span class="label">Research approach</span></div>
+        <h2>Uncovering systemic issues through a holistic investigation of Mayo&rsquo;s virtual ecosystem.</h2>
+        <div class="impact-groups">
+          <div>
+            <h3>Participants</h3>
+            <ul>
+              <li><strong>15 providers</strong> — physicians, nurses, specialists across 4 geographic regions. Focus: clinical workflow disruption, communication gaps, hybrid scheduling challenges</li>
+              <li><strong>17 operational staff</strong> — front desk and scheduling teams. Focus: patient support burden, system workarounds, cross-location coordination issues</li>
+              <li><strong>6 patients</strong> — video visit users. Focus: pre-appointment confusion, portal setup friction, notification gaps</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Methods</h3>
+            <ul>
+              <li><strong>Affinity diagramming</strong> to synthesize 500+ statements into thematic clusters</li>
+              <li><strong>Service blueprinting</strong> to map front-stage and back-stage operational handoffs</li>
+              <li><strong>Journey mapping</strong> to identify pain points across the pre-visit, visit, and post-visit continuum</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="sub-h3">Research deliverables</h3>
+        <div class="fig-row">
+          <figure>
+            <img src="assets/images/1.1-research-affinity-diagram-1.png" alt="Affinity diagram clustering 500+ research statements into themes" loading="lazy" width="2228" height="1166">
+            <figcaption>Affinity diagram — 500+ statements synthesized into thematic clusters</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/1.2-research-service-blueprint.png" alt="Service blueprint mapping front-stage and back-stage telehealth operations" loading="lazy" width="2236" height="1250">
+            <figcaption>Service blueprint — front-stage and back-stage handoffs</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/1.3-research-customer-journey-map.png" alt="Customer journey map of the video visit experience" loading="lazy" width="2220" height="1242">
+            <figcaption>Journey map — pain points across pre-visit, visit, and post-visit</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">06</span><span class="label">Key insights</span></div>
+        <h2>Four systemic breakdowns — and the design responses to each.</h2>
+
+        <article class="insight">
+          <h3>Questionnaire overload was the #1 barrier to pre-visit completion.</h3>
+          <p>Patients were abandoning pre-check-in workflows at alarming rates. Allied health staff identified redundant questionnaires as the single biggest complaint. Patients reported filling out identical forms multiple times — for rescheduled appointments, same-day visits, or across different modalities (phone vs. video).</p>
+          <p class="response"><strong>Design response:</strong> a two-pronged approach — (1) ruthlessly audit questionnaires to retain only provider-essential items, and (2) implement smart form logic to recognize context (same-day appointments, reschedules, modality switches). This became a high-priority engineering initiative that ultimately reduced questionnaires by 40%.</p>
+        </article>
+
+        <article class="insight">
+          <h3>Providers couldn&rsquo;t see or communicate with virtual patients the way they could in person.</h3>
+          <p>In physical clinics, providers could peek into exam rooms, walk to the front desk, or visually assess patient flow. In video visits, they lost all spatial awareness. When running late, they had no way to reassure patients. When patients were late, they had no way to know.</p>
+          <p class="response"><strong>Design response:</strong> persistent visual representations of patient/provider status (inspired by &ldquo;traffic light&rdquo; systems) and a dedicated virtual staff hotline for providers — plus simple pre-call messages to patients (&ldquo;I&rsquo;ll be right with you&rdquo;), reducing anxiety on both sides.</p>
+        </article>
+
+        <article class="insight">
+          <h3>Mixing in-person and virtual appointments disrupted clinical flow and increased errors.</h3>
+          <p>Providers juggling hybrid schedules experienced constant mode-switching friction. In-person visits are inherently flexible (you can see a patient early, juggle exam rooms, peek in to update wait times). Video visits are rigid — one patient at a time, scheduled to the minute. Switching between these modes created delays, scheduling errors, and cognitive load.</p>
+          <p class="response"><strong>Design response:</strong> thoughtfully designed time-blocking as a scheduling principle, enabling providers to cluster video visits and maintain focus. This required operational policy shifts, scheduling tool updates, and change management — but addressed a root cause of provider dissatisfaction.</p>
+        </article>
+
+        <article class="insight">
+          <h3>The &ldquo;digital front door&rdquo; wasn&rsquo;t ready for the volume it needed to handle.</h3>
+          <p>Mayo scheduled video visits without requiring active Patient Portal accounts, assuming patients would complete setup on their own. This created a cascade of issues: missed notifications (sent only to the Portal inbasket), expired activation links (7-day expiration), and massive manual support burden for DOS/PASS teams.</p>
+          <p class="response"><strong>Design response:</strong> treat Portal activation as a prerequisite for video scheduling (policy shift), implement context-aware interactive setup guides, and prioritize UX-debt reduction in the web/app experience — with notification redundancy so critical messages reach patients via email/SMS, not just the Portal inbasket.</p>
+        </article>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">07</span><span class="label">Recommendations</span></div>
+        <h2>A phased roadmap balancing quick wins and systemic transformation.</h2>
+        <div class="impact-groups">
+          <div>
+            <h3>Immediate · 0&ndash;3 months</h3>
+            <ul>
+              <li>Audit and reduce mandatory questionnaires by 40%</li>
+              <li>Implement smart form logic to prevent redundant questionnaire loops</li>
+              <li>Create a dedicated virtual staff hotline for provider-to-staff communication</li>
+              <li>Pilot video-only time blocks in high-volume departments</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Near-term · 3&ndash;6 months</h3>
+            <ul>
+              <li>Redesign pre-check-in UX with progressive disclosure and auto-fill</li>
+              <li>Implement persistent visual status indicators for patients and providers</li>
+              <li>Enable direct provider-to-patient messaging (&ldquo;I&rsquo;ll be right with you&rdquo;)</li>
+              <li>Require active Portal accounts before scheduling video visits</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Long-term · 6&ndash;12 months</h3>
+            <ul>
+              <li>Build context-aware notification logic across channels (email, SMS, Portal)</li>
+              <li>Create a telehealth &ldquo;best practices&rdquo; handbook for provider onboarding</li>
+              <li>Redesign the waiting room experience to reduce patient anxiety</li>
+              <li>Develop scheduling tools that intelligently support hybrid in-person/virtual workflows</li>
+            </ul>
+          </div>
+        </div>
+
+        <figure>
+          <img src="assets/images/2.1-example-one-pager.png" alt="Example one-pager distilling a research finding for stakeholders" loading="lazy" width="1288" height="820">
+          <figcaption>Research reports often become &ldquo;shelf-ware.&rdquo; To prevent this, I distilled 24 findings into scannable one-pagers that stakeholders could reference in real time during workshops and planning sessions.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">08</span><span class="label">Outcomes &amp; impact</span></div>
+        <h2>Transforming insights into measurable operational goals.</h2>
+        <div class="impact-groups">
+          <div>
+            <h3>Operational efficiency</h3>
+            <ul>
+              <li><strong>40% reduction</strong> in pre-visit questionnaires, directly addressing the #1 patient complaint</li>
+              <li><strong>15,000+ monthly appointment capacity</strong> increase through streamlined workflows</li>
+              <li><strong>$1.2M annual cost savings</strong> from reduced support burden and automation</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Provider experience</h3>
+            <ul>
+              <li>Video time-blocking pilots expanded across departments, improving efficiency and work-life balance</li>
+              <li>Clearer communication channels reduced provider frustration and scheduling errors</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Patient experience</h3>
+            <ul>
+              <li>Lower pre-check-in abandonment rates</li>
+              <li>Reduced anxiety through clearer expectations and status visibility</li>
+              <li>More inclusive care — easier for long-distance caregivers to participate</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Strategic value</h3>
+            <ul>
+              <li>Research artifact continues to guide product roadmap prioritization</li>
+              <li>Service blueprints and journey maps adopted as organizational reference tools</li>
+              <li>Insights directly informed subsequent design system and platform investments</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="kicker"><span class="num" aria-hidden="true">09</span><span class="label">Reflection</span></div>
+        <h2>What I learned designing for complex healthcare systems.</h2>
+        <ol class="learnings">
+          <li>
+            <h3>The hardest problems exist between roles, not within them.</h3>
+            <p>The biggest opportunities weren&rsquo;t UX issues isolated to a single screen. They were systemic breakdowns in how different teams coordinated. Providers couldn&rsquo;t reach DOS. DOS couldn&rsquo;t understand provider schedules. Patients didn&rsquo;t know PASS had scheduled them. Solving these required service design thinking, not just interface design.</p>
+          </li>
+          <li>
+            <h3>Research artifacts matter as much as research insights.</h3>
+            <p>The service blueprints, journey maps, and affinity diagrams I created became shared references across clinical, operational, and IT teams. They created a common language for talking about problems that had previously felt isolated to individual departments.</p>
+          </li>
+          <li>
+            <h3>Scaling requires rethinking, not just improving.</h3>
+            <p>Mayo&rsquo;s instinct was to &ldquo;fix&rdquo; the video visit experience incrementally. What the research revealed was that the underlying service model — designed for emergency pandemic response — needed fundamental restructuring to support sustained, high-volume care. Sometimes the right design move is advocating for operational and policy change, not just interface improvements.</p>
+          </li>
+          <li>
+            <h3>Telehealth isn&rsquo;t just &ldquo;video calls&rdquo; — it&rsquo;s an entire ecosystem.</h3>
+            <p>The success of a 30-minute clinical conversation depends on dozens of invisible workflows: scheduling, portal access, pre-check-in, notifications, staff coordination, post-visit documentation. Designing for telehealth means designing the entire service layer, not just the moment of care.</p>
+          </li>
+        </ol>
+      </section>
+
+      <p class="footnote">*Certain details have been omitted due to disclosure policies. This case study is a condensed view of a complex, multi-year initiative — there&rsquo;s significantly more depth to share around research methodology, detailed findings, stakeholder alignment strategies, and implementation nuances. I&rsquo;m happy to discuss the full scope in conversation and can provide the complete 61-page research report upon request.</p>
+    </div>
+
+    <nav class="case-next" aria-label="Next case study">
+      <div class="wrap">
+        <span class="next-label">Next case study</span>
+        <a href="exxonmobil-upstream.html">ExxonMobil — Streamlining subsurface data analysis &rarr;</a>
+      </div>
     </nav>
-</section>
+  </main>
 
-<section data-bs-version="5.1" class="header10 cid-v5A7g1FPvT" id="header10-7n">
-
-    
-
-    
-    
-
-    <div class="align-center container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h1 class="mbr-section-title mbr-fonts-style mb-3 display-2"><strong>Transforming a Pandemic Response into </strong><br><strong>a Sustainable Care Platform</strong></h1>
-                <p class="mbr-text mbr-fonts-style display-7">Fixing the hidden friction behind rapidly scaled telehealth<br></p>
-                
-                <div class="image-wrap mt-4">
-                    <img src="assets/images/mayo.jpg" alt="Mayo Clinic logo" title="">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="social06 cid-v7DltaO5Qd" id="social06-ax">
-	
-
-	
-	
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-12 content-head">
-				
-			</div>
-		</div>
-		<div class="row">
-			<div class="item features-without-image col-12 col-md-6 col-lg-3 active">
-				<div class="item-wrapper">
-					
-					<div class="card-box">
-						<h4 class="card-title mbr-fonts-style mb-1 display-5">
-							<strong>Duration</strong></h4>
-						<h5 class="card-text mbr-fonts-style display-7">6 months (research)<br>2 years (implementation)</h5>
-					</div>
-				</div>
-			</div>
-
-			<div class="item features-without-image col-12 col-md-6 col-lg-3">
-				<div class="item-wrapper">
-					
-					<div class="card-box">
-						<h4 class="card-title mbr-fonts-style mb-1 display-5">
-							<strong>Role</strong></h4>
-						<h5 class="card-text mbr-fonts-style display-7">UX Researcher +<br>Product Manager</h5>
-					</div>
-				</div>
-			</div><div class="item features-without-image col-12 col-md-6 col-lg-3">
-				<div class="item-wrapper">
-					
-					<div class="card-box">
-						<h4 class="card-title mbr-fonts-style mb-1 display-5"><p><strong>Organization</strong></p></h4>
-						<h5 class="card-text mbr-fonts-style display-7">Center for Digital Health</h5>
-					</div>
-				</div>
-			</div><div class="item features-without-image col-12 col-md-6 col-lg-3">
-				<div class="item-wrapper">
-					
-					<div class="card-box">
-						<h4 class="card-title mbr-fonts-style mb-1 display-5">
-							<strong>Team</strong></h4>
-						<h5 class="card-text mbr-fonts-style display-7">Video Visits Team<br>Across 11 medical depts.<br></h5>
-					</div>
-				</div>
-			</div>
-			
-			
-		</div>
-	</div>
-</section>
-
-<section data-bs-version="5.1" class="article12 cid-v7DMVUmUYF" id="article12-dm">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>PROBLEM CONTEXT</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Scaling telehealth exposed hidden operational and experience debt.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Mayo Clinic rapidly expanded video visits during COVID to maintain access to care. While the clinical interaction itself performed well, <strong>the supporting systems—scheduling, pre-check-in, portal access, and staff coordination—were not designed for sustained, high-volume virtual care.<br></strong><br>As a Senior Product Designer within the Center for Digital Health, I was asked to evaluate the end-to-end Video Visit experience to identify systemic breakdowns affecting patients, providers, and operational teams.<br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article12 cid-v7DKSkCt7O" id="article12-dj">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>THE QUESTION</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>How might we evolve video visits from a “functional” solution into a scalable, low-friction care platform?</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Despite strong patient satisfaction scores, Mayo saw rising support costs, provider frustration, and patient abandonment in pre-appointment workflows. <br><br><strong>The core challenge was not improving the video call itself, but redesigning the product and service layers that enable virtual care at scale.</strong><br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article12 cid-v7DKTjdcg0" id="article12-dk">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>OUR APPROACH</strong></h3>
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Service-level research across the full virtual care ecosystem.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">I led a multi-stakeholder research initiative spanning physicians, patients, and operational staff (DOS, PASS, allied health). Through interviews, journey mapping, service blueprints, and affinity synthesis, I translated over 500 qualitative insights into a small set of prioritized opportunity areas.<br><br>The work aligned clinical leadership, operations, and IT around shared root causes and informed a phased roadmap balancing immediate workflow improvements with longer-term platform investments.<br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7KaOfXdO6" id="article18-jt">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><strong>BUSINESS IMPACT*</strong></h3>
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-5"><strong>Research-driven prioritization enabled measurable operational gains.</strong></h5>
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7">
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="cols">
+        <p class="sig">Frank Teng</p>
+        <nav aria-label="Footer">
           <ul>
-            <li><strong>40% reduction in mandatory patient questionnaires</strong>, lowering pre-visit friction while maintaining clinical quality</li><li><strong>15,000+ increase in monthly appointment capacity </strong>through streamlined registration and check-in workflows</li><li><strong>$1.2M in annual cost savings </strong>via automation and reduced support burden</li><li><strong>Improved provider efficiency and reduced scheduling errors</strong> by clarifying hybrid in-person / video workflows</li><li><strong>Foundational research artifact</strong> that continues to guide telehealth platform evolution and prioritization</li></ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7Szw93bKe" id="article18-ka">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        
-        <div class="mbr-text mbr-fonts-style display-4"><div><em style="font-size: 1rem;">*Certain details have been omitted due to disclosure policies.</em><br></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7Kgcmxlq0" id="article18-jv">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><strong>RESEARCH APPROACH</strong></h3>
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-5"><strong>Uncovering systemic issues through a holistic investigation of Mayo's virtual ecosystem.</strong></h5>
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7">
-          <div>To understand the complete service experience, I designed a research program targeting three distinct user groups with tailored methodologies.</div><p><br></p><p><strong>Participants</strong></p><ul><li>15 Providers (Physicians, Nurses, Specialists across 4 geographic regions)<br><strong>Focus</strong>: Clinical workflow disruption, communication gaps, hybrid scheduling challenges</li><li>17 Operational staff (front desk, scheduling teams)<br><strong>Focus</strong>: Patient support burden, system workarounds, cross-location coordination issues</li><li>6 Patients (Video visit users)<br><strong>Focus</strong>: Pre-appointment confusion, portal setup friction, notification gaps</li></ul><p><strong>Methods</strong></p><ul><li><strong>Affinity diagramming</strong> to synthesize 500+ statements into thematic clusters</li><li><strong>Service blueprinting</strong> to map front-stage and back-stage operational handoffs</li><li><strong>Journey mapping to identify pain points</strong> across the pre-visit, visit, and post-visit continuumDeep qualitative interviews, service blueprinting, and affinity mapping.</li>
+            <li><a href="index.html#work">Work</a></li>
+            <li><a href="index.html#lab">Lab</a></li>
+            <li><a href="https://github.com/Halcykon" rel="noopener">GitHub</a></li>
+            <li><a href="mailto:frank.t.teng@gmail.com">Email</a></li>
           </ul>
-        </div>
+        </nav>
+      </div>
+      <div class="fine">
+        <span>&copy; 2026 Frank Teng</span>
+        <span>Hand-coded HTML &amp; CSS — no frameworks, no builders.</span>
       </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-<section data-bs-version="5.1" class="gallery6 mbr-gallery cid-v7Kh0YZcfk" id="gallery6-jx">
-    
-
-    
-    
-
-    <div class="container">
-        <div class="mbr-section-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center m-0 display-2"><strong>Research Deliverables</strong></h3>
-            
-        </div>
-        <div class="row mbr-gallery mt-4">
-            
-            
-            
-            <div class="col-12 col-md-6 col-lg-4 item gallery-image active">
-                <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#v7SFZYuqhU-modal" data-bs-target="#v7SFZYuqhU-modal">
-                    <img class="w-100" src="assets/images/1.1-research-affinity-diagram-1.png" alt="1.1 Research - Affinity Diagram" data-slide-to="0" data-bs-slide-to="0" data-target="#lb-v7SFZYuqhU" data-bs-target="#lb-v7SFZYuqhU">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div><div class="col-12 col-md-6 col-lg-4 item gallery-image active">
-                <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#v7SFZYuqhU-modal" data-bs-target="#v7SFZYuqhU-modal">
-                    <img class="w-100" src="assets/images/1.2-research-service-blueprint.png" alt="1.2 Research - Service Blueprint" data-slide-to="1" data-bs-slide-to="1" data-target="#lb-v7SFZYuqhU" data-bs-target="#lb-v7SFZYuqhU">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div><div class="col-12 col-md-6 col-lg-4 item gallery-image active">
-                <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#v7SFZYuqhU-modal" data-bs-target="#v7SFZYuqhU-modal">
-                    <img class="w-100" src="assets/images/1.3-research-customer-journey-map.png" alt="1.3 Research - Customer Journey Map" data-slide-to="2" data-bs-slide-to="2" data-target="#lb-v7SFZYuqhU" data-bs-target="#lb-v7SFZYuqhU">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-
-        <div class="modal mbr-slider" tabindex="-1" role="dialog" aria-hidden="true" id="v7SFZYuqhU-modal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="carousel slide carousel-fade" id="lb-v7SFZYuqhU" data-interval="5000" data-bs-interval="5000">
-                            <div class="carousel-inner">
-                                
-                                
-                                
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="assets/images/1.1-research-affinity-diagram-1.png" alt="Mobirise Website Builder">
-                                </div><div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/1.2-research-service-blueprint.png" alt="Mobirise Website Builder">
-                                </div><div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/1.3-research-customer-journey-map.png" alt="Mobirise Website Builder">
-                                </div>
-                            </div>
-                            <ol class="carousel-indicators">
-                                <li data-slide-to="0" data-bs-slide-to="0" class="active" data-target="#lb-v7SFZYuqhU" data-bs-target="#lb-v7SFZYuqhU"></li><li data-slide-to="1" data-bs-slide-to="1" class="" data-target="#lb-v7SFZYuqhU" data-bs-target="#lb-v7SFZYuqhU"></li><li data-slide-to="2" data-bs-slide-to="2" class="" data-target="#lb-v7SFZYuqhU" data-bs-target="#lb-v7SFZYuqhU"></li>
-                                
-                                
-                                
-                            </ol>
-                            <a role="button" href="" class="close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close">
-                            </a>
-                            <a class="carousel-control-prev carousel-control" role="button" data-slide="prev" data-bs-slide="prev" href="#lb-v7SFZYuqhU">
-                                <span class="mobi-mbri mobi-mbri-arrow-prev" aria-hidden="true"></span>
-                                <span class="sr-only visually-hidden">Previous</span>
-                            </a>
-                            <a class="carousel-control-next carousel-control" role="button" data-slide="next" data-bs-slide="next" href="#lb-v7SFZYuqhU">
-                                <span class="mobi-mbri mobi-mbri-arrow-next" aria-hidden="true"></span>
-                                <span class="sr-only visually-hidden">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article12 cid-v7KigGnwir" id="article12-jy">    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-1"><strong>KEY INSIGHTS</strong></h3>
-                
-                
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v7SwgHAwmr" id="article07-k3">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-9">
-        <div class="card-wrapper">
-          
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>Questionnaire overload was the #1 barrier to pre-visit completion.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Patients were abandoning pre-check-in workflows at alarming rates. Allied health staff identified redundant questionnaires as the single biggest complaint. Patients reported filling out identical forms multiple times—for rescheduled appointments, same-day visits, or across different modalities (phone vs. video).<br><br><strong>Design Response:&nbsp;</strong>I recommended a two-pronged approach.<br>(1) ruthlessly audit questionnaires to retain only provider-essential items, and <br>(2) implement smart form logic to recognize context (same-day appointments, reschedules, modality switches). <br>This became a high-priority engineering initiative that ultimately reduced questionnaires by 40%.<br></p>
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v7SwG2iYCt" id="article07-k4">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-9">
-        <div class="card-wrapper">
-          
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>Providers couldn't see or communicate with virtual patients the way they could in-person.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">In physical clinics, providers could peek into exam rooms, walk to the front desk, or visually assess patient flow. In video visits, they lost all spatial awareness. When running late, they had no way to reassure patients. When patients were late, they had no way to know.<br><br><strong>Design Response:&nbsp;</strong>I proposed creating persistent visual representations of patient/provider status (inspired by "traffic light" systems) and a dedicated virtual staff hotline for providers. Additionally, I recommended allowing providers to send simple pre-call messages to patients ("I'll be right with you"), reducing anxiety on both sides.<br></p>
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v7SwMM4MHz" id="article07-k5">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-9">
-        <div class="card-wrapper">
-          
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>Mixing in-person and virtual appointments disrupted clinical flow and increased errors.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Providers juggling hybrid schedules experienced constant mode-switching friction. In-person visits are inherently flexible (you can see a patient early, juggle exam rooms, peek in to update wait times). Video visits are rigid—one patient at a time, scheduled to the minute. Switching between these modes created delays, scheduling errors, and cognitive load.<br><strong><br></strong><br><strong>Design Response:&nbsp;</strong>I advocated for thoughtfully designed time-blocking as a scheduling principle, enabling providers to cluster video visits and maintain focus. This required operational policy shifts, scheduling tool updates, and change management—but addressed a root cause of provider dissatisfaction.<br></p>
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v7SwTOFE1c" id="article07-k6">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-9">
-        <div class="card-wrapper">
-          
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"><strong>The "digital front door" wasn't ready for the volume it needed to handle.</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Mayo scheduled video visits without requiring active Patient Portal accounts, assuming patients would complete setup on their own. This created a cascade of issues: missed notifications (sent only to Portal inbasket), expired activation links (7-day expiration), and massive manual support burden for DOS/PASS teams.<strong><br></strong><br><strong>Design Response:&nbsp;</strong>I recommended treating Portal activation as a prerequisite for video scheduling (policy shift), implementing context-aware interactive guides for setup, and prioritizing UX debt reduction in the web/app experience. I also advocated for notification redundancy—ensuring critical messages reached patients via email/SMS, not just Portal inbasket.<br></p>
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7Sxc0szDd" id="article18-k7">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><strong>RECOMMENDATIONS</strong></h3>
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-5"><strong>A phased roadmap balancing quick wins and systemic transformation.</strong></h5>
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7">
-          <div>I synthesized findings into a tiered action framework.</div><div><br></div><div><br></div><p><strong>Immediate (0-3 months)</strong></p><ul><li>Audit and reduce mandatory questionnaires by 40%</li><li>Implement smart form logic to prevent redundant questionnaire loops</li><li>Create a dedicated virtual staff hotline for provider-to-staff communication</li><li>Pilot video-only time blocks in high-volume departments</li></ul><p><br></p><p><strong>Near-term (3-6 months)</strong></p><ul><li>Redesign pre-check-in UX with progressive disclosure and auto-fill</li><li>Implement persistent visual status indicators for patients and providers</li><li>Enable direct provider-to-patient messaging ("I'll be right with you")</li><li>Require active Portal accounts before scheduling video visits</li></ul><p><br></p><p><strong>Long-term (6-12 months)</strong></p><ul><li>Build context-aware notification logic across channels (email, SMS, Portal)</li><li>Create telehealth "best practices" handbook for provider onboarding</li><li>Redesign waiting room experience to reduce patient anxiety</li><li>Develop scheduling tools that intelligently support hybrid in-person/virtual workflows</li></ul><p><br></p><ul>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="gallery6 mbr-gallery cid-v7SAXCKAiN" id="gallery6-kd">
-    
-
-    
-    
-
-    <div class="container">
-        
-        <div class="row mbr-gallery mt-4">
-            <div class="col-12 col-md-6 col-lg-12 item gallery-image">
-                <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#v7SFZZEVBf-modal" data-bs-target="#v7SFZZEVBf-modal">
-                    <img class="w-100" src="assets/images/2.1-example-one-pager.png" alt="2.1 Example One Pager" data-slide-to="0" data-bs-slide-to="0" data-target="#lb-v7SFZZEVBf" data-bs-target="#lb-v7SFZZEVBf">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7"><em>Research reports often become "shelf-ware". To prevent this, I distilled 24 findings into scannable one-pagers that stakeholders could reference in real-time during workshops and planning sessions.</em></h6>
-            </div>
-            
-            
-            
-        </div>
-
-        <div class="modal mbr-slider" tabindex="-1" role="dialog" aria-hidden="true" id="v7SFZZEVBf-modal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="carousel slide" id="lb-v7SFZZEVBf" data-interval="5000" data-bs-interval="5000">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="assets/images/2.1-example-one-pager.png" alt="Mobirise Website Builder">
-                                </div>
-                                
-                                
-                                
-                            </div>
-                            <ol class="carousel-indicators">
-                                <li data-slide-to="0" data-bs-slide-to="0" class="active" data-target="#lb-v7SFZZEVBf" data-bs-target="#lb-v7SFZZEVBf"></li>
-                                
-                                
-                                
-                            </ol>
-                            <a role="button" href="" class="close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close">
-                            </a>
-                            <a class="carousel-control-prev carousel-control" role="button" data-slide="prev" data-bs-slide="prev" href="#lb-v7SFZZEVBf">
-                                <span class="mobi-mbri mobi-mbri-arrow-prev" aria-hidden="true"></span>
-                                <span class="sr-only visually-hidden">Previous</span>
-                            </a>
-                            <a class="carousel-control-next carousel-control" role="button" data-slide="next" data-bs-slide="next" href="#lb-v7SFZZEVBf">
-                                <span class="mobi-mbri mobi-mbri-arrow-next" aria-hidden="true"></span>
-                                <span class="sr-only visually-hidden">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7SxMIcJFG" id="article18-k8">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1"><strong>OUTCOMES &amp; IMPACT</strong></h3>
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-5"><strong>Transforming insights to measurable operational goals.</strong></h5>
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7">
-          <div>This research became the strategic foundation for Mayo's telehealth evolution. <br>Key outcomes included:</div><div><br></div><div><br></div><p><strong>Operational Efficiency</strong></p><ul><li>40% reduction in pre-visit questionnaires, directly addressing the #1 patient complaint</li><li>15,000+ monthly appointment capacity increase through streamlined workflows</li><li>$1.2M annual cost savings from reduced support burden and automation</li></ul><p><br></p><p><strong>Provider Experience</strong></p><ul><li>Video time-blocking pilots expanded across departments, improving efficiency and work-life balance</li><li>Clearer communication channels reduced provider frustration and scheduling errors</li></ul><p><br></p><p><strong>Patient Experience</strong></p><ul><li>Lower pre-check-in abandonment rates</li><li>Reduced anxiety through clearer expectations and status visibility</li><li>More inclusive care (easier for long-distance caregivers to participate)</li></ul><p><br></p><p><strong>Strategic Value</strong></p><ul><li>Research artifact continues to guide product roadmap prioritization</li><li>Service blueprints and journey maps adopted as organizational reference tools</li><li>Insights directly informed subsequent design system and platform investments</li></ul><p><br></p><ul>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article18 cid-v7SyEp4yvC" id="article18-k9">
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="counter-container col-md-12 col-lg-9">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 content-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1">
-              <strong>REFLECTION</strong></h3>
-            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-5"><strong>What I learned designing for complex healthcare systems</strong></h5>
-          </div>
-        </div>
-        <div class="mbr-text mbr-fonts-style display-7">
-          <ul>
-            <li><strong>The hardest problems exist between roles, not within them.<br></strong>The biggest opportunities weren't UX issues isolated to a single screen. They were systemic breakdowns in how different teams coordinated. Providers couldn't reach DOS. DOS couldn't understand provider schedules. Patients didn't know PASS had scheduled them. Solving these required service design thinking, not just interface design.</li><li><strong>Research artifacts matter as much as research insights.<br></strong>The service blueprints, journey maps, and affinity diagrams I created became shared references across clinical, operational, and IT teams. They created a common language for talking about problems that had previously felt isolated to individual departments.</li><li><strong>Scaling requires rethinking, not just improving.<br></strong>Mayo's instinct was to "fix" the video visit experience incrementally. What the research revealed was that the underlying service model—designed for emergency pandemic response—needed fundamental restructuring to support sustained, high-volume care. Sometimes the right design move is advocating for operational and policy change, not just interface improvements.</li><li><strong>Telehealth isn't just "video calls"; it's an entire ecosystem.<br></strong>The success of a 30-minute clinical conversation depends on dozens of invisible workflows: scheduling, portal access, pre-check-in, notifications, staff coordination, post-visit documentation. Designing for telehealth means designing the entire service layer, not just the moment of care.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="article07 cid-v7SA0JuDoa" id="article07-kb">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-9">
-        <div class="card-wrapper">
-          
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                
-                <p class="mbr-text mbr-fonts-style display-4"><em><strong>Note</strong></em><br><br>This case study represents a condensed view of a complex, multi-year initiative. There's significantly more depth to share around research methodology, detailed findings, stakeholder alignment strategies, and implementation nuances.<br><br>I'm happy to discuss the full scope of this work in conversation and can provide the complete 61-page research report upon request.</p>
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-bs-version="5.1" class="content12 cid-v5A7g9EFiW" id="content12-8w">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="index.html">Portfolio Page</a>
-                    <a class="btn btn-primary display-4" href="exxonmobil-upstream.html">Redesigning Upstream&nbsp;</a></div>
-            </div>
-        </div>
-    </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/4374593" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/drag-drop-website-builder.html">Drag & Drop Website Builder</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
-  
- <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
-    <input name="animation" type="hidden">
-  </body>
+  <script src="js/main.js"></script>
+</body>
 </html>
