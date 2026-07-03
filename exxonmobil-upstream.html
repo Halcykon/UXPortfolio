@@ -12,14 +12,16 @@
   <meta property="og:url" content="https://halcykon.github.io/UXPortfolio/exxonmobil-upstream.html">
   <meta property="og:image" content="https://halcykon.github.io/UXPortfolio/assets/images/upstream-it.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0c0b09">
   <link rel="icon" href="assets/images/logo-1.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div id="read-progress" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="wrap">
@@ -41,13 +43,39 @@
 
   <main id="main">
 
-    <div class="wrap">
-      <section class="case-hero">
-        <p class="eyebrow">ExxonMobil · Research &amp; interaction design</p>
+    <header class="chapter">
+      <div class="bgimg" style="background-image:url('assets/images/upstream-it.jpg')" role="img" aria-label="Spatial data validation dashboard showing wells on an interactive map with freshness indicators"></div>
+      <div class="inner wrap">
+        <p class="case-no">Case 02 · ExxonMobil · Research &amp; interaction design</p>
         <h1>Improving upstream data analysis</h1>
         <p class="dek">Restructuring how petrophysicists understand subsurface data.</p>
+      </div>
+    </header>
 
-        <dl class="case-meta">
+    <div class="wrap">
+      <div class="case-layout">
+        <aside class="case-rail">
+          <nav aria-label="Chapters">
+            <p class="rail-title">Chapters</p>
+            <a href="#s01">01 · The original ask</a>
+            <a href="#s02">02 · Uncovering the real issue</a>
+            <a href="#s03">03 · The solution</a>
+            <a href="#s04">04 · Challenge</a>
+            <a href="#s05">05 · Research process</a>
+            <a href="#s06">06 · Critical findings</a>
+            <a href="#s07">07 · Pivoting from learnings</a>
+            <a href="#s08">08 · Design exploration</a>
+            <a href="#s09">09 · Interface design &amp; testing</a>
+            <a href="#s10">10 · Final design</a>
+            <a href="#s11">11 · Tech constraints</a>
+            <a href="#s12">12 · Outcome</a>
+            <a href="#s13">13 · What I learned</a>
+            <a href="#s14">14 · Future roadmap ideas</a>
+            <a href="#s15">15 · Reflection</a>
+          </nav>
+        </aside>
+        <div class="case-main">
+          <dl class="case-meta">
           <div>
             <dt>Duration</dt>
             <dd>6 months</dd>
@@ -66,12 +94,8 @@
           </div>
         </dl>
 
-        <div class="case-hero-media">
-          <img src="assets/images/upstream-it.jpg" alt="Spatial data validation dashboard showing wells on an interactive map with freshness indicators" width="2511" height="1395">
-        </div>
-      </section>
-
-      <section class="case-section">
+<section class="case-section" id="s01">
+        <span class="ghost-num" aria-hidden="true">01</span>
         <div class="kicker"><span class="num" aria-hidden="true">01</span><span class="label">The original ask</span></div>
         <h2>Automate data preparation so petrophysicists can focus on critical work.</h2>
         <div class="prose">
@@ -80,7 +104,8 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s02">
+        <span class="ghost-num" aria-hidden="true">02</span>
         <div class="kicker"><span class="num" aria-hidden="true">02</span><span class="label">Uncovering the real issue</span></div>
         <h2>Petrophysicists analyzed data they couldn&rsquo;t trust.</h2>
         <div class="prose">
@@ -89,7 +114,8 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s03">
+        <span class="ghost-num" aria-hidden="true">03</span>
         <div class="kicker"><span class="num" aria-hidden="true">03</span><span class="label">The solution</span></div>
         <h2>Reduced data processing time by designing a workflow that aligned with mental models.</h2>
         <div class="prose">
@@ -97,11 +123,11 @@
         </div>
         <ul class="stat-list mt-4">
           <li>
-            <span class="stat-value">40%</span>
+            <span class="stat-value" data-count="40" data-suffix="%">40%</span>
             <span class="stat-desc">reduction in data prep time (25&ndash;30 hrs/week &rarr; 11&ndash;14 hrs/week)</span>
           </li>
           <li>
-            <span class="stat-value">85%</span>
+            <span class="stat-value" data-count="85" data-suffix="%">85%</span>
             <span class="stat-desc">of errors caught within the first week — versus 6&ndash;8 weeks before</span>
           </li>
           <li>
@@ -117,7 +143,8 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s04">
+        <span class="ghost-num" aria-hidden="true">04</span>
         <div class="kicker"><span class="num" aria-hidden="true">04</span><span class="label">Challenge</span></div>
         <h2>It is expensive to keep datasets accurate and updated.</h2>
         <div class="prose">
@@ -126,7 +153,8 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s05">
+        <span class="ghost-num" aria-hidden="true">05</span>
         <div class="kicker"><span class="num" aria-hidden="true">05</span><span class="label">Research process</span></div>
         <h2>How is data relayed from one user to the next? How is it transformed?</h2>
         <div class="prose">
@@ -173,7 +201,8 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s06">
+        <span class="ghost-num" aria-hidden="true">06</span>
         <div class="kicker"><span class="num" aria-hidden="true">06</span><span class="label">Critical findings</span></div>
         <h2>Four findings that reframed the problem.</h2>
 
@@ -204,7 +233,8 @@
         </article>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s07">
+        <span class="ghost-num" aria-hidden="true">07</span>
         <div class="kicker"><span class="num" aria-hidden="true">07</span><span class="label">Pivoting from learnings</span></div>
         <h2>Augment — don&rsquo;t automate — data validation.</h2>
         <div class="prose">
@@ -226,7 +256,8 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s08">
+        <span class="ghost-num" aria-hidden="true">08</span>
         <div class="kicker"><span class="num" aria-hidden="true">08</span><span class="label">Design exploration</span></div>
         <h2>I ran a co-design session with an expert user.</h2>
         <div class="prose">
@@ -253,7 +284,8 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s09">
+        <span class="ghost-num" aria-hidden="true">09</span>
         <div class="kicker"><span class="num" aria-hidden="true">09</span><span class="label">Interface design &amp; testing</span></div>
         <h2>Three rounds of usability testing, five users, three success criteria.</h2>
         <div class="prose">
@@ -304,12 +336,20 @@
         </blockquote>
 
         <figure>
-          <img src="assets/images/5b-v3.png" alt="Version 3 of the spatial dashboard with freshness colors, error flags, and pipeline filters" loading="lazy" width="1500" height="811">
-          <figcaption>Iteration V3 significantly improved data visibility — users easily grasped &ldquo;data age&rdquo; from the color palette while data status surfaced action items.</figcaption>
+          <div class="ba-slider" style="--x:50%">
+            <img src="assets/images/5b-v3.png" alt="Dashboard iteration V3 with freshness colors, error flags, and pipeline filters" loading="lazy" width="1500" height="811">
+            <div class="ba-top" aria-hidden="true"><img src="assets/images/5a-v1.png" alt="" loading="lazy"></div>
+            <div class="ba-handle" aria-hidden="true"></div>
+            <span class="ba-tag l" aria-hidden="true">V1 — first pass</span>
+            <span class="ba-tag r" aria-hidden="true">V3 — shipped</span>
+            <input type="range" min="0" max="100" value="50" aria-label="Compare dashboard iteration V1 with V3 (drag or use arrow keys)">
+          </div>
+          <figcaption>Drag to compare V1 with V3. Iteration V3 significantly improved data visibility &mdash; users easily grasped &ldquo;data age&rdquo; from the color palette while data status surfaced action items.</figcaption>
         </figure>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s10">
+        <span class="ghost-num" aria-hidden="true">10</span>
         <div class="kicker"><span class="num" aria-hidden="true">10</span><span class="label">Final design</span></div>
         <h2>Five features, each anchored to a research finding.</h2>
         <ol class="learnings">
@@ -336,7 +376,8 @@
         </ol>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s11">
+        <span class="ghost-num" aria-hidden="true">11</span>
         <div class="kicker"><span class="num" aria-hidden="true">11</span><span class="label">Tech constraints</span></div>
         <h2>Designing within a 40-year-old data landscape.</h2>
         <div class="impact-groups">
@@ -364,7 +405,8 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s12">
+        <span class="ghost-num" aria-hidden="true">12</span>
         <div class="kicker"><span class="num" aria-hidden="true">12</span><span class="label">Outcome</span></div>
         <h2>Impact after 6 months post-launch.</h2>
         <div class="impact-groups">
@@ -397,7 +439,8 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s13">
+        <span class="ghost-num" aria-hidden="true">13</span>
         <div class="kicker"><span class="num" aria-hidden="true">13</span><span class="label">What I learned</span></div>
         <h2>Lessons from designing for expert users.</h2>
         <ol class="learnings">
@@ -420,7 +463,8 @@
         </ol>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s14">
+        <span class="ghost-num" aria-hidden="true">14</span>
         <div class="kicker"><span class="num" aria-hidden="true">14</span><span class="label">Future roadmap ideas</span></div>
         <h2>How might we&hellip;</h2>
         <div class="prose">
@@ -432,7 +476,8 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s15">
+        <span class="ghost-num" aria-hidden="true">15</span>
         <div class="kicker"><span class="num" aria-hidden="true">15</span><span class="label">Reflection</span></div>
         <h2>&ldquo;The art of knowing what to leave undone is as important as knowing what to do.&rdquo;</h2>
         <div class="prose">
@@ -441,15 +486,16 @@
         </div>
       </section>
 
-      <p class="footnote">*Certain details have been omitted due to disclosure policies.</p>
+          <p class="footnote">*Certain details have been omitted due to disclosure policies.</p>
+        </div>
+      </div>
     </div>
 
-    <nav class="case-next" aria-label="Next case study">
-      <div class="wrap">
-        <span class="next-label">Next case study</span>
-        <a href="nasa-WADs.html">NASA — Modernizing work authorization for the Space Launch System &rarr;</a>
-      </div>
-    </nav>
+    <a class="next-slab" href="nasa-WADs.html">
+      <span class="lbl">Next case study</span>
+      <span class="next-title">NASA — Modernizing work authorization for the Space Launch System</span>
+      <span class="arr" aria-hidden="true">&rarr;</span>
+    </a>
   </main>
 
   <footer class="site-footer">

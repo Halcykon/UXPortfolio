@@ -18,8 +18,9 @@ Live at **https://halcykon.github.io/UXPortfolio/**
 None. That's the point.
 
 - Hand-written semantic **HTML5** — no builders, no frameworks
-- One shared stylesheet, `css/style.css` — custom properties for color, type, and spacing tokens
-- ~20 lines of vanilla JS (`js/main.js`) for the mobile nav toggle
+- One shared stylesheet, `css/style.css` — custom properties for color, type, and spacing tokens; dark "Mission Control" homepage + light scrollytelling case pages
+- One vanilla-JS interaction layer, `js/main.js` (~180 lines, no dependencies): scroll reveals, chapter rail with reading progress, stat count-ups, before/after comparison slider, pull-quote assembly, cursor accent, header state, nav toggle
+- **Progressive enhancement**: with JS disabled every page is a complete static document; all motion is gated behind `prefers-reduced-motion`
 - Fonts: [Inter](https://fonts.google.com/specimen/Inter) + [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) via Google Fonts
 
 ## Local development

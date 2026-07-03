@@ -10,15 +10,16 @@
   <meta property="og:title" content="Frank Teng — UX Portfolio">
   <meta property="og:description" content="Product designer &amp; UX researcher for hairy, complex data problems. Case studies: Mayo Clinic, ExxonMobil, NASA, CMU AR research.">
   <meta property="og:url" content="https://halcykon.github.io/UXPortfolio/">
-  <meta property="og:image" content="https://halcykon.github.io/UXPortfolio/assets/images/logo-1.png">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://halcykon.github.io/UXPortfolio/assets/images/vab-and-sls.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0c0b09">
   <link rel="icon" href="assets/images/logo-1.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="theme-dark">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -41,79 +42,77 @@
 
   <main id="main">
 
-    <!-- Hero -->
-    <section class="hero">
+    <!-- Cinematic hero -->
+    <section class="hero-cine">
+      <div class="bgimg" style="background-image:url('assets/images/vab-and-sls.jpeg')" role="img" aria-label="NASA's Vehicle Assembly Building with the Space Launch System on the pad" ></div>
       <div class="wrap">
-        <p class="eyebrow">Hi there, I&rsquo;m Frank.</p>
-        <h1>I help organizations tackle hairy, complex data problems <span class="accent">(without breaking anything)</span>.</h1>
-        <p class="dek">I specialize in translating technical architecture into product experiences that balance business impact with user needs.</p>
-        <p class="hero-links">
-          <a href="#work">Selected work &darr;</a>
-          <a href="mailto:frank.t.teng@gmail.com">frank.t.teng@gmail.com</a>
-        </p>
+        <p class="eyebrow-glow">Hi there · I&rsquo;m Frank</p>
+        <h1>Frank Teng.</h1>
+        <p class="tags" aria-label="Specialties"><span>UX Research</span><span>Product Design</span><span>Complex Systems</span></p>
+        <p class="pitch">I help organizations tackle hairy, complex data problems (without breaking anything) — translating technical architecture into product experiences that balance business impact with user needs.</p>
+        <div class="cta-row">
+          <a class="btn-ghost primary" href="#work">View selected work ↓</a>
+          <a class="btn-ghost" href="mailto:frank.t.teng@gmail.com">Email me</a>
+        </div>
       </div>
+      <p class="cue" aria-hidden="true">Scroll</p>
     </section>
 
     <!-- Selected work -->
-    <section id="work" class="section">
+    <section id="work" class="dark-section">
       <div class="wrap">
-        <div class="section-head">
-          <h2>Selected work</h2>
-          <span class="count" aria-hidden="true">4 case studies</span>
-        </div>
+        <p class="kick">Mission log — selected work</p>
+        <h2>Four systems where the stakes were real.</h2>
+        <p class="lede">Healthcare at national scale, energy exploration, rocket assembly, and a novel-technology research probe — each one a case study in untangling complexity.</p>
 
-        <div class="work-grid">
-          <a class="case-card" href="mayo-telehealth.html">
-            <div class="thumb">
-              <img src="assets/images/pexels-tima-miroshnichenko-8376233.jpeg" alt="A clinician conducting a telehealth video visit from her desk" loading="lazy" width="4128" height="2322">
-            </div>
-            <p class="client"><span>Mayo Clinic</span><span>Service design · Research</span></p>
-            <h3>Transforming a pandemic response into scalable care</h3>
+        <a class="panel" href="mayo-telehealth.html">
+          <span class="bar" aria-hidden="true"></span>
+          <div class="im"><img src="assets/images/pexels-tima-miroshnichenko-8376233.jpeg" alt="A clinician conducting a telehealth video visit from her desk" loading="lazy" width="4128" height="2322"></div>
+          <div class="ovl">
+            <p class="cl">Case 01 · Mayo Clinic · Service design &amp; research</p>
+            <h3><span>Transforming a pandemic response into scalable care</span> <span class="arr" aria-hidden="true">→</span></h3>
             <p class="hmw">How might we redesign systems to make post-COVID telehealth operationally robust?</p>
-            <span class="cta">Read case study &rarr;</span>
-          </a>
+          </div>
+        </a>
 
-          <a class="case-card" href="exxonmobil-upstream.html">
-            <div class="thumb">
-              <img src="assets/images/upstream-it-1.jpeg" alt="Spatial data validation dashboard for subsurface analysis" loading="lazy" width="2480" height="1395">
-            </div>
-            <p class="client"><span>ExxonMobil</span><span>Research · Interaction design</span></p>
-            <h3>Streamlining subsurface data analysis</h3>
+        <a class="panel" href="exxonmobil-upstream.html">
+          <span class="bar" aria-hidden="true"></span>
+          <div class="im"><img src="assets/images/upstream-it-1.jpeg" alt="Spatial data validation dashboard for subsurface analysis" loading="lazy" width="2480" height="1395"></div>
+          <div class="ovl">
+            <p class="cl">Case 02 · ExxonMobil · Research &amp; interaction design</p>
+            <h3><span>Streamlining subsurface data analysis</span> <span class="arr" aria-hidden="true">→</span></h3>
             <p class="hmw">How might we automate data preparation without removing the human-in-the-loop?</p>
-            <span class="cta">Read case study &rarr;</span>
-          </a>
+          </div>
+        </a>
 
-          <a class="case-card" href="nasa-WADs.html">
-            <div class="thumb">
-              <img src="assets/images/vab-and-sls.jpeg" alt="NASA's Vehicle Assembly Building with the Space Launch System" loading="lazy" width="1280" height="720">
-            </div>
-            <p class="client"><span>NASA Kennedy / TOSC</span><span>Research lead</span></p>
-            <h3>Modernizing work authorization for the Space Launch System</h3>
+        <a class="panel" href="nasa-WADs.html">
+          <span class="bar" aria-hidden="true"></span>
+          <div class="im"><img src="assets/images/letf-osmu-test.webp" alt="Technicians conducting an OSMU test at NASA's Launch Equipment Test Facility" loading="lazy" width="1000" height="667"></div>
+          <div class="ovl">
+            <p class="cl">Case 03 · NASA Kennedy / TOSC · Research lead</p>
+            <h3><span>Modernizing work authorization for the Space Launch System</span> <span class="arr" aria-hidden="true">→</span></h3>
             <p class="hmw">How might we digitize paper-based procedures while maintaining safety standards?</p>
-            <span class="cta">Read case study &rarr;</span>
-          </a>
+          </div>
+        </a>
 
-          <a class="case-card" href="socialAR.html">
-            <div class="thumb">
-              <img src="assets/images/11.-screenshot2018-02-20at9.29.13pm-1.jpeg" alt="HoloLens prototype showing interest tags floating above people at a networking event" loading="lazy" width="1148" height="646">
-            </div>
-            <p class="client"><span>Carnegie Mellon Research</span><span>UX research · Prototyping</span></p>
-            <h3>Augmented reality for conference networking</h3>
+        <a class="panel" href="socialAR.html">
+          <span class="bar" aria-hidden="true"></span>
+          <div class="im"><img src="assets/images/11.-screenshot2018-02-20at9.29.13pm-1.jpeg" alt="HoloLens prototype showing interest tags floating above people at a networking event" loading="lazy" width="1148" height="646"></div>
+          <div class="ovl">
+            <p class="cl">Case 04 · Carnegie Mellon Research · UX research &amp; prototyping</p>
+            <h3><span>Augmented reality for conference networking</span> <span class="arr" aria-hidden="true">→</span></h3>
             <p class="hmw">How might augmented reality enhance in-person networking experiences?</p>
-            <span class="cta">Read case study &rarr;</span>
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
     </section>
 
     <!-- Lab -->
-    <section id="lab" class="section section--wash">
+    <section id="lab" class="dark-section">
       <div class="wrap">
-        <div class="section-head">
-          <h2>Lab</h2>
-          <span class="count" aria-hidden="true">Things I build</span>
-        </div>
-        <p class="dek dek--lead">Self-initiated products and experiments — designed, built, and shipped end to end.</p>
+        <p class="kick">Lab — things I build</p>
+        <h2>Self-initiated products and experiments.</h2>
+        <p class="lede">Designed, built, and shipped end to end.</p>
 
         <div class="lab-grid">
           <article class="lab-card">
@@ -155,15 +154,12 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section contact">
+    <section id="contact" class="dark-section contact-cine">
       <div class="wrap">
-        <div class="section-head">
-          <h2 class="visually-hidden">Contact</h2>
-          <span class="count" aria-hidden="true">Contact</span>
-        </div>
+        <p class="kick" style="justify-content:center">Contact</p>
         <h2>Have a hairy data problem worth untangling?</h2>
-        <p class="dek">I&rsquo;m always happy to talk shop — research, complex systems, or the full story behind any of these case studies.</p>
-        <p><a class="email" href="mailto:frank.t.teng@gmail.com">frank.t.teng@gmail.com</a></p>
+        <p class="lede" style="margin-inline:auto;text-align:center">I&rsquo;m always happy to talk shop — research, complex systems, or the full story behind any of these case studies.</p>
+        <a class="email" href="mailto:frank.t.teng@gmail.com">frank.t.teng@gmail.com</a>
       </div>
     </section>
   </main>
@@ -183,7 +179,7 @@
       </div>
       <div class="fine">
         <span>&copy; 2026 Frank Teng</span>
-        <span>Hand-coded HTML &amp; CSS — no frameworks, no builders.</span>
+        <span>Hand-coded HTML, CSS &amp; vanilla JS — no frameworks, no builders.</span>
       </div>
     </div>
   </footer>

@@ -12,14 +12,16 @@
   <meta property="og:url" content="https://halcykon.github.io/UXPortfolio/mayo-telehealth.html">
   <meta property="og:image" content="https://halcykon.github.io/UXPortfolio/assets/images/pexels-tima-miroshnichenko-8376233.jpeg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0c0b09">
   <link rel="icon" href="assets/images/logo-1.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div id="read-progress" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="wrap">
@@ -41,13 +43,33 @@
 
   <main id="main">
 
-    <div class="wrap">
-      <section class="case-hero">
-        <p class="eyebrow">Mayo Clinic · Service design &amp; research</p>
+    <header class="chapter">
+      <div class="bgimg" style="background-image:url('assets/images/pexels-tima-miroshnichenko-8376233.jpeg')" role="img" aria-label="A clinician conducting a telehealth video visit from her desk"></div>
+      <div class="inner wrap">
+        <p class="case-no">Case 01 · Mayo Clinic · Service design &amp; research</p>
         <h1>Transforming a pandemic response into a sustainable care platform</h1>
         <p class="dek">Fixing the hidden friction behind rapidly scaled telehealth.</p>
+      </div>
+    </header>
 
-        <dl class="case-meta">
+    <div class="wrap">
+      <div class="case-layout">
+        <aside class="case-rail">
+          <nav aria-label="Chapters">
+            <p class="rail-title">Chapters</p>
+            <a href="#s01">01 · Problem context</a>
+            <a href="#s02">02 · The question</a>
+            <a href="#s03">03 · Our approach</a>
+            <a href="#s04">04 · Business impact*</a>
+            <a href="#s05">05 · Research approach</a>
+            <a href="#s06">06 · Key insights</a>
+            <a href="#s07">07 · Recommendations</a>
+            <a href="#s08">08 · Outcomes &amp; impact</a>
+            <a href="#s09">09 · Reflection</a>
+          </nav>
+        </aside>
+        <div class="case-main">
+          <dl class="case-meta">
           <div>
             <dt>Duration</dt>
             <dd>6 months research<br>2 years implementation</dd>
@@ -66,12 +88,8 @@
           </div>
         </dl>
 
-        <div class="case-hero-media">
-          <img src="assets/images/pexels-tima-miroshnichenko-8376233.jpeg" alt="A clinician conducting a telehealth video visit from her desk" width="4128" height="2322">
-        </div>
-      </section>
-
-      <section class="case-section">
+<section class="case-section" id="s01">
+        <span class="ghost-num" aria-hidden="true">01</span>
         <div class="kicker"><span class="num" aria-hidden="true">01</span><span class="label">Problem context</span></div>
         <h2>Scaling telehealth exposed hidden operational and experience debt.</h2>
         <div class="prose">
@@ -80,7 +98,8 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s02">
+        <span class="ghost-num" aria-hidden="true">02</span>
         <div class="kicker"><span class="num" aria-hidden="true">02</span><span class="label">The question</span></div>
         <h2>How might we evolve video visits from a &ldquo;functional&rdquo; solution into a scalable, low-friction care platform?</h2>
         <div class="prose">
@@ -88,7 +107,8 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s03">
+        <span class="ghost-num" aria-hidden="true">03</span>
         <div class="kicker"><span class="num" aria-hidden="true">03</span><span class="label">Our approach</span></div>
         <h2>Service-level research across the full virtual care ecosystem.</h2>
         <div class="prose">
@@ -97,20 +117,21 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s04">
+        <span class="ghost-num" aria-hidden="true">04</span>
         <div class="kicker"><span class="num" aria-hidden="true">04</span><span class="label">Business impact*</span></div>
         <h2>Research-driven prioritization enabled measurable operational gains.</h2>
         <ul class="stat-list">
           <li>
-            <span class="stat-value">40%</span>
+            <span class="stat-value" data-count="40" data-suffix="%">40%</span>
             <span class="stat-desc">reduction in mandatory patient questionnaires, lowering pre-visit friction while maintaining clinical quality</span>
           </li>
           <li>
-            <span class="stat-value">15,000+</span>
+            <span class="stat-value" data-count="15000" data-suffix="+">15,000+</span>
             <span class="stat-desc">increase in monthly appointment capacity through streamlined registration and check-in workflows</span>
           </li>
           <li>
-            <span class="stat-value">$1.2M</span>
+            <span class="stat-value" data-count="1.2" data-decimals="1" data-prefix="$" data-suffix="M">$1.2M</span>
             <span class="stat-desc">in annual cost savings via automation and reduced support burden</span>
           </li>
         </ul>
@@ -122,7 +143,8 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s05">
+        <span class="ghost-num" aria-hidden="true">05</span>
         <div class="kicker"><span class="num" aria-hidden="true">05</span><span class="label">Research approach</span></div>
         <h2>Uncovering systemic issues through a holistic investigation of Mayo&rsquo;s virtual ecosystem.</h2>
         <div class="impact-groups">
@@ -161,7 +183,8 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s06">
+        <span class="ghost-num" aria-hidden="true">06</span>
         <div class="kicker"><span class="num" aria-hidden="true">06</span><span class="label">Key insights</span></div>
         <h2>Four systemic breakdowns — and the design responses to each.</h2>
 
@@ -190,7 +213,8 @@
         </article>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s07">
+        <span class="ghost-num" aria-hidden="true">07</span>
         <div class="kicker"><span class="num" aria-hidden="true">07</span><span class="label">Recommendations</span></div>
         <h2>A phased roadmap balancing quick wins and systemic transformation.</h2>
         <div class="impact-groups">
@@ -229,7 +253,8 @@
         </figure>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s08">
+        <span class="ghost-num" aria-hidden="true">08</span>
         <div class="kicker"><span class="num" aria-hidden="true">08</span><span class="label">Outcomes &amp; impact</span></div>
         <h2>Transforming insights into measurable operational goals.</h2>
         <div class="impact-groups">
@@ -267,7 +292,8 @@
         </div>
       </section>
 
-      <section class="case-section">
+<section class="case-section" id="s09">
+        <span class="ghost-num" aria-hidden="true">09</span>
         <div class="kicker"><span class="num" aria-hidden="true">09</span><span class="label">Reflection</span></div>
         <h2>What I learned designing for complex healthcare systems.</h2>
         <ol class="learnings">
@@ -290,15 +316,16 @@
         </ol>
       </section>
 
-      <p class="footnote">*Certain details have been omitted due to disclosure policies. This case study is a condensed view of a complex, multi-year initiative — there&rsquo;s significantly more depth to share around research methodology, detailed findings, stakeholder alignment strategies, and implementation nuances. I&rsquo;m happy to discuss the full scope in conversation and can provide the complete 61-page research report upon request.</p>
+          <p class="footnote">*Certain details have been omitted due to disclosure policies. This case study is a condensed view of a complex, multi-year initiative — there&rsquo;s significantly more depth to share around research methodology, detailed findings, stakeholder alignment strategies, and implementation nuances. I&rsquo;m happy to discuss the full scope in conversation and can provide the complete 61-page research report upon request.</p>
+        </div>
+      </div>
     </div>
 
-    <nav class="case-next" aria-label="Next case study">
-      <div class="wrap">
-        <span class="next-label">Next case study</span>
-        <a href="exxonmobil-upstream.html">ExxonMobil — Streamlining subsurface data analysis &rarr;</a>
-      </div>
-    </nav>
+    <a class="next-slab" href="exxonmobil-upstream.html">
+      <span class="lbl">Next case study</span>
+      <span class="next-title">ExxonMobil — Streamlining subsurface data analysis</span>
+      <span class="arr" aria-hidden="true">&rarr;</span>
+    </a>
   </main>
 
   <footer class="site-footer">
